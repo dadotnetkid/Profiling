@@ -1,0 +1,798 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\Development Cache\.nuget\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\..\..\Development Cache\.nuget\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0E44AAD0-3E05-438F-8D15-17401E22EC15}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Win</RootNamespace>
+    <AssemblyName>Win</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>\\PLGUNV_ADSERVER\c%24\Installers\Profiling\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>1</UpdateInterval>
+    <UpdateIntervalUnits>Hours</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://plgunv_adserver:89/</InstallUrl>
+    <ProductName>ICT Profiling</ProductName>
+    <PublisherName>ICT</PublisherName>
+    <SuiteName>Profiling</SuiteName>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>index.htm</WebPage>
+    <ApplicationRevision>77</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>041A3D675EF9B9B06CCD848FA98968819208B7A4</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Win_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Charts.v18.2.Core, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v18.2, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v18.2, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v18.2.Core, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v18.2.Core, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v18.2.Core, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v18.2.Core, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v18.2.Core, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v18.2.Export, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v18.2.Core, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v18.2, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v18.2.UI, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v18.2, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v18.2, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v18.2, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v18.2, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v18.2.Core, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v18.2, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v18.2, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v18.2, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v18.2, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v18.2.Extensions, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Development Cache\.nuget\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Development Cache\.nuget\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="Microsoft.Data.ConnectionUI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=f4ca07f51760da93, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Development Cache\.nuget\packages\DataConnectionDialog.1.2\lib\Microsoft.Data.ConnectionUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.ConnectionUI.Dialog, Version=0.0.0.0, Culture=neutral, PublicKeyToken=f4ca07f51760da93, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Development Cache\.nuget\packages\DataConnectionDialog.1.2\lib\Microsoft.Data.ConnectionUI.Dialog.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.ConnectionDlg.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.ConnectionDlg.UI, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dlvry\frmAddEditDeliveries.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dlvry\frmAddEditDeliveries.Designer.cs">
+      <DependentUpon>frmAddEditDeliveries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dlvry\frmSearchTecDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dlvry\frmSearchTecDetail.Designer.cs">
+      <DependentUpon>frmSearchTecDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dlvry\frmDeliveries.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dlvry\frmDeliveries.Designer.cs">
+      <DependentUpon>frmDeliveries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dlvry\UcDeliveriesGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dlvry\UcDeliveriesGrid.Designer.cs">
+      <DependentUpon>UcDeliveriesGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dlvry\ucDeliveryDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dlvry\ucDeliveryDetails.Designer.cs">
+      <DependentUpon>ucDeliveryDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dlvry\UcDelEquipmentProfiles.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dlvry\UcDelEquipmentProfiles.Designer.cs">
+      <DependentUpon>UcDelEquipmentProfiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dshbrd\ucDashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dshbrd\ucDashboard.Designer.cs">
+      <DependentUpon>ucDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Emp\frmAddEditEmployees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Emp\frmAddEditEmployees.Designer.cs">
+      <DependentUpon>frmAddEditEmployees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Emp\frmEmployees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Emp\frmEmployees.Designer.cs">
+      <DependentUpon>frmEmployees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MESAF\frmAddEditMES.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MESAF\frmAddEditMES.Designer.cs">
+      <DependentUpon>frmAddEditMES.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MESAF\frmMES.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MESAF\frmMES.Designer.cs">
+      <DependentUpon>frmMES.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MESAF\ucMES.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MESAF\ucMES.Designer.cs">
+      <DependentUpon>ucMES.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ofc\frmAddEditOffices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ofc\frmAddEditOffices.Designer.cs">
+      <DependentUpon>frmAddEditOffices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ofc\ucAddEditOffices.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Ofc\ucAddEditOffices.Designer.cs">
+      <DependentUpon>ucAddEditOffices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PO\frmAddEditPurchaseOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PO\frmAddEditPurchaseOrder.Designer.cs">
+      <DependentUpon>frmAddEditPurchaseOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PO\frmPurchaseOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PO\frmPurchaseOrders.Designer.cs">
+      <DependentUpon>frmPurchaseOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DocAct\ucActionGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DocAct\ucActionGrid.Designer.cs">
+      <DependentUpon>ucActionGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PO\ucPODetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PO\ucPODetails.Designer.cs">
+      <DependentUpon>ucPODetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PO\ucPOEquipmentProfile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PO\ucPOEquipmentProfile.Designer.cs">
+      <DependentUpon>ucPOEquipmentProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PO\ucPOGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PO\ucPOGrid.Designer.cs">
+      <DependentUpon>ucPOGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PPE\frmAddEditEquipmentProfiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PPE\frmAddEditEquipmentProfiles.Designer.cs">
+      <DependentUpon>frmAddEditEquipmentProfiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PPE\frmEquipmentProfiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PPE\frmEquipmentProfiles.Designer.cs">
+      <DependentUpon>frmEquipmentProfiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DocAct\frmDocActions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DocAct\frmDocActions.Designer.cs">
+      <DependentUpon>frmDocActions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ofc\frmOffices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ofc\frmOffices.Designer.cs">
+      <DependentUpon>frmOffices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSplashScreen.Designer.cs">
+      <DependentUpon>frmSplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rpt\frmAccomplishmentReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rpt\frmAccomplishmentReport.Designer.cs">
+      <DependentUpon>frmAccomplishmentReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rpt\frmReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rpt\frmReportViewer.Designer.cs">
+      <DependentUpon>frmReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rpt\rptAccomplishmentReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Rpt\rptAccomplishmentReport.Designer.cs">
+      <DependentUpon>rptAccomplishmentReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rpt\rptDocumentLedger.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Rpt\rptDocumentLedger.Designer.cs">
+      <DependentUpon>rptDocumentLedger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rpt\rptEquipmentProfile.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Rpt\rptEquipmentProfile.Designer.cs">
+      <DependentUpon>rptEquipmentProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rpt\rptTechnicalReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Rpt\rptTechnicalReport.Designer.cs">
+      <DependentUpon>rptTechnicalReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rpt\rptTechSpecs.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Rpt\rptTechSpecs.Designer.cs">
+      <DependentUpon>rptTechSpecs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TS\frmAddEditTechSpecs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TS\frmAddEditTechSpecs.Designer.cs">
+      <DependentUpon>frmAddEditTechSpecs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TS\frmSearchTechSpecDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TS\frmSearchTechSpecDetail.Designer.cs">
+      <DependentUpon>frmSearchTechSpecDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TS\frmTechSpecs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TS\frmTechSpecs.Designer.cs">
+      <DependentUpon>frmTechSpecs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TS\UcTechSpecGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TS\UcTechSpecGrid.Designer.cs">
+      <DependentUpon>UcTechSpecGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TS\ucTechSpecsDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TS\ucTechSpecsDetails.Designer.cs">
+      <DependentUpon>ucTechSpecsDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TS\UcTSEquipmentProfiles.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TS\UcTSEquipmentProfiles.Designer.cs">
+      <DependentUpon>UcTSEquipmentProfiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usr\frmAddEditUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usr\frmAddEditUser.Designer.cs">
+      <DependentUpon>frmAddEditUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usr\frmUserRoles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usr\frmUserRoles.Designer.cs">
+      <DependentUpon>frmUserRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usr\frmUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usr\frmUsers.Designer.cs">
+      <DependentUpon>frmUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WO\frmAddEditWorkOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WO\frmAddEditWorkOrder.Designer.cs">
+      <DependentUpon>frmAddEditWorkOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WO\frmTechnicalEvalSheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WO\frmTechnicalEvalSheet.Designer.cs">
+      <DependentUpon>frmTechnicalEvalSheet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WO\frmWorkOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WO\frmWorkOrders.Designer.cs">
+      <DependentUpon>frmWorkOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Xcanner\frmListOfScanner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xcanner\frmListOfScanner.Designer.cs">
+      <DependentUpon>frmListOfScanner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Xcanner\frmLoading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xcanner\frmLoading.Designer.cs">
+      <DependentUpon>frmLoading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Xcanner\frmScanner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xcanner\frmScanner.Designer.cs">
+      <DependentUpon>frmScanner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sup\frmSuppliers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sup\frmSuppliers.Designer.cs">
+      <DependentUpon>frmSuppliers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs" />
+    <Compile Include="Xcanner\Scanners.cs" />
+    <Compile Include="Xcanner\UcScanners.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Xcanner\UcScanners.Designer.cs">
+      <DependentUpon>UcScanners.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XtraControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <EmbeddedResource Include="Dlvry\frmAddEditDeliveries.resx">
+      <DependentUpon>frmAddEditDeliveries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dlvry\frmSearchTecDetail.resx">
+      <DependentUpon>frmSearchTecDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dlvry\frmDeliveries.resx">
+      <DependentUpon>frmDeliveries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dlvry\UcDeliveriesGrid.resx">
+      <DependentUpon>UcDeliveriesGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dlvry\ucDeliveryDetails.resx">
+      <DependentUpon>ucDeliveryDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dlvry\UcDelEquipmentProfiles.resx">
+      <DependentUpon>UcDelEquipmentProfiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dshbrd\ucDashboard.resx">
+      <DependentUpon>ucDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Emp\frmAddEditEmployees.resx">
+      <DependentUpon>frmAddEditEmployees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Emp\frmEmployees.resx">
+      <DependentUpon>frmEmployees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MESAF\frmAddEditMES.resx">
+      <DependentUpon>frmAddEditMES.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MESAF\frmMES.resx">
+      <DependentUpon>frmMES.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MESAF\ucMES.resx">
+      <DependentUpon>ucMES.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ofc\frmAddEditOffices.resx">
+      <DependentUpon>frmAddEditOffices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ofc\ucAddEditOffices.resx">
+      <DependentUpon>ucAddEditOffices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PO\frmAddEditPurchaseOrder.resx">
+      <DependentUpon>frmAddEditPurchaseOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PO\frmPurchaseOrders.resx">
+      <DependentUpon>frmPurchaseOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocAct\ucActionGrid.resx">
+      <DependentUpon>ucActionGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PO\ucPODetails.resx">
+      <DependentUpon>ucPODetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PO\ucPOEquipmentProfile.resx">
+      <DependentUpon>ucPOEquipmentProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PO\ucPOGrid.resx">
+      <DependentUpon>ucPOGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PPE\frmAddEditEquipmentProfiles.resx">
+      <DependentUpon>frmAddEditEquipmentProfiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PPE\frmEquipmentProfiles.resx">
+      <DependentUpon>frmEquipmentProfiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocAct\frmDocActions.resx">
+      <DependentUpon>frmDocActions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ofc\frmOffices.resx">
+      <DependentUpon>frmOffices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSplashScreen.resx">
+      <DependentUpon>frmSplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rpt\frmAccomplishmentReport.resx">
+      <DependentUpon>frmAccomplishmentReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rpt\frmReportViewer.resx">
+      <DependentUpon>frmReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rpt\rptAccomplishmentReport.resx">
+      <DependentUpon>rptAccomplishmentReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rpt\rptDocumentLedger.resx">
+      <DependentUpon>rptDocumentLedger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rpt\rptEquipmentProfile.resx">
+      <DependentUpon>rptEquipmentProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rpt\rptTechnicalReport.resx">
+      <DependentUpon>rptTechnicalReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rpt\rptTechSpecs.resx">
+      <DependentUpon>rptTechSpecs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TS\frmAddEditTechSpecs.resx">
+      <DependentUpon>frmAddEditTechSpecs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TS\frmSearchTechSpecDetail.resx">
+      <DependentUpon>frmSearchTechSpecDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TS\frmTechSpecs.resx">
+      <DependentUpon>frmTechSpecs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TS\UcTechSpecGrid.resx">
+      <DependentUpon>UcTechSpecGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TS\ucTechSpecsDetails.resx">
+      <DependentUpon>ucTechSpecsDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TS\UcTSEquipmentProfiles.resx">
+      <DependentUpon>UcTSEquipmentProfiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usr\frmAddEditUser.resx">
+      <DependentUpon>frmAddEditUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usr\frmUserRoles.resx">
+      <DependentUpon>frmUserRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usr\frmUsers.resx">
+      <DependentUpon>frmUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WO\frmAddEditWorkOrder.resx">
+      <DependentUpon>frmAddEditWorkOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WO\frmTechnicalEvalSheet.resx">
+      <DependentUpon>frmTechnicalEvalSheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WO\frmWorkOrders.resx">
+      <DependentUpon>frmWorkOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xcanner\frmListOfScanner.resx">
+      <DependentUpon>frmListOfScanner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xcanner\frmLoading.resx">
+      <DependentUpon>frmLoading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xcanner\frmScanner.resx">
+      <DependentUpon>frmScanner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Sup\frmSuppliers.resx">
+      <DependentUpon>frmSuppliers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xcanner\UcScanners.resx">
+      <DependentUpon>UcScanners.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Models.Offices.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Win_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Models\Helpers\Helpers.csproj">
+      <Project>{e093f1b4-5439-4a4d-acea-39566c4b2869}</Project>
+      <Name>Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{e031ffdb-e8c9-44c2-9deb-f50e5bd78267}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Profiling.BL\Profiling.BL.csproj">
+      <Project>{7F6DEA37-B46E-4D9C-B934-69B9C4123960}</Project>
+      <Name>Profiling.BL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\computer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\computer_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delivery.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delivery_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\employee.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\employee_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\list_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maintenance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maintenance_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search_20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\truck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\truck_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\truck_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\users.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\users_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\favicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\inspect_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\action_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="WIA">
+      <Guid>{94A0E92D-43C0-494E-AC29-FD45948A5221}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh_20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
+    <None Include="Resources\addfile_16x16.png" />
+    <None Include="Resources\printer_16x16.png" />
+    <None Include="Resources\apply_16x161.png" />
+    <None Include="Resources\apply_32x32.png" />
+    <None Include="Resources\technology_16x16.png" />
+    <None Include="Resources\technology_32x32.png" />
+    <None Include="Resources\close_16x161.png" />
+    <None Include="Resources\close_16x16.png" />
+    <None Include="Resources\refresh_16x16.png" />
+    <None Include="Resources\nv_logo.png" />
+    <None Include="Resources\bodetails_32x32.png" />
+    <None Include="Resources\converttorange_16x16.png" />
+    <None Include="Resources\apply_16x16.png" />
+    <None Include="Resources\report_64.png" />
+    <None Include="Resources\eval_20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\..\Development Cache\.nuget\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\..\..\Development Cache\.nuget\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
+  <Import Project="..\..\..\Development Cache\.nuget\packages\EmptyLicensesLicx.2.0.0\build\EmptyLicensesLicx.targets" Condition="Exists('..\..\..\Development Cache\.nuget\packages\EmptyLicensesLicx.2.0.0\build\EmptyLicensesLicx.targets')" />
+</Project>

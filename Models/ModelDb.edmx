@@ -1,0 +1,2478 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Actions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Action" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Articles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountCode" Type="int" />
+          <Property Name="Article" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DocActions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RefId" Type="int" />
+          <Property Name="ProgramId" Type="int" />
+          <Property Name="MainActivityId" Type="int" />
+          <Property Name="ActivityId" Type="int" />
+          <Property Name="SubActivityId" Type="int" />
+          <Property Name="Status" Type="nvarchar" MaxLength="128" />
+          <Property Name="ActionTaken" Type="nvarchar(max)" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" />
+          <Property Name="ActionDate" Type="datetime2" Precision="7" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="TableName" Type="nvarchar" MaxLength="128" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="128" />
+          <Property Name="EndorsedTo" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Documents">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RootDirectory" Type="nvarchar(max)" />
+          <Property Name="FileId" Type="nvarchar" MaxLength="128" />
+          <Property Name="ExtName" Type="nvarchar" MaxLength="128" />
+          <Property Name="FileSize" Type="int" />
+          <Property Name="RefId" Type="int" />
+          <Property Name="TableName" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="Dropdowns">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Category" Type="nvarchar(max)" />
+          <Property Name="Value" Type="nvarchar(max)" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="Order" Type="int" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="128" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="128" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="128" />
+          <Property Name="OfficeId" Type="int" />
+          <Property Name="Position" Type="nvarchar" MaxLength="128" />
+          <Property Name="OfcAcr" Type="nvarchar" MaxLength="128" />
+          <Property Name="Status" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="EquipmentProfiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentItem" Type="int" />
+          <Property Name="RefId" Type="int" />
+          <Property Name="TableName" Type="nvarchar" MaxLength="128" />
+          <Property Name="ItemNumber" Type="int" />
+          <Property Name="EquipmentTypeId" Type="int" />
+          <Property Name="EquipmentType" Type="nvarchar" MaxLength="128" />
+          <Property Name="EquipmentName" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="UnitTypeId" Type="int" />
+          <Property Name="QTY" Type="int" />
+          <Property Name="UnitCost" Type="money" />
+          <Property Name="Total" Type="money" />
+          <Property Name="Remarks" Type="nvarchar(max)" />
+          <Property Name="ActualModel" Type="nvarchar(max)" />
+          <Property Name="Serial" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="DateCreated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EquipmentTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EquipmentType" Type="nvarchar" MaxLength="128" />
+          <Property Name="Box" Type="int" />
+        </EntityType>
+        <EntityType Name="EvaluationSheets">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TableName" Type="nvarchar" MaxLength="128" />
+          <Property Name="Evaluation" Type="nvarchar(max)" />
+          <Property Name="MaxValue" Type="int" />
+          <Property Name="MinValue" Type="int" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="EquipmentId" Type="int" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="Logs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TableName" Type="nvarchar(max)" />
+          <Property Name="OldValues" Type="nvarchar(max)" />
+          <Property Name="NewValues" Type="nvarchar(max)" />
+          <Property Name="Action" Type="nvarchar(max)" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="MES">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MESId" Type="nvarchar" MaxLength="128" />
+          <Property Name="OfficeId" Type="int" />
+          <Property Name="EmployeeId" Type="int" />
+          <Property Name="Position" Type="nvarchar" MaxLength="128" />
+          <Property Name="ItemSpec" Type="nvarchar(max)" />
+          <Property Name="Request" Type="nvarchar(max)" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" />
+          <Property Name="ReceivedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="DeliveredBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Offices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BoxNo" Type="int" />
+          <Property Name="OffcAcr" Type="nvarchar" MaxLength="50" />
+          <Property Name="OfficeName" Type="nvarchar" MaxLength="128" />
+          <Property Name="Chief" Type="nvarchar" MaxLength="50" />
+          <Property Name="Position" Type="nvarchar" MaxLength="128" />
+          <Property Name="TelNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="PPEs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleId" Type="int" />
+          <Property Name="PPEId" Type="nvarchar" MaxLength="128" />
+          <Property Name="Barcode" Type="nvarchar" MaxLength="128" />
+          <Property Name="OfficeId" Type="int" />
+          <Property Name="EmployeeId" Type="int" />
+          <Property Name="PropertyNo" Type="nvarchar" MaxLength="128" />
+          <Property Name="EquipmentTypeId" Type="int" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Serial" Type="nvarchar(max)" />
+          <Property Name="DateDelivered" Type="datetime2" Precision="7" />
+          <Property Name="BoxNumber" Type="int" />
+          <Property Name="TotalCost" Type="money" />
+          <Property Name="InvoiceNo" Type="nvarchar" MaxLength="128" />
+          <Property Name="PurchaseDate" Type="datetime2" Precision="7" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="Provinces">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="SortOrder" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="PurchaseOrders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PurchaseNumber" Type="int" />
+          <Property Name="OfficeId" Type="int" />
+          <Property Name="EmployeeId" Type="int" />
+          <Property Name="EquipmentTypeId" Type="int" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="DateDelivered" Type="datetime2" Precision="7" />
+          <Property Name="PurchaseDate" Type="datetime" />
+          <Property Name="SupplierId" Type="int" />
+          <Property Name="Remarks" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Statuses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="128" />
+          <Property Name="TableName" Type="nvarchar" MaxLength="128" />
+          <Property Name="CustomValue" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Suppliers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierName" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="ContactNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="FaxNumber" Type="nvarchar(max)" />
+          <Property Name="CellNumber" Type="nvarchar(max)" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="TechnicalEvaluationSheet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EvaluationSheetId" Type="int" />
+          <Property Name="Value" Type="int" />
+          <Property Name="WorkOrderId" Type="int" />
+        </EntityType>
+        <EntityType Name="TechSpecEquipmentProfiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TechSpecRequests">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TechSpecsId" Type="int" />
+          <Property Name="ItemNumber" Type="int" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="EquipmentType" Type="nvarchar(max)" />
+          <Property Name="Budget" Type="money" />
+          <Property Name="Purpose" Type="nvarchar(max)" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="TechSpecs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Requestedby" Type="int" />
+          <Property Name="EquipmentType" Type="int" />
+          <Property Name="Budget" Type="money" />
+          <Property Name="AssignedTo" Type="nvarchar" MaxLength="128" />
+          <Property Name="SpecType" Type="nvarchar" MaxLength="128" />
+          <Property Name="Status" Type="nvarchar" MaxLength="128" />
+          <Property Name="DateApproved" Type="datetime2" Precision="7" />
+          <Property Name="IsApproved" Type="bit" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="DateRequested" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="Towns">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProvinceId" Type="int" />
+          <Property Name="SortOrder" Type="int" />
+        </EntityType>
+        <EntityType Name="UnitTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnitType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UserRolesInActions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" />
+          <Property Name="Action" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="128" />
+          <Property Name="EmailConfirmed" Type="bit" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="25" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" />
+          <Property Name="TwoFactorEnabled" Type="bit" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" />
+          <Property Name="AccessFailedCount" Type="int" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="150" />
+          <Property Name="LastUpdated" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CivilStatus" Type="nvarchar" MaxLength="12" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="6" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="AddressLine2" Type="nvarchar" MaxLength="500" />
+          <Property Name="AddressLine1" Type="nvarchar" MaxLength="500" />
+          <Property Name="TownCity" Type="int" />
+          <Property Name="Cellular" Type="nvarchar" MaxLength="25" />
+          <Property Name="Height" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="Weight" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="Religion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Citizenship" Type="nvarchar" MaxLength="50" />
+          <Property Name="Languages" Type="nvarchar(max)" />
+          <Property Name="Position" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UsersInRoles">
+          <Key>
+            <PropertyRef Name="UserRoles_Id" />
+            <PropertyRef Name="Users_Id" />
+          </Key>
+          <Property Name="UserRoles_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Users_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkOrders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PPEId" Type="int" />
+          <Property Name="WorkOrderId" Type="nvarchar" MaxLength="128" />
+          <Property Name="Box" Type="int" />
+          <Property Name="RequestedDate" Type="datetime2" Precision="7" />
+          <Property Name="RequestedBy" Type="int" />
+          <Property Name="Position" Type="nvarchar" MaxLength="128" />
+          <Property Name="Problem" Type="nvarchar(max)" />
+          <Property Name="AssignedTo" Type="nvarchar" MaxLength="128" />
+          <Property Name="Findings" Type="nvarchar(max)" />
+          <Property Name="Recommendation" Type="nvarchar(max)" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" />
+          <Property Name="FolderNo" Type="nvarchar" MaxLength="128" />
+          <Property Name="BoxNo" Type="int" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <Association Name="FK_DocActions_PPEs">
+          <End Role="PPEs" Type="Self.PPEs" Multiplicity="0..1" />
+          <End Role="DocActions" Type="Self.DocActions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PPEs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocActions">
+              <PropertyRef Name="RefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DocActions_TechSpecs">
+          <End Role="TechSpecs" Type="Self.TechSpecs" Multiplicity="0..1" />
+          <End Role="DocActions" Type="Self.DocActions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechSpecs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocActions">
+              <PropertyRef Name="RefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DocActions_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="DocActions" Type="Self.DocActions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocActions">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DocActions_Users1">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="DocActions" Type="Self.DocActions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocActions">
+              <PropertyRef Name="EndorsedTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_Offices">
+          <End Role="Offices" Type="Self.Offices" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipmentProfiles_EquipmentTypes">
+          <End Role="EquipmentTypes" Type="Self.EquipmentTypes" Multiplicity="0..1" />
+          <End Role="EquipmentProfiles" Type="Self.EquipmentProfiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipmentTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipmentProfiles">
+              <PropertyRef Name="EquipmentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipmentProfiles_PPEs">
+          <End Role="PPEs" Type="Self.PPEs" Multiplicity="0..1" />
+          <End Role="EquipmentProfiles" Type="Self.EquipmentProfiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PPEs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipmentProfiles">
+              <PropertyRef Name="RefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipmentProfiles_PurchaseOrders">
+          <End Role="PurchaseOrders" Type="Self.PurchaseOrders" Multiplicity="0..1" />
+          <End Role="EquipmentProfiles" Type="Self.EquipmentProfiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseOrders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipmentProfiles">
+              <PropertyRef Name="RefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipmentProfiles_TechSpecs">
+          <End Role="TechSpecs" Type="Self.TechSpecs" Multiplicity="0..1" />
+          <End Role="EquipmentProfiles" Type="Self.EquipmentProfiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechSpecs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipmentProfiles">
+              <PropertyRef Name="RefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipmentProfiles_UnitTypes">
+          <End Role="UnitTypes" Type="Self.UnitTypes" Multiplicity="0..1" />
+          <End Role="EquipmentProfiles" Type="Self.EquipmentProfiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipmentProfiles">
+              <PropertyRef Name="UnitTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Logs_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Logs" Type="Self.Logs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Logs">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MES_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MES" Type="Self.MES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MES">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MES_Offices">
+          <End Role="Offices" Type="Self.Offices" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MES" Type="Self.MES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MES">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PPEs_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="PPEs" Type="Self.PPEs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PPEs">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PPEs_EquipmentTypes">
+          <End Role="EquipmentTypes" Type="Self.EquipmentTypes" Multiplicity="0..1" />
+          <End Role="PPEs" Type="Self.PPEs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipmentTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PPEs">
+              <PropertyRef Name="EquipmentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PPEs_Offices">
+          <End Role="Offices" Type="Self.Offices" Multiplicity="0..1" />
+          <End Role="PPEs" Type="Self.PPEs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PPEs">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrders_Offices">
+          <End Role="Offices" Type="Self.Offices" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PurchaseOrders" Type="Self.PurchaseOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PurchaseOrders">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrders_Suppliers">
+          <End Role="Suppliers" Type="Self.Suppliers" Multiplicity="0..1" />
+          <End Role="PurchaseOrders" Type="Self.PurchaseOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suppliers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PurchaseOrders">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechnicalEvaluationSheet_EvaluationSheets">
+          <End Role="EvaluationSheets" Type="Self.EvaluationSheets" Multiplicity="0..1" />
+          <End Role="TechnicalEvaluationSheet" Type="Self.TechnicalEvaluationSheet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EvaluationSheets">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TechnicalEvaluationSheet">
+              <PropertyRef Name="EvaluationSheetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechSpecEquipmentProfiles_EquipmentProfiles">
+          <End Role="EquipmentProfiles" Type="Self.EquipmentProfiles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TechSpecEquipmentProfiles" Type="Self.TechSpecEquipmentProfiles" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="EquipmentProfiles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TechSpecEquipmentProfiles">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechSpecRequests_TechSpecs">
+          <End Role="TechSpecs" Type="Self.TechSpecs" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TechSpecRequests" Type="Self.TechSpecRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechSpecs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TechSpecRequests">
+              <PropertyRef Name="TechSpecsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechSpecs_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="TechSpecs" Type="Self.TechSpecs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TechSpecs">
+              <PropertyRef Name="Requestedby" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechSpecs_EquipmentTypes">
+          <End Role="EquipmentTypes" Type="Self.EquipmentTypes" Multiplicity="0..1" />
+          <End Role="TechSpecs" Type="Self.TechSpecs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipmentTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TechSpecs">
+              <PropertyRef Name="EquipmentType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechSpecs_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="TechSpecs" Type="Self.TechSpecs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TechSpecs">
+              <PropertyRef Name="AssignedTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Towns_Towns">
+          <End Role="Provinces" Type="Self.Provinces" Multiplicity="0..1" />
+          <End Role="Towns" Type="Self.Towns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provinces">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Towns">
+              <PropertyRef Name="ProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserClaims_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserClaims" Type="Self.UserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserLogins_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserLogins" Type="Self.UserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRolesInActions_UserRoles">
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="0..1" />
+          <End Role="UserRolesInActions" Type="Self.UserRolesInActions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRolesInActions">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersInRoles_UserRoles">
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="1" />
+          <End Role="UsersInRoles" Type="Self.UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsersInRoles">
+              <PropertyRef Name="UserRoles_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersInRoles_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UsersInRoles" Type="Self.UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsersInRoles">
+              <PropertyRef Name="Users_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WOActions_WorkOrders">
+          <End Role="WorkOrders" Type="Self.WorkOrders" Multiplicity="0..1" />
+          <End Role="DocActions" Type="Self.DocActions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkOrders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocActions">
+              <PropertyRef Name="RefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkOrders_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="WorkOrders" Type="Self.WorkOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkOrders">
+              <PropertyRef Name="RequestedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkOrders_PPEs">
+          <End Role="PPEs" Type="Self.PPEs" Multiplicity="0..1" />
+          <End Role="WorkOrders" Type="Self.WorkOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PPEs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkOrders">
+              <PropertyRef Name="PPEId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkOrders_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="WorkOrders" Type="Self.WorkOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkOrders">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Actions" EntityType="Self.Actions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Articles" EntityType="Self.Articles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DocActions" EntityType="Self.DocActions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Documents" EntityType="Self.Documents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dropdowns" EntityType="Self.Dropdowns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EquipmentProfiles" EntityType="Self.EquipmentProfiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EquipmentTypes" EntityType="Self.EquipmentTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EvaluationSheets" EntityType="Self.EvaluationSheets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Logs" EntityType="Self.Logs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MES" EntityType="Self.MES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Offices" EntityType="Self.Offices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PPEs" EntityType="Self.PPEs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provinces" EntityType="Self.Provinces" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseOrders" EntityType="Self.PurchaseOrders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Statuses" EntityType="Self.Statuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Suppliers" EntityType="Self.Suppliers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TechnicalEvaluationSheet" EntityType="Self.TechnicalEvaluationSheet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TechSpecEquipmentProfiles" EntityType="Self.TechSpecEquipmentProfiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TechSpecRequests" EntityType="Self.TechSpecRequests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TechSpecs" EntityType="Self.TechSpecs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Towns" EntityType="Self.Towns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnitTypes" EntityType="Self.UnitTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserClaims" EntityType="Self.UserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserLogins" EntityType="Self.UserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRolesInActions" EntityType="Self.UserRolesInActions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersInRoles" EntityType="Self.UsersInRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkOrders" EntityType="Self.WorkOrders" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DocActions_PPEs" Association="Self.FK_DocActions_PPEs">
+            <End Role="PPEs" EntitySet="PPEs" />
+            <End Role="DocActions" EntitySet="DocActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DocActions_TechSpecs" Association="Self.FK_DocActions_TechSpecs">
+            <End Role="TechSpecs" EntitySet="TechSpecs" />
+            <End Role="DocActions" EntitySet="DocActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DocActions_Users" Association="Self.FK_DocActions_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="DocActions" EntitySet="DocActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DocActions_Users1" Association="Self.FK_DocActions_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="DocActions" EntitySet="DocActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_Offices" Association="Self.FK_Employees_Offices">
+            <End Role="Offices" EntitySet="Offices" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipmentProfiles_EquipmentTypes" Association="Self.FK_EquipmentProfiles_EquipmentTypes">
+            <End Role="EquipmentTypes" EntitySet="EquipmentTypes" />
+            <End Role="EquipmentProfiles" EntitySet="EquipmentProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipmentProfiles_PPEs" Association="Self.FK_EquipmentProfiles_PPEs">
+            <End Role="PPEs" EntitySet="PPEs" />
+            <End Role="EquipmentProfiles" EntitySet="EquipmentProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipmentProfiles_PurchaseOrders" Association="Self.FK_EquipmentProfiles_PurchaseOrders">
+            <End Role="PurchaseOrders" EntitySet="PurchaseOrders" />
+            <End Role="EquipmentProfiles" EntitySet="EquipmentProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipmentProfiles_TechSpecs" Association="Self.FK_EquipmentProfiles_TechSpecs">
+            <End Role="TechSpecs" EntitySet="TechSpecs" />
+            <End Role="EquipmentProfiles" EntitySet="EquipmentProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipmentProfiles_UnitTypes" Association="Self.FK_EquipmentProfiles_UnitTypes">
+            <End Role="UnitTypes" EntitySet="UnitTypes" />
+            <End Role="EquipmentProfiles" EntitySet="EquipmentProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Logs_Users" Association="Self.FK_Logs_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Logs" EntitySet="Logs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MES_Employees" Association="Self.FK_MES_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="MES" EntitySet="MES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MES_Offices" Association="Self.FK_MES_Offices">
+            <End Role="Offices" EntitySet="Offices" />
+            <End Role="MES" EntitySet="MES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PPEs_Employees" Association="Self.FK_PPEs_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="PPEs" EntitySet="PPEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PPEs_EquipmentTypes" Association="Self.FK_PPEs_EquipmentTypes">
+            <End Role="EquipmentTypes" EntitySet="EquipmentTypes" />
+            <End Role="PPEs" EntitySet="PPEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PPEs_Offices" Association="Self.FK_PPEs_Offices">
+            <End Role="Offices" EntitySet="Offices" />
+            <End Role="PPEs" EntitySet="PPEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrders_Offices" Association="Self.FK_PurchaseOrders_Offices">
+            <End Role="Offices" EntitySet="Offices" />
+            <End Role="PurchaseOrders" EntitySet="PurchaseOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrders_Suppliers" Association="Self.FK_PurchaseOrders_Suppliers">
+            <End Role="Suppliers" EntitySet="Suppliers" />
+            <End Role="PurchaseOrders" EntitySet="PurchaseOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechnicalEvaluationSheet_EvaluationSheets" Association="Self.FK_TechnicalEvaluationSheet_EvaluationSheets">
+            <End Role="EvaluationSheets" EntitySet="EvaluationSheets" />
+            <End Role="TechnicalEvaluationSheet" EntitySet="TechnicalEvaluationSheet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechSpecEquipmentProfiles_EquipmentProfiles" Association="Self.FK_TechSpecEquipmentProfiles_EquipmentProfiles">
+            <End Role="EquipmentProfiles" EntitySet="EquipmentProfiles" />
+            <End Role="TechSpecEquipmentProfiles" EntitySet="TechSpecEquipmentProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechSpecRequests_TechSpecs" Association="Self.FK_TechSpecRequests_TechSpecs">
+            <End Role="TechSpecs" EntitySet="TechSpecs" />
+            <End Role="TechSpecRequests" EntitySet="TechSpecRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechSpecs_Employees" Association="Self.FK_TechSpecs_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="TechSpecs" EntitySet="TechSpecs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechSpecs_EquipmentTypes" Association="Self.FK_TechSpecs_EquipmentTypes">
+            <End Role="EquipmentTypes" EntitySet="EquipmentTypes" />
+            <End Role="TechSpecs" EntitySet="TechSpecs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechSpecs_Users" Association="Self.FK_TechSpecs_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="TechSpecs" EntitySet="TechSpecs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Towns_Towns" Association="Self.FK_Towns_Towns">
+            <End Role="Provinces" EntitySet="Provinces" />
+            <End Role="Towns" EntitySet="Towns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserClaims_Users" Association="Self.FK_UserClaims_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserClaims" EntitySet="UserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserLogins_Users" Association="Self.FK_UserLogins_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserLogins" EntitySet="UserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRolesInActions_UserRoles" Association="Self.FK_UserRolesInActions_UserRoles">
+            <End Role="UserRoles" EntitySet="UserRoles" />
+            <End Role="UserRolesInActions" EntitySet="UserRolesInActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersInRoles_UserRoles" Association="Self.FK_UsersInRoles_UserRoles">
+            <End Role="UserRoles" EntitySet="UserRoles" />
+            <End Role="UsersInRoles" EntitySet="UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersInRoles_Users" Association="Self.FK_UsersInRoles_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersInRoles" EntitySet="UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WOActions_WorkOrders" Association="Self.FK_WOActions_WorkOrders">
+            <End Role="WorkOrders" EntitySet="WorkOrders" />
+            <End Role="DocActions" EntitySet="DocActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkOrders_Employees" Association="Self.FK_WorkOrders_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="WorkOrders" EntitySet="WorkOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkOrders_PPEs" Association="Self.FK_WorkOrders_PPEs">
+            <End Role="PPEs" EntitySet="PPEs" />
+            <End Role="WorkOrders" EntitySet="WorkOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkOrders_Users" Association="Self.FK_WorkOrders_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="WorkOrders" EntitySet="WorkOrders" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ModelDb" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EquipmentTypes" EntityType="Model.EquipmentTypes" />
+          <EntitySet Name="Actions" EntityType="Model.Actions" />
+          <EntitySet Name="Logs" EntityType="Model.Logs" />
+          <EntitySet Name="Provinces" EntityType="Model.Provinces" />
+          <EntitySet Name="Towns" EntityType="Model.Towns" />
+          <EntitySet Name="UserClaims" EntityType="Model.UserClaims" />
+          <EntitySet Name="UserLogins" EntityType="Model.UserLogins" />
+          <EntitySet Name="UserRoles" EntityType="Model.UserRoles" />
+          <EntitySet Name="UserRolesInActions" EntityType="Model.UserRolesInActions" />
+          <EntitySet Name="Users" EntityType="Model.Users" />
+          <AssociationSet Name="FK_Logs_Users" Association="Model.FK_Logs_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Logs" EntitySet="Logs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Towns_Towns" Association="Model.FK_Towns_Towns">
+            <End Role="Provinces" EntitySet="Provinces" />
+            <End Role="Towns" EntitySet="Towns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserClaims_Users" Association="Model.FK_UserClaims_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserClaims" EntitySet="UserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserLogins_Users" Association="Model.FK_UserLogins_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserLogins" EntitySet="UserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRolesInActions_UserRoles" Association="Model.FK_UserRolesInActions_UserRoles">
+            <End Role="UserRoles" EntitySet="UserRoles" />
+            <End Role="UserRolesInActions" EntitySet="UserRolesInActions" />
+          </AssociationSet>
+          <AssociationSet Name="UsersInRoles" Association="Model.UsersInRoles">
+            <End Role="UserRoles" EntitySet="UserRoles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="UnitTypes" EntityType="Model.UnitTypes" />
+          <EntitySet Name="Inventory" EntityType="Model.Inventory" />
+          <EntitySet Name="Employees" EntityType="Model.Employees" />
+          <EntitySet Name="PPEs" EntityType="Model.PPEs" />
+          <AssociationSet Name="FK_PPEs_Employees" Association="Model.FK_PPEs_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="PPEs" EntitySet="PPEs" />
+          </AssociationSet>
+          <EntitySet Name="WorkOrders" EntityType="Model.WorkOrders" />
+          <AssociationSet Name="FK_WorkOrders_PPEs" Association="Model.FK_WorkOrders_PPEs">
+            <End Role="PPEs" EntitySet="PPEs" />
+            <End Role="WorkOrders" EntitySet="WorkOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkOrders_Employees" Association="Model.FK_WorkOrders_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="WorkOrders" EntitySet="WorkOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PPEs_EquipmentTypes" Association="Model.FK_PPEs_EquipmentTypes">
+            <End Role="EquipmentTypes" EntitySet="EquipmentTypes" />
+            <End Role="PPEs" EntitySet="PPEs" />
+          </AssociationSet>
+          <EntitySet Name="Statuses" EntityType="Model.Statuses" />
+          <EntitySet Name="DocActions" EntityType="Model.DocActions" />
+          <AssociationSet Name="FK_DocActions_PPEs" Association="Model.FK_DocActions_PPEs">
+            <End Role="PPEs" EntitySet="PPEs" />
+            <End Role="DocActions" EntitySet="DocActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WOActions_WorkOrders" Association="Model.FK_WOActions_WorkOrders">
+            <End Role="WorkOrders" EntitySet="WorkOrders" />
+            <End Role="DocActions" EntitySet="DocActions" />
+          </AssociationSet>
+          <EntitySet Name="Dropdowns" EntityType="Model.Dropdowns" />
+          <EntitySet Name="EquipmentProfiles" EntityType="Model.EquipmentProfiles" />
+          <AssociationSet Name="FK_EquipmentProfiles_EquipmentTypes" Association="Model.FK_EquipmentProfiles_EquipmentTypes">
+            <End Role="EquipmentTypes" EntitySet="EquipmentTypes" />
+            <End Role="EquipmentProfiles" EntitySet="EquipmentProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipmentProfiles_PPEs" Association="Model.FK_EquipmentProfiles_PPEs">
+            <End Role="PPEs" EntitySet="PPEs" />
+            <End Role="EquipmentProfiles" EntitySet="EquipmentProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipmentProfiles_UnitTypes" Association="Model.FK_EquipmentProfiles_UnitTypes">
+            <End Role="UnitTypes" EntitySet="UnitTypes" />
+            <End Role="EquipmentProfiles" EntitySet="EquipmentProfiles" />
+          </AssociationSet>
+          <EntitySet Name="EvaluationSheets" EntityType="Model.EvaluationSheets" />
+          <EntitySet Name="TechnicalEvaluationSheet" EntityType="Model.TechnicalEvaluationSheet" />
+          <AssociationSet Name="FK_TechnicalEvaluationSheet_EvaluationSheets" Association="Model.FK_TechnicalEvaluationSheet_EvaluationSheets">
+            <End Role="EvaluationSheets" EntitySet="EvaluationSheets" />
+            <End Role="TechnicalEvaluationSheet" EntitySet="TechnicalEvaluationSheet" />
+          </AssociationSet>
+          <EntitySet Name="PurchaseOrders" EntityType="Model.PurchaseOrders" />
+          <AssociationSet Name="FK_PurchaseOrders_Employees" Association="Model.FK_PurchaseOrders_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="PurchaseOrders" EntitySet="PurchaseOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipmentProfiles_PurchaseOrders" Association="Model.FK_EquipmentProfiles_PurchaseOrders">
+            <End Role="PurchaseOrders" EntitySet="PurchaseOrders" />
+            <End Role="EquipmentProfiles" EntitySet="EquipmentProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrders_EquipmentTypes" Association="Model.FK_PurchaseOrders_EquipmentTypes">
+            <End Role="EquipmentTypes" EntitySet="EquipmentTypes" />
+            <End Role="PurchaseOrders" EntitySet="PurchaseOrders" />
+          </AssociationSet>
+          <EntitySet Name="Suppliers" EntityType="Model.Suppliers" />
+          <AssociationSet Name="FK_PurchaseOrders_Suppliers" Association="Model.FK_PurchaseOrders_Suppliers">
+            <End Role="Suppliers" EntitySet="Suppliers" />
+            <End Role="PurchaseOrders" EntitySet="PurchaseOrders" />
+          </AssociationSet>
+          <EntitySet Name="Articles" EntityType="Model.Articles" />
+          <EntitySet Name="TechSpecs" EntityType="Model.TechSpecs" />
+          <AssociationSet Name="FK_TechSpecs_Employees" Association="Model.FK_TechSpecs_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="TechSpecs" EntitySet="TechSpecs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipmentProfiles_TechSpecs" Association="Model.FK_EquipmentProfiles_TechSpecs">
+            <End Role="TechSpecs" EntitySet="TechSpecs" />
+            <End Role="EquipmentProfiles" EntitySet="EquipmentProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechSpecs_EquipmentTypes" Association="Model.FK_TechSpecs_EquipmentTypes">
+            <End Role="EquipmentTypes" EntitySet="EquipmentTypes" />
+            <End Role="TechSpecs" EntitySet="TechSpecs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechSpecs_Users" Association="Model.FK_TechSpecs_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="TechSpecs" EntitySet="TechSpecs" />
+          </AssociationSet>
+          <EntitySet Name="Offices" EntityType="Model.Offices" />
+          <AssociationSet Name="FK_Employees_Offices" Association="Model.FK_Employees_Offices">
+            <End Role="Offices" EntitySet="Offices" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PPEs_Offices" Association="Model.FK_PPEs_Offices">
+            <End Role="Offices" EntitySet="Offices" />
+            <End Role="PPEs" EntitySet="PPEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrders_Offices" Association="Model.FK_PurchaseOrders_Offices">
+            <End Role="Offices" EntitySet="Offices" />
+            <End Role="PurchaseOrders" EntitySet="PurchaseOrders" />
+          </AssociationSet>
+          <EntitySet Name="TechSpecRequests" EntityType="Model.TechSpecRequests" />
+          <AssociationSet Name="FK_TechSpecRequests_TechSpecs" Association="Model.FK_TechSpecRequests_TechSpecs">
+            <End Role="TechSpecs" EntitySet="TechSpecs" />
+            <End Role="TechSpecRequests" EntitySet="TechSpecRequests" />
+          </AssociationSet>
+          <EntitySet Name="TechSpecEquipmentProfiles" EntityType="Model.TechSpecEquipmentProfiles" />
+          <AssociationSet Name="FK_TechSpecEquipmentProfiles_EquipmentProfiles" Association="Model.FK_TechSpecEquipmentProfiles_EquipmentProfiles">
+            <End Role="EquipmentProfiles" EntitySet="EquipmentProfiles" />
+            <End Role="TechSpecEquipmentProfiles" EntitySet="TechSpecEquipmentProfiles" />
+          </AssociationSet>
+          <EntitySet Name="Documents" EntityType="Model.Documents" />
+          <AssociationSet Name="FK_DocActions_TechSpecs" Association="Model.FK_DocActions_TechSpecs">
+            <End Role="TechSpecs" EntitySet="TechSpecs" />
+            <End Role="DocActions" EntitySet="DocActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DocActions_Users" Association="Model.FK_DocActions_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="DocActions" EntitySet="DocActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DocActions_Users1" Association="Model.FK_DocActions_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="DocActions" EntitySet="DocActions" />
+          </AssociationSet>
+          <EntitySet Name="MES" EntityType="Model.MES" />
+          <AssociationSet Name="FK_MES_Employees" Association="Model.FK_MES_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="MES" EntitySet="MES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MES_Offices" Association="Model.FK_MES_Offices">
+            <End Role="Offices" EntitySet="Offices" />
+            <End Role="MES" EntitySet="MES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkOrders_Users" Association="Model.FK_WorkOrders_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="WorkOrders" EntitySet="WorkOrders" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="EquipmentTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EquipmentType" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Box" Type="Int32" />
+          <NavigationProperty Name="PPEs" Relationship="Model.FK_PPEs_EquipmentTypes" FromRole="EquipmentTypes" ToRole="PPEs" />
+          <NavigationProperty Name="EquipmentProfiles" Relationship="Model.FK_EquipmentProfiles_EquipmentTypes" FromRole="EquipmentTypes" ToRole="EquipmentProfiles" />
+          <NavigationProperty Name="PurchaseOrders" Relationship="Model.FK_PurchaseOrders_EquipmentTypes" FromRole="EquipmentTypes" ToRole="PurchaseOrders" />
+          <NavigationProperty Name="TechSpecs" Relationship="Model.FK_TechSpecs_EquipmentTypes" FromRole="EquipmentTypes" ToRole="TechSpecs" />
+        </EntityType>
+        <EntityType Name="Actions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Action" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Logs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TableName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OldValues" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NewValues" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Action" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="7" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="Model.FK_Logs_Users" FromRole="Logs" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Provinces">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SortOrder" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Towns" Relationship="Model.FK_Towns_Towns" FromRole="Provinces" ToRole="Towns" />
+        </EntityType>
+        <EntityType Name="Towns">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProvinceId" Type="Int32" />
+          <Property Name="SortOrder" Type="Int32" />
+          <NavigationProperty Name="Provinces" Relationship="Model.FK_Towns_Towns" FromRole="Towns" ToRole="Provinces" />
+        </EntityType>
+        <EntityType Name="UserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="Model.FK_UserClaims_Users" FromRole="UserClaims" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="UserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="Model.FK_UserLogins_Users" FromRole="UserLogins" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserRolesInActions" Relationship="Model.FK_UserRolesInActions_UserRoles" FromRole="UserRoles" ToRole="UserRolesInActions" />
+          <NavigationProperty Name="Users" Relationship="Model.UsersInRoles" FromRole="UserRoles" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="UserRolesInActions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Action" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserRoles" Relationship="Model.FK_UserRolesInActions_UserRoles" FromRole="UserRolesInActions" ToRole="UserRoles" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" />
+          <Property Name="AccessFailedCount" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CivilStatus" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="AddressLine2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TownCity" Type="Int32" />
+          <Property Name="Cellular" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Height" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="Weight" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="Religion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Citizenship" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Languages" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Logs" Relationship="Model.FK_Logs_Users" FromRole="Users" ToRole="Logs" />
+          <NavigationProperty Name="UserClaims" Relationship="Model.FK_UserClaims_Users" FromRole="Users" ToRole="UserClaims" />
+          <NavigationProperty Name="UserLogins" Relationship="Model.FK_UserLogins_Users" FromRole="Users" ToRole="UserLogins" />
+          <NavigationProperty Name="UserRoles" Relationship="Model.UsersInRoles" FromRole="Users" ToRole="UserRoles" />
+          <NavigationProperty Name="TechSpecs" Relationship="Model.FK_TechSpecs_Users" FromRole="Users" ToRole="TechSpecs" />
+          <NavigationProperty Name="CreatedBy" Relationship="Model.FK_DocActions_Users" FromRole="Users" ToRole="DocActions" />
+          <NavigationProperty Name="EndorseTo" Relationship="Model.FK_DocActions_Users1" FromRole="Users" ToRole="DocActions" />
+          <NavigationProperty Name="CreatedByWorkOrders" Relationship="Model.FK_WorkOrders_Users" FromRole="Users" ToRole="WorkOrders" />
+        </EntityType>
+        <Association Name="FK_Logs_Users">
+          <End Type="Model.Users" Role="Users" Multiplicity="0..1" />
+          <End Type="Model.Logs" Role="Logs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Logs">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Towns_Towns">
+          <End Type="Model.Provinces" Role="Provinces" Multiplicity="0..1" />
+          <End Type="Model.Towns" Role="Towns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provinces">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Towns">
+              <PropertyRef Name="ProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserClaims_Users">
+          <End Type="Model.Users" Role="Users" Multiplicity="1" />
+          <End Type="Model.UserClaims" Role="UserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserLogins_Users">
+          <End Type="Model.Users" Role="Users" Multiplicity="1" />
+          <End Type="Model.UserLogins" Role="UserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRolesInActions_UserRoles">
+          <End Type="Model.UserRoles" Role="UserRoles" Multiplicity="0..1" />
+          <End Type="Model.UserRolesInActions" Role="UserRolesInActions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRolesInActions">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UsersInRoles">
+          <End Type="Model.UserRoles" Role="UserRoles" Multiplicity="*" />
+          <End Type="Model.Users" Role="Users" Multiplicity="*" />
+        </Association>
+        <EntityType Name="UnitTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EquipmentProfiles" Relationship="Model.FK_EquipmentProfiles_UnitTypes" FromRole="UnitTypes" ToRole="EquipmentProfiles" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="EquipmentId" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="OfficeId" Type="Int32" />
+          <Property Name="Position" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PPEs" Relationship="Model.FK_PPEs_Employees" FromRole="Employees" ToRole="PPEs" />
+          <NavigationProperty Name="WorkOrders" Relationship="Model.FK_WorkOrders_Employees" FromRole="Employees" ToRole="WorkOrders" />
+          <NavigationProperty Name="PurchaseOrders" Relationship="Model.FK_PurchaseOrders_Employees" FromRole="Employees" ToRole="PurchaseOrders" />
+          <Property Name="OfcAcr" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TechSpecs" Relationship="Model.FK_TechSpecs_Employees" FromRole="Employees" ToRole="TechSpecs" />
+          <NavigationProperty Name="Offices" Relationship="Model.FK_Employees_Offices" FromRole="Employees" ToRole="Offices" />
+          <NavigationProperty Name="MES" Relationship="Model.FK_MES_Employees" FromRole="Employees" ToRole="MES" />
+        </EntityType>
+        <EntityType Name="PPEs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OfficeId" Type="Int32" />
+          <Property Name="EmployeeId" Type="Int32" />
+          <Property Name="PropertyNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="Model.FK_PPEs_Employees" FromRole="PPEs" ToRole="Employees" />
+          <Property Name="EquipmentTypeId" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="WorkOrders" Relationship="Model.FK_WorkOrders_PPEs" FromRole="PPEs" ToRole="WorkOrders" />
+          <NavigationProperty Name="EquipmentTypes" Relationship="Model.FK_PPEs_EquipmentTypes" FromRole="PPEs" ToRole="EquipmentTypes" />
+          <Property Name="PPEId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="DateDelivered" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="DocActions" Relationship="Model.FK_DocActions_PPEs" FromRole="PPEs" ToRole="DocActions" />
+          <NavigationProperty Name="EquipmentProfiles" Relationship="Model.FK_EquipmentProfiles_PPEs" FromRole="PPEs" ToRole="EquipmentProfiles" />
+          <Property Name="Barcode" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Serial" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BoxNumber" Type="Int32" />
+          <Property Name="TotalCost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="InvoiceNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PurchaseDate" Type="DateTime" Precision="7" />
+          <Property Name="DateCreated" Type="DateTime" Precision="7" />
+          <Property Name="ArticleId" Type="Int32" />
+          <NavigationProperty Name="Offices" Relationship="Model.FK_PPEs_Offices" FromRole="PPEs" ToRole="Offices" />
+        </EntityType>
+        <Association Name="FK_PPEs_Employees">
+          <End Type="Model.Employees" Role="Employees" Multiplicity="0..1" />
+          <End Type="Model.PPEs" Role="PPEs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PPEs">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="WorkOrders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PPEId" Type="Int32" />
+          <Property Name="WorkOrderId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RequestedDate" Type="DateTime" Precision="7" />
+          <Property Name="RequestedBy" Type="Int32" />
+          <Property Name="Position" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Problem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AssignedTo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Findings" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Recommendation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="PPEs" Relationship="Model.FK_WorkOrders_PPEs" FromRole="WorkOrders" ToRole="PPEs" />
+          <NavigationProperty Name="Employees" Relationship="Model.FK_WorkOrders_Employees" FromRole="WorkOrders" ToRole="Employees" />
+          <NavigationProperty Name="DocActions" Relationship="Model.FK_WOActions_WorkOrders" FromRole="WorkOrders" ToRole="DocActions" />
+          <Property Name="Box" Type="Int32" />
+          <Property Name="FolderNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="BoxNo" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CreatedByUser" Relationship="Model.FK_WorkOrders_Users" FromRole="WorkOrders" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_WorkOrders_PPEs">
+          <End Type="Model.PPEs" Role="PPEs" Multiplicity="0..1" />
+          <End Type="Model.WorkOrders" Role="WorkOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PPEs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkOrders">
+              <PropertyRef Name="PPEId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkOrders_Employees">
+          <End Type="Model.Employees" Role="Employees" Multiplicity="0..1" />
+          <End Type="Model.WorkOrders" Role="WorkOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkOrders">
+              <PropertyRef Name="RequestedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PPEs_EquipmentTypes">
+          <End Type="Model.EquipmentTypes" Role="EquipmentTypes" Multiplicity="0..1" />
+          <End Type="Model.PPEs" Role="PPEs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipmentTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PPEs">
+              <PropertyRef Name="EquipmentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Statuses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="TableName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CustomValue" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DocActions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RefId" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ActionTaken" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="7" />
+          <Property Name="ActionDate" Type="DateTime" Precision="7" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="TableName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PPEs" Relationship="Model.FK_DocActions_PPEs" FromRole="DocActions" ToRole="PPEs" />
+          <NavigationProperty Name="WorkOrders" Relationship="Model.FK_WOActions_WorkOrders" FromRole="DocActions" ToRole="WorkOrders" />
+          <Property Name="EndorsedTo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProgramId" Type="Int32" />
+          <Property Name="MainActivityId" Type="Int32" />
+          <Property Name="SubActivityId" Type="Int32" />
+          <Property Name="ActivityId" Type="Int32" />
+          <NavigationProperty Name="TechSpecs" Relationship="Model.FK_DocActions_TechSpecs" FromRole="DocActions" ToRole="TechSpecs" />
+          <NavigationProperty Name="CreatedByUsers" Relationship="Model.FK_DocActions_Users" FromRole="DocActions" ToRole="Users" />
+          <NavigationProperty Name="EndorsedToUsers" Relationship="Model.FK_DocActions_Users1" FromRole="DocActions" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_DocActions_PPEs">
+          <End Type="Model.PPEs" Role="PPEs" Multiplicity="0..1" />
+          <End Type="Model.DocActions" Role="DocActions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PPEs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocActions">
+              <PropertyRef Name="RefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WOActions_WorkOrders">
+          <End Type="Model.WorkOrders" Role="WorkOrders" Multiplicity="0..1" />
+          <End Type="Model.DocActions" Role="DocActions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkOrders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocActions">
+              <PropertyRef Name="RefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Dropdowns">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="Order" Type="Int32" />
+        </EntityType>
+        <EntityType Name="EquipmentProfiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RefId" Type="Int32" />
+          <Property Name="TableName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ItemNumber" Type="Int32" />
+          <Property Name="EquipmentTypeId" Type="Int32" />
+          <Property Name="EquipmentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UnitTypeId" Type="Int32" />
+          <Property Name="QTY" Type="Int32" />
+          <Property Name="UnitCost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ActualModel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Serial" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="EquipmentTypes" Relationship="Model.FK_EquipmentProfiles_EquipmentTypes" FromRole="EquipmentProfiles" ToRole="EquipmentTypes" />
+          <NavigationProperty Name="PPEs" Relationship="Model.FK_EquipmentProfiles_PPEs" FromRole="EquipmentProfiles" ToRole="PPEs" />
+          <NavigationProperty Name="UnitTypes" Relationship="Model.FK_EquipmentProfiles_UnitTypes" FromRole="EquipmentProfiles" ToRole="UnitTypes" />
+          <NavigationProperty Name="PurchaseOrders" Relationship="Model.FK_EquipmentProfiles_PurchaseOrders" FromRole="EquipmentProfiles" ToRole="PurchaseOrders" />
+          <NavigationProperty Name="TechSpecs" Relationship="Model.FK_EquipmentProfiles_TechSpecs" FromRole="EquipmentProfiles" ToRole="TechSpecs" />
+          <Property Name="ParentItem" Type="Int32" />
+          <NavigationProperty Name="TechSpecEquipmentProfiles" Relationship="Model.FK_TechSpecEquipmentProfiles_EquipmentProfiles" FromRole="EquipmentProfiles" ToRole="TechSpecEquipmentProfiles" />
+          <Property Name="EquipmentType" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_EquipmentProfiles_EquipmentTypes">
+          <End Type="Model.EquipmentTypes" Role="EquipmentTypes" Multiplicity="0..1" />
+          <End Type="Model.EquipmentProfiles" Role="EquipmentProfiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipmentTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipmentProfiles">
+              <PropertyRef Name="EquipmentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipmentProfiles_PPEs">
+          <End Type="Model.PPEs" Role="PPEs" Multiplicity="0..1" />
+          <End Type="Model.EquipmentProfiles" Role="EquipmentProfiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PPEs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipmentProfiles">
+              <PropertyRef Name="RefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipmentProfiles_UnitTypes">
+          <End Type="Model.UnitTypes" Role="UnitTypes" Multiplicity="0..1" />
+          <End Type="Model.EquipmentProfiles" Role="EquipmentProfiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipmentProfiles">
+              <PropertyRef Name="UnitTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EvaluationSheets">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TableName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Evaluation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MaxValue" Type="Int32" />
+          <Property Name="MinValue" Type="Int32" />
+          <NavigationProperty Name="TechnicalEvaluationSheet" Relationship="Model.FK_TechnicalEvaluationSheet_EvaluationSheets" FromRole="EvaluationSheets" ToRole="TechnicalEvaluationSheet" />
+        </EntityType>
+        <EntityType Name="TechnicalEvaluationSheet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EvaluationSheetId" Type="Int32" />
+          <Property Name="Value" Type="Int32" />
+          <NavigationProperty Name="EvaluationSheets" Relationship="Model.FK_TechnicalEvaluationSheet_EvaluationSheets" FromRole="TechnicalEvaluationSheet" ToRole="EvaluationSheets" />
+          <Property Name="WorkOrderId" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_TechnicalEvaluationSheet_EvaluationSheets">
+          <End Type="Model.EvaluationSheets" Role="EvaluationSheets" Multiplicity="0..1" />
+          <End Type="Model.TechnicalEvaluationSheet" Role="TechnicalEvaluationSheet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EvaluationSheets">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TechnicalEvaluationSheet">
+              <PropertyRef Name="EvaluationSheetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PurchaseOrders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PurchaseNumber" Type="Int32" />
+          <Property Name="OfficeId" Type="Int32" />
+          <Property Name="EmployeeId" Type="Int32" />
+          <Property Name="EquipmentTypeId" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateDelivered" Type="DateTime" Precision="7" />
+          <Property Name="PurchaseDate" Type="DateTime" Precision="3" />
+          <Property Name="SupplierId" Type="Int32" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="Model.FK_PurchaseOrders_Employees" FromRole="PurchaseOrders" ToRole="Employees" />
+          <NavigationProperty Name="EquipmentProfiles" Relationship="Model.FK_EquipmentProfiles_PurchaseOrders" FromRole="PurchaseOrders" ToRole="EquipmentProfiles" />
+          <NavigationProperty Name="EquipmentTypes" Relationship="Model.FK_PurchaseOrders_EquipmentTypes" FromRole="PurchaseOrders" ToRole="EquipmentTypes" />
+          <NavigationProperty Name="Suppliers" Relationship="Model.FK_PurchaseOrders_Suppliers" FromRole="PurchaseOrders" ToRole="Suppliers" />
+          <NavigationProperty Name="Offices" Relationship="Model.FK_PurchaseOrders_Offices" FromRole="PurchaseOrders" ToRole="Offices" />
+        </EntityType>
+        <Association Name="FK_PurchaseOrders_Employees">
+          <End Type="Model.Employees" Role="Employees" Multiplicity="0..1" />
+          <End Type="Model.PurchaseOrders" Role="PurchaseOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PurchaseOrders">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipmentProfiles_PurchaseOrders">
+          <End Type="Model.PurchaseOrders" Role="PurchaseOrders" Multiplicity="0..1" />
+          <End Type="Model.EquipmentProfiles" Role="EquipmentProfiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseOrders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipmentProfiles">
+              <PropertyRef Name="RefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrders_EquipmentTypes">
+          <End Type="Model.EquipmentTypes" Role="EquipmentTypes" Multiplicity="0..1" />
+          <End Type="Model.PurchaseOrders" Role="PurchaseOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipmentTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PurchaseOrders">
+              <PropertyRef Name="EquipmentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Suppliers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FaxNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CellNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+          <NavigationProperty Name="PurchaseOrders" Relationship="Model.FK_PurchaseOrders_Suppliers" FromRole="Suppliers" ToRole="PurchaseOrders" />
+        </EntityType>
+        <Association Name="FK_PurchaseOrders_Suppliers">
+          <End Type="Model.Suppliers" Role="Suppliers" Multiplicity="0..1" />
+          <End Type="Model.PurchaseOrders" Role="PurchaseOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suppliers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PurchaseOrders">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Articles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountCode" Type="Int32" />
+          <Property Name="Article" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TechSpecs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Requestedby" Type="Int32" />
+          <Property Name="EquipmentType" Type="Int32" />
+          <Property Name="Budget" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AssignedTo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="SpecType" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="DateApproved" Type="DateTime" Precision="7" />
+          <Property Name="IsApproved" Type="Boolean" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateRequested" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Employees" Relationship="Model.FK_TechSpecs_Employees" FromRole="TechSpecs" ToRole="Employees" />
+          <NavigationProperty Name="EquipmentProfiles" Relationship="Model.FK_EquipmentProfiles_TechSpecs" FromRole="TechSpecs" ToRole="EquipmentProfiles" />
+          <NavigationProperty Name="EquipmentTypes" Relationship="Model.FK_TechSpecs_EquipmentTypes" FromRole="TechSpecs" ToRole="EquipmentTypes" />
+          <NavigationProperty Name="Users" Relationship="Model.FK_TechSpecs_Users" FromRole="TechSpecs" ToRole="Users" />
+          <NavigationProperty Name="TechSpecRequests" Relationship="Model.FK_TechSpecRequests_TechSpecs" FromRole="TechSpecs" ToRole="TechSpecRequests" />
+          <NavigationProperty Name="DocActions" Relationship="Model.FK_DocActions_TechSpecs" FromRole="TechSpecs" ToRole="DocActions" />
+        </EntityType>
+        <Association Name="FK_TechSpecs_Employees">
+          <End Type="Model.Employees" Role="Employees" Multiplicity="0..1" />
+          <End Type="Model.TechSpecs" Role="TechSpecs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TechSpecs">
+              <PropertyRef Name="Requestedby" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipmentProfiles_TechSpecs">
+          <End Type="Model.TechSpecs" Role="TechSpecs" Multiplicity="0..1" />
+          <End Type="Model.EquipmentProfiles" Role="EquipmentProfiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechSpecs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipmentProfiles">
+              <PropertyRef Name="RefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechSpecs_EquipmentTypes">
+          <End Type="Model.EquipmentTypes" Role="EquipmentTypes" Multiplicity="0..1" />
+          <End Type="Model.TechSpecs" Role="TechSpecs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipmentTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TechSpecs">
+              <PropertyRef Name="EquipmentType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechSpecs_Users">
+          <End Type="Model.Users" Role="Users" Multiplicity="0..1" />
+          <End Type="Model.TechSpecs" Role="TechSpecs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TechSpecs">
+              <PropertyRef Name="AssignedTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Offices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BoxNo" Type="Int32" />
+          <Property Name="OffcAcr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OfficeName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Chief" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TelNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Employees" Relationship="Model.FK_Employees_Offices" FromRole="Offices" ToRole="Employees" />
+          <NavigationProperty Name="PPEs" Relationship="Model.FK_PPEs_Offices" FromRole="Offices" ToRole="PPEs" />
+          <NavigationProperty Name="PurchaseOrders" Relationship="Model.FK_PurchaseOrders_Offices" FromRole="Offices" ToRole="PurchaseOrders" />
+          <Property Name="Position" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MES" Relationship="Model.FK_MES_Offices" FromRole="Offices" ToRole="MES" />
+        </EntityType>
+        <Association Name="FK_Employees_Offices">
+          <End Type="Model.Offices" Role="Offices" Multiplicity="0..1" />
+          <End Type="Model.Employees" Role="Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PPEs_Offices">
+          <End Type="Model.Offices" Role="Offices" Multiplicity="0..1" />
+          <End Type="Model.PPEs" Role="PPEs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PPEs">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrders_Offices">
+          <End Type="Model.Offices" Role="Offices" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model.PurchaseOrders" Role="PurchaseOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PurchaseOrders">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TechSpecRequests">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TechSpecsId" Type="Int32" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="EquipmentType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Budget" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Purpose" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="TechSpecs" Relationship="Model.FK_TechSpecRequests_TechSpecs" FromRole="TechSpecRequests" ToRole="TechSpecs" />
+          <Property Name="ItemNumber" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_TechSpecRequests_TechSpecs">
+          <End Type="Model.TechSpecs" Role="TechSpecs" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model.TechSpecRequests" Role="TechSpecRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechSpecs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TechSpecRequests">
+              <PropertyRef Name="TechSpecsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TechSpecEquipmentProfiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EquipmentProfiles" Relationship="Model.FK_TechSpecEquipmentProfiles_EquipmentProfiles" FromRole="TechSpecEquipmentProfiles" ToRole="EquipmentProfiles" />
+        </EntityType>
+        <Association Name="FK_TechSpecEquipmentProfiles_EquipmentProfiles">
+          <End Type="Model.EquipmentProfiles" Role="EquipmentProfiles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model.TechSpecEquipmentProfiles" Role="TechSpecEquipmentProfiles" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="EquipmentProfiles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TechSpecEquipmentProfiles">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Documents">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RootDirectory" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FileId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ExtName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="FileSize" Type="Int32" />
+          <Property Name="RefId" Type="Int32" />
+          <Property Name="TableName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="7" />
+        </EntityType>
+        <Association Name="FK_DocActions_TechSpecs">
+          <End Type="Model.TechSpecs" Role="TechSpecs" Multiplicity="0..1" />
+          <End Type="Model.DocActions" Role="DocActions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechSpecs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocActions">
+              <PropertyRef Name="RefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DocActions_Users">
+          <End Type="Model.Users" Role="Users" Multiplicity="0..1" />
+          <End Type="Model.DocActions" Role="DocActions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocActions">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DocActions_Users1">
+          <End Type="Model.Users" Role="Users" Multiplicity="0..1" />
+          <End Type="Model.DocActions" Role="DocActions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocActions">
+              <PropertyRef Name="EndorsedTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MES">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MESId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="OfficeId" Type="Int32" />
+          <Property Name="EmployeeId" Type="Int32" />
+          <Property Name="Position" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ItemSpec" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Request" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="7" />
+          <Property Name="ReceivedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveredBy" Type="Int32" />
+          <NavigationProperty Name="Employees" Relationship="Model.FK_MES_Employees" FromRole="MES" ToRole="Employees" />
+          <NavigationProperty Name="Offices" Relationship="Model.FK_MES_Offices" FromRole="MES" ToRole="Offices" />
+        </EntityType>
+        <Association Name="FK_MES_Employees">
+          <End Type="Model.Employees" Role="Employees" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model.MES" Role="MES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MES">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MES_Offices">
+          <End Type="Model.Offices" Role="Offices" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model.MES" Role="MES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MES">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkOrders_Users">
+          <End Type="Model.Users" Role="Users" Multiplicity="0..1" />
+          <End Type="Model.WorkOrders" Role="WorkOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkOrders">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ModelDb">
+          <EntitySetMapping Name="EquipmentTypes">
+            <EntityTypeMapping TypeName="Model.EquipmentTypes">
+              <MappingFragment StoreEntitySet="EquipmentTypes">
+                <ScalarProperty Name="Box" ColumnName="Box" />
+                <ScalarProperty Name="EquipmentType" ColumnName="EquipmentType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Actions">
+            <EntityTypeMapping TypeName="Model.Actions">
+              <MappingFragment StoreEntitySet="Actions">
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logs">
+            <EntityTypeMapping TypeName="Model.Logs">
+              <MappingFragment StoreEntitySet="Logs">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="NewValues" ColumnName="NewValues" />
+                <ScalarProperty Name="OldValues" ColumnName="OldValues" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provinces">
+            <EntityTypeMapping TypeName="Model.Provinces">
+              <MappingFragment StoreEntitySet="Provinces">
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Towns">
+            <EntityTypeMapping TypeName="Model.Towns">
+              <MappingFragment StoreEntitySet="Towns">
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserClaims">
+            <EntityTypeMapping TypeName="Model.UserClaims">
+              <MappingFragment StoreEntitySet="UserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLogins">
+            <EntityTypeMapping TypeName="Model.UserLogins">
+              <MappingFragment StoreEntitySet="UserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="Model.UserRoles">
+              <MappingFragment StoreEntitySet="UserRoles">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRolesInActions">
+            <EntityTypeMapping TypeName="Model.UserRolesInActions">
+              <MappingFragment StoreEntitySet="UserRolesInActions">
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Model.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Languages" ColumnName="Languages" />
+                <ScalarProperty Name="Citizenship" ColumnName="Citizenship" />
+                <ScalarProperty Name="Religion" ColumnName="Religion" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Cellular" ColumnName="Cellular" />
+                <ScalarProperty Name="TownCity" ColumnName="TownCity" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="CivilStatus" ColumnName="CivilStatus" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="UsersInRoles" TypeName="Model.UsersInRoles" StoreEntitySet="UsersInRoles">
+            <EndProperty Name="Users">
+              <ScalarProperty Name="Id" ColumnName="Users_Id" />
+            </EndProperty>
+            <EndProperty Name="UserRoles">
+              <ScalarProperty Name="Id" ColumnName="UserRoles_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="UnitTypes">
+            <EntityTypeMapping TypeName="Model.UnitTypes">
+              <MappingFragment StoreEntitySet="UnitTypes">
+                <ScalarProperty Name="UnitType" ColumnName="UnitType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inventory">
+            <EntityTypeMapping TypeName="Model.Inventory">
+              <MappingFragment StoreEntitySet="Inventory">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EquipmentId" ColumnName="EquipmentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="Model.Employees">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="OfcAcr" ColumnName="OfcAcr" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PPEs">
+            <EntityTypeMapping TypeName="Model.PPEs">
+              <MappingFragment StoreEntitySet="PPEs">
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+                <ScalarProperty Name="BoxNumber" ColumnName="BoxNumber" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="DateDelivered" ColumnName="DateDelivered" />
+                <ScalarProperty Name="PPEId" ColumnName="PPEId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="EquipmentTypeId" ColumnName="EquipmentTypeId" />
+                <ScalarProperty Name="PropertyNo" ColumnName="PropertyNo" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkOrders">
+            <EntityTypeMapping TypeName="Model.WorkOrders">
+              <MappingFragment StoreEntitySet="WorkOrders">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="BoxNo" ColumnName="BoxNo" />
+                <ScalarProperty Name="FolderNo" ColumnName="FolderNo" />
+                <ScalarProperty Name="Box" ColumnName="Box" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Recommendation" ColumnName="Recommendation" />
+                <ScalarProperty Name="Findings" ColumnName="Findings" />
+                <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+                <ScalarProperty Name="Problem" ColumnName="Problem" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="RequestedBy" ColumnName="RequestedBy" />
+                <ScalarProperty Name="RequestedDate" ColumnName="RequestedDate" />
+                <ScalarProperty Name="WorkOrderId" ColumnName="WorkOrderId" />
+                <ScalarProperty Name="PPEId" ColumnName="PPEId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Statuses">
+            <EntityTypeMapping TypeName="Model.Statuses">
+              <MappingFragment StoreEntitySet="Statuses">
+                <ScalarProperty Name="CustomValue" ColumnName="CustomValue" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocActions">
+            <EntityTypeMapping TypeName="Model.DocActions">
+              <MappingFragment StoreEntitySet="DocActions">
+                <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+                <ScalarProperty Name="SubActivityId" ColumnName="SubActivityId" />
+                <ScalarProperty Name="MainActivityId" ColumnName="MainActivityId" />
+                <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
+                <ScalarProperty Name="EndorsedTo" ColumnName="EndorsedTo" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ActionDate" ColumnName="ActionDate" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="ActionTaken" ColumnName="ActionTaken" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RefId" ColumnName="RefId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dropdowns">
+            <EntityTypeMapping TypeName="Model.Dropdowns">
+              <MappingFragment StoreEntitySet="Dropdowns">
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EquipmentProfiles">
+            <EntityTypeMapping TypeName="Model.EquipmentProfiles">
+              <MappingFragment StoreEntitySet="EquipmentProfiles">
+                <ScalarProperty Name="EquipmentType" ColumnName="EquipmentType" />
+                <ScalarProperty Name="ParentItem" ColumnName="ParentItem" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+                <ScalarProperty Name="ActualModel" ColumnName="ActualModel" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="UnitCost" ColumnName="UnitCost" />
+                <ScalarProperty Name="QTY" ColumnName="QTY" />
+                <ScalarProperty Name="UnitTypeId" ColumnName="UnitTypeId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="EquipmentName" ColumnName="EquipmentName" />
+                <ScalarProperty Name="EquipmentTypeId" ColumnName="EquipmentTypeId" />
+                <ScalarProperty Name="ItemNumber" ColumnName="ItemNumber" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="RefId" ColumnName="RefId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EvaluationSheets">
+            <EntityTypeMapping TypeName="Model.EvaluationSheets">
+              <MappingFragment StoreEntitySet="EvaluationSheets">
+                <ScalarProperty Name="MinValue" ColumnName="MinValue" />
+                <ScalarProperty Name="MaxValue" ColumnName="MaxValue" />
+                <ScalarProperty Name="Evaluation" ColumnName="Evaluation" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TechnicalEvaluationSheet">
+            <EntityTypeMapping TypeName="Model.TechnicalEvaluationSheet">
+              <MappingFragment StoreEntitySet="TechnicalEvaluationSheet">
+                <ScalarProperty Name="WorkOrderId" ColumnName="WorkOrderId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="EvaluationSheetId" ColumnName="EvaluationSheetId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseOrders">
+            <EntityTypeMapping TypeName="Model.PurchaseOrders">
+              <MappingFragment StoreEntitySet="PurchaseOrders">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="DateDelivered" ColumnName="DateDelivered" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="EquipmentTypeId" ColumnName="EquipmentTypeId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+                <ScalarProperty Name="PurchaseNumber" ColumnName="PurchaseNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="Model.Suppliers">
+              <MappingFragment StoreEntitySet="Suppliers">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CellNumber" ColumnName="CellNumber" />
+                <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Articles">
+            <EntityTypeMapping TypeName="Model.Articles">
+              <MappingFragment StoreEntitySet="Articles">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Article" ColumnName="Article" />
+                <ScalarProperty Name="AccountCode" ColumnName="AccountCode" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TechSpecs">
+            <EntityTypeMapping TypeName="Model.TechSpecs">
+              <MappingFragment StoreEntitySet="TechSpecs">
+                <ScalarProperty Name="DateRequested" ColumnName="DateRequested" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="DateApproved" ColumnName="DateApproved" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SpecType" ColumnName="SpecType" />
+                <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+                <ScalarProperty Name="Budget" ColumnName="Budget" />
+                <ScalarProperty Name="EquipmentType" ColumnName="EquipmentType" />
+                <ScalarProperty Name="Requestedby" ColumnName="Requestedby" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Offices">
+            <EntityTypeMapping TypeName="Model.Offices">
+              <MappingFragment StoreEntitySet="Offices">
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="TelNo" ColumnName="TelNo" />
+                <ScalarProperty Name="Chief" ColumnName="Chief" />
+                <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+                <ScalarProperty Name="OffcAcr" ColumnName="OffcAcr" />
+                <ScalarProperty Name="BoxNo" ColumnName="BoxNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TechSpecRequests">
+            <EntityTypeMapping TypeName="Model.TechSpecRequests">
+              <MappingFragment StoreEntitySet="TechSpecRequests">
+                <ScalarProperty Name="ItemNumber" ColumnName="ItemNumber" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+                <ScalarProperty Name="Budget" ColumnName="Budget" />
+                <ScalarProperty Name="EquipmentType" ColumnName="EquipmentType" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="TechSpecsId" ColumnName="TechSpecsId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TechSpecEquipmentProfiles">
+            <EntityTypeMapping TypeName="Model.TechSpecEquipmentProfiles">
+              <MappingFragment StoreEntitySet="TechSpecEquipmentProfiles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documents">
+            <EntityTypeMapping TypeName="Model.Documents">
+              <MappingFragment StoreEntitySet="Documents">
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="RefId" ColumnName="RefId" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="ExtName" ColumnName="ExtName" />
+                <ScalarProperty Name="FileId" ColumnName="FileId" />
+                <ScalarProperty Name="RootDirectory" ColumnName="RootDirectory" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MES">
+            <EntityTypeMapping TypeName="Model.MES">
+              <MappingFragment StoreEntitySet="MES">
+                <ScalarProperty Name="DeliveredBy" ColumnName="DeliveredBy" />
+                <ScalarProperty Name="ReceivedBy" ColumnName="ReceivedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Request" ColumnName="Request" />
+                <ScalarProperty Name="ItemSpec" ColumnName="ItemSpec" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+                <ScalarProperty Name="MESId" ColumnName="MESId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
