@@ -32,7 +32,7 @@
     <SuiteName>Profiling</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.htm</WebPage>
-    <ApplicationRevision>77</ApplicationRevision>
+    <ApplicationRevision>83</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -96,6 +96,7 @@
     <Reference Include="DevExpress.XtraPrinting.v18.2, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraReports.v18.2, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraReports.v18.2.Extensions, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v18.2, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\..\..\Development Cache\.nuget\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -138,17 +139,17 @@
     <Compile Include="Dlvry\frmAddEditDeliveries.Designer.cs">
       <DependentUpon>frmAddEditDeliveries.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dlvry\frmSearchTecDetail.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dlvry\frmSearchTecDetail.Designer.cs">
-      <DependentUpon>frmSearchTecDetail.cs</DependentUpon>
-    </Compile>
     <Compile Include="Dlvry\frmDeliveries.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dlvry\frmDeliveries.Designer.cs">
       <DependentUpon>frmDeliveries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dlvry\frmSearchTecDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dlvry\frmSearchTecDetail.Designer.cs">
+      <DependentUpon>frmSearchTecDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="Dlvry\UcDeliveriesGrid.cs">
       <SubType>UserControl</SubType>
@@ -167,6 +168,18 @@
     </Compile>
     <Compile Include="Dlvry\UcDelEquipmentProfiles.Designer.cs">
       <DependentUpon>UcDelEquipmentProfiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DocAct\FrmAddEditPrograms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DocAct\FrmAddEditPrograms.Designer.cs">
+      <DependentUpon>FrmAddEditPrograms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DocAct\frmDocActionTreeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DocAct\frmDocActionTreeList.Designer.cs">
+      <DependentUpon>frmDocActionTreeList.cs</DependentUpon>
     </Compile>
     <Compile Include="Dshbrd\ucDashboard.cs">
       <SubType>UserControl</SubType>
@@ -336,6 +349,18 @@
     <Compile Include="Rpt\rptTechSpecs.Designer.cs">
       <DependentUpon>rptTechSpecs.cs</DependentUpon>
     </Compile>
+    <Compile Include="sts\frmAddEditStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="sts\frmAddEditStatus.Designer.cs">
+      <DependentUpon>frmAddEditStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="sts\frmStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="sts\frmStatus.Designer.cs">
+      <DependentUpon>frmStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="TS\frmAddEditTechSpecs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -389,6 +414,12 @@
     </Compile>
     <Compile Include="Usr\frmUsers.Designer.cs">
       <DependentUpon>frmUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DocAct\frmAddEditDocActionTree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DocAct\frmAddEditDocActionTree.Designer.cs">
+      <DependentUpon>frmAddEditDocActionTree.cs</DependentUpon>
     </Compile>
     <Compile Include="WO\frmAddEditWorkOrder.cs">
       <SubType>Form</SubType>
@@ -448,11 +479,11 @@
     <EmbeddedResource Include="Dlvry\frmAddEditDeliveries.resx">
       <DependentUpon>frmAddEditDeliveries.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dlvry\frmSearchTecDetail.resx">
-      <DependentUpon>frmSearchTecDetail.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Dlvry\frmDeliveries.resx">
       <DependentUpon>frmDeliveries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dlvry\frmSearchTecDetail.resx">
+      <DependentUpon>frmSearchTecDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dlvry\UcDeliveriesGrid.resx">
       <DependentUpon>UcDeliveriesGrid.cs</DependentUpon>
@@ -462,6 +493,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dlvry\UcDelEquipmentProfiles.resx">
       <DependentUpon>UcDelEquipmentProfiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocAct\FrmAddEditPrograms.resx">
+      <DependentUpon>FrmAddEditPrograms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocAct\frmDocActionTreeList.resx">
+      <DependentUpon>frmDocActionTreeList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dshbrd\ucDashboard.resx">
       <DependentUpon>ucDashboard.cs</DependentUpon>
@@ -547,6 +584,12 @@
     <EmbeddedResource Include="Rpt\rptTechSpecs.resx">
       <DependentUpon>rptTechSpecs.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="sts\frmAddEditStatus.resx">
+      <DependentUpon>frmAddEditStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sts\frmStatus.resx">
+      <DependentUpon>frmStatus.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TS\frmAddEditTechSpecs.resx">
       <DependentUpon>frmAddEditTechSpecs.cs</DependentUpon>
     </EmbeddedResource>
@@ -573,6 +616,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Usr\frmUsers.resx">
       <DependentUpon>frmUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocAct\frmAddEditDocActionTree.resx">
+      <DependentUpon>frmAddEditDocActionTree.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WO\frmAddEditWorkOrder.resx">
       <DependentUpon>frmAddEditWorkOrder.cs</DependentUpon>

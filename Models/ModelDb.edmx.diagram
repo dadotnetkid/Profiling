@@ -5,71 +5,76 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="2d3af104b4f046ac8514e78536113cee" Name="Diagram1" ZoomLevel="95">
-        <EntityTypeShape EntityType="Model.EquipmentTypes" Width="1.5" PointX="3" PointY="1.5" />
-        <EntityTypeShape EntityType="Model.Actions" Width="1.5" PointX="6" PointY="14.75" />
-        <EntityTypeShape EntityType="Model.Logs" Width="1.5" PointX="14.25" PointY="19.125" />
-        <EntityTypeShape EntityType="Model.Provinces" Width="1.5" PointX="9.75" PointY="1.5" />
-        <EntityTypeShape EntityType="Model.Towns" Width="1.5" PointX="12" PointY="1.5" />
-        <EntityTypeShape EntityType="Model.UserClaims" Width="1.5" PointX="14.25" PointY="16.375" />
-        <EntityTypeShape EntityType="Model.UserLogins" Width="1.5" PointX="14.25" PointY="13.875" />
-        <EntityTypeShape EntityType="Model.UserRoles" Width="1.5" PointX="9.75" PointY="18.125" />
-        <EntityTypeShape EntityType="Model.UserRolesInActions" Width="1.5" PointX="12" PointY="22.5" />
-        <EntityTypeShape EntityType="Model.Users" Width="1.5" PointX="12" PointY="13.875" />
+        <EntityTypeShape EntityType="Model.EquipmentTypes" Width="1.5" PointX="3" PointY="9.5" />
+        <EntityTypeShape EntityType="Model.Actions" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.Logs" Width="1.5" PointX="5.25" PointY="28.875" />
+        <EntityTypeShape EntityType="Model.Provinces" Width="1.5" PointX="0.75" PointY="5" />
+        <EntityTypeShape EntityType="Model.Towns" Width="1.5" PointX="3" PointY="4.875" />
+        <EntityTypeShape EntityType="Model.UserClaims" Width="1.5" PointX="5.25" PointY="26.125" />
+        <EntityTypeShape EntityType="Model.UserLogins" Width="1.5" PointX="5.25" PointY="23.625" />
+        <EntityTypeShape EntityType="Model.UserRoles" Width="1.5" PointX="0.75" PointY="17.125" />
+        <EntityTypeShape EntityType="Model.UserRolesInActions" Width="1.5" PointX="3" PointY="21.875" />
+        <EntityTypeShape EntityType="Model.Users" Width="1.5" PointX="3" PointY="12.625" />
         <AssociationConnector Association="Model.FK_Logs_Users" />
         <AssociationConnector Association="Model.FK_Towns_Towns" />
         <AssociationConnector Association="Model.FK_UserClaims_Users" />
         <AssociationConnector Association="Model.FK_UserLogins_Users" />
         <AssociationConnector Association="Model.FK_UserRolesInActions_UserRoles" />
         <AssociationConnector Association="Model.UsersInRoles" />
-        <EntityTypeShape EntityType="Model.UnitTypes" Width="1.5" PointX="5.25" PointY="17.75" />
-        <EntityTypeShape EntityType="Model.Inventory" Width="1.5" PointX="10.75" PointY="4.25" />
-        <EntityTypeShape EntityType="Model.Employees" Width="1.5" PointX="3" PointY="9.125" />
-        <EntityTypeShape EntityType="Model.PPEs" Width="1.5" PointX="5.25" PointY="9.125" />
+        <EntityTypeShape EntityType="Model.UnitTypes" Width="1.5" PointX="8.25" PointY="31" />
+        <EntityTypeShape EntityType="Model.Inventory" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.Employees" Width="1.5" PointX="3" PointY="24.625" />
+        <EntityTypeShape EntityType="Model.PPEs" Width="1.5" PointX="8.25" PointY="25" />
         <AssociationConnector Association="Model.FK_PPEs_Employees" />
-        <EntityTypeShape EntityType="Model.WorkOrders" Width="1.5" PointX="10.5" PointY="8.75" />
+        <EntityTypeShape EntityType="Model.WorkOrders" Width="1.5" PointX="8.25" PointY="14.5" />
         <AssociationConnector Association="Model.FK_WorkOrders_PPEs" />
         <AssociationConnector Association="Model.FK_WorkOrders_Employees" />
         <AssociationConnector Association="Model.FK_PPEs_EquipmentTypes" />
-        <EntityTypeShape EntityType="Model.Statuses" Width="1.5" PointX="0.75" PointY="13.75" />
-        <EntityTypeShape EntityType="Model.DocActions" Width="1.5" PointX="12.75" PointY="9.25" />
+        <EntityTypeShape EntityType="Model.Statuses" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.DocActions" Width="1.5" PointX="13.5" PointY="14.5" />
         <AssociationConnector Association="Model.FK_DocActions_PPEs" />
         <AssociationConnector Association="Model.FK_WOActions_WorkOrders" />
-        <EntityTypeShape EntityType="Model.Dropdowns" Width="1.5" PointX="13.375" PointY="4.75" />
-        <EntityTypeShape EntityType="Model.EquipmentProfiles" Width="1.5" PointX="7.5" PointY="8" />
+        <EntityTypeShape EntityType="Model.EquipmentProfiles" Width="1.5" PointX="10.5" PointY="14" />
         <AssociationConnector Association="Model.FK_EquipmentProfiles_EquipmentTypes" />
         <AssociationConnector Association="Model.FK_EquipmentProfiles_PPEs" />
         <AssociationConnector Association="Model.FK_EquipmentProfiles_UnitTypes" />
-        <EntityTypeShape EntityType="Model.EvaluationSheets" Width="1.5" PointX="14.375" PointY="0.875" />
-        <EntityTypeShape EntityType="Model.TechnicalEvaluationSheet" Width="1.5" PointX="16.625" PointY="1.125" />
+        <EntityTypeShape EntityType="Model.EvaluationSheets" Width="1.5" PointX="0.75" PointY="0.875" />
+        <EntityTypeShape EntityType="Model.TechnicalEvaluationSheet" Width="1.5" PointX="3" PointY="1" />
         <AssociationConnector Association="Model.FK_TechnicalEvaluationSheet_EvaluationSheets" />
-        <EntityTypeShape EntityType="Model.PurchaseOrders" Width="1.5" PointX="5.25" PointY="4" />
+        <EntityTypeShape EntityType="Model.PurchaseOrders" Width="1.5" PointX="8.25" PointY="9.125" />
         <AssociationConnector Association="Model.FK_PurchaseOrders_Employees" />
         <AssociationConnector Association="Model.FK_EquipmentProfiles_PurchaseOrders" />
         <AssociationConnector Association="Model.FK_PurchaseOrders_EquipmentTypes" />
-        <EntityTypeShape EntityType="Model.Suppliers" Width="1.5" PointX="0.75" PointY="5" />
+        <EntityTypeShape EntityType="Model.Suppliers" Width="1.5" PointX="6" PointY="9.625" />
         <AssociationConnector Association="Model.FK_PurchaseOrders_Suppliers" />
-        <EntityTypeShape EntityType="Model.Articles" Width="1.5" PointX="5.375" PointY="0.75" />
-        <EntityTypeShape EntityType="Model.TechSpecs" Width="1.5" PointX="15.25" PointY="8.75" />
+        <EntityTypeShape EntityType="Model.Articles" Width="1.5" PointX="10.75" PointY="6.75" />
+        <EntityTypeShape EntityType="Model.TechSpecs" Width="1.5" PointX="5.25" PointY="14.625" />
         <AssociationConnector Association="Model.FK_TechSpecs_Employees" />
         <AssociationConnector Association="Model.FK_EquipmentProfiles_TechSpecs" />
         <AssociationConnector Association="Model.FK_TechSpecs_EquipmentTypes" />
         <AssociationConnector Association="Model.FK_TechSpecs_Users" />
-        <EntityTypeShape EntityType="Model.Offices" Width="1.5" PointX="0.75" PointY="8.625" />
+        <EntityTypeShape EntityType="Model.Offices" Width="1.5" PointX="0.75" PointY="24.625" />
         <AssociationConnector Association="Model.FK_Employees_Offices" />
         <AssociationConnector Association="Model.FK_PPEs_Offices" />
         <AssociationConnector Association="Model.FK_PurchaseOrders_Offices" />
-        <EntityTypeShape EntityType="Model.TechSpecRequests" Width="1.5" PointX="17.5" PointY="9.375" />
+        <EntityTypeShape EntityType="Model.TechSpecRequests" Width="1.5" PointX="7.5" PointY="20.375" />
         <AssociationConnector Association="Model.FK_TechSpecRequests_TechSpecs" />
-        <EntityTypeShape EntityType="Model.TechSpecEquipmentProfiles" Width="1.5" PointX="9.75" PointY="14" />
+        <EntityTypeShape EntityType="Model.TechSpecEquipmentProfiles" Width="1.5" PointX="12.75" PointY="20.125" />
         <AssociationConnector Association="Model.FK_TechSpecEquipmentProfiles_EquipmentProfiles" />
-        <EntityTypeShape EntityType="Model.Documents" Width="1.5" PointX="15.375" PointY="4.75" />
         <AssociationConnector Association="Model.FK_DocActions_TechSpecs" />
         <AssociationConnector Association="Model.FK_DocActions_Users" />
         <AssociationConnector Association="Model.FK_DocActions_Users1" />
-        <EntityTypeShape EntityType="Model.MES" Width="1.5" PointX="5.25" PointY="20.125" />
+        <EntityTypeShape EntityType="Model.MES" Width="1.5" PointX="10.25" PointY="20.75" />
         <AssociationConnector Association="Model.FK_MES_Employees" />
         <AssociationConnector Association="Model.FK_MES_Offices" />
         <AssociationConnector Association="Model.FK_WorkOrders_Users" />
+        <EntityTypeShape EntityType="Model.Deliveries" Width="1.5" PointX="13.25" PointY="22.75" />
+        <AssociationConnector Association="Model.FK_Deliveries_Offices" />
+        <AssociationConnector Association="Model.FK_Deliveries_Suppliers" />
+        <AssociationConnector Association="Model.FK_EquipmentProfiles_Deliveries" />
+        <EntityTypeShape EntityType="Model.Dropdowns" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="Model.Documents" Width="1.5" PointX="7.375" PointY="3.75" />
+        <AssociationConnector Association="Model.FK_Documents_Users" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

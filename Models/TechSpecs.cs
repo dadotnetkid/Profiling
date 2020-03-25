@@ -33,6 +33,7 @@ namespace Models
         public Nullable<bool> IsApproved { get; set; }
         public string Notes { get; set; }
         public Nullable<System.DateTime> DateRequested { get; set; }
+        public string TableName { get; set; }
     
         public virtual Employees Employees { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

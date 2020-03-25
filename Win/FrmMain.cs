@@ -59,13 +59,13 @@ namespace Win
 
             frmLogin frmLogin = new frmLogin(this);
             frmLogin.ShowDialog();
-          //  ucTechSpecGrid1.LoadDashboard();
+            //  ucTechSpecGrid1.LoadDashboard();
             if (pnlDashoard.Controls.Count <= 0)
             {
                 // var dashboard = new ucDashboard();
                 //   this.pnlDashoard.Controls.Add(new ucDashboard() { Dock = DockStyle.Fill });
                 this.lblUser.Caption = $"User: {User.GetFullName()}";
-            //    ucTechSpecGrid1.LoadDashboard();
+                //    ucTechSpecGrid1.LoadDashboard();
             }
 
         }
@@ -177,6 +177,18 @@ namespace Win
         private void barButtonItem12_ItemClick(object sender, ItemClickEventArgs e)
         {
             MESAF.frmMES frm = new MESAF.frmMES();
+            frm.ShowDialog();
+        }
+
+        private void btnDocActionTreeList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            DocAct.frmDocActionTreeList frm = new DocAct.frmDocActionTreeList();
+            frm.ShowDialog();
+        }
+
+        private void btnStatus_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            sts.frmStatus frm = new sts.frmStatus();
             frm.ShowDialog();
         }
     }

@@ -46,8 +46,7 @@ namespace Win.TS
             //this.ActionGridControl.DataSource =
             //    unitOfWork.DocActionsRepo.Get(m => m.RefId == item.Id && m.TableName == "TechSpecs");
             this.TechSpecsRequestDetailBindingSource.DataSource = unitOfWork.TechSpecRequestsRepo.Get(m => m.TechSpecsId == item.Id);
-            this.DocumentBindingSource.DataSource =
-                unitOfWork.DocumentsRepo.Get(m => m.RefId == item.Id && m.TableName == "TechSpecs");
+   
         }
 
 

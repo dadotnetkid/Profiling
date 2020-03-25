@@ -14,6 +14,10 @@ namespace Models.ViewModels
         public DateTime? DateFrom { get; set; }
         public DateTime? DateTo { get; set; }
 
+
+        public string PrintedBy { get; set; }
+
+
         public string AccomplishmentPeriod =>
             this.DateFrom?.ToShortDateString() + " - " + this.DateTo?.ToShortDateString();
         private Users _users;
@@ -73,6 +77,7 @@ namespace Models.ViewModels
         public int Count { get; set; }
         public Dropdowns SubActivity { get; set; }
         public Dropdowns Activity => new UnitOfWork().DropdownsRepo.Find(m => m.Id == SubActivity.ParentId);
+        public Dropdowns MainActivity => new UnitOfWork().DropdownsRepo.Find(m => m.Id == Activity.ParentId);
     }
 
 

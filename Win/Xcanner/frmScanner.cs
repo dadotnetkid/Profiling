@@ -61,7 +61,7 @@ namespace Win.Xcanner
 
                 using (NetworkShareAccesser.Access("PLGUNV_ADSERVER", @"PLGUNV", "administrator", "itpower@123"))
                 {
-                    Scanners.ScanImage.Save(Path.Combine(updatePath, Scanners.ImageId + ".png"));
+                    this.pictureEdit1.Image.Save(Path.Combine(updatePath, Scanners.ImageId + ".png"));
                 }
 
 
@@ -74,6 +74,10 @@ namespace Win.Xcanner
                         RootDirectory = updatePath,
                         TableName = Scanners.TableName,
                         RefId = Scanners.RefId,
+                        CreatedBy = User.UserId,
+                        FileSize = new FileInfo(Path.Combine(updatePath, Scanners.ImageId + ".png")).Length,
+                        DocumentDescription = memoExEdit1.Text,
+                        DateCreated = DateTime.Now
                     });
                     unitOfWork.Save();
                 }

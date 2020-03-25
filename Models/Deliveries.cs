@@ -12,27 +12,24 @@ namespace Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Suppliers
+    public partial class Deliveries
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Suppliers()
+        public Deliveries()
         {
-            this.PurchaseOrders = new HashSet<PurchaseOrders>();
-            this.Deliveries = new HashSet<Deliveries>();
+            this.EquipmentProfiles = new HashSet<EquipmentProfiles>();
         }
     
         public int Id { get; set; }
-        public string SupplierName { get; set; }
-        public string Address { get; set; }
-        public string ContactNumber { get; set; }
-        public string PhoneNumber { get; set; }
-        public string FaxNumber { get; set; }
-        public string CellNumber { get; set; }
-        public Nullable<bool> Status { get; set; }
+        public string DeliveryId { get; set; }
+        public Nullable<int> SupplierId { get; set; }
+        public Nullable<int> OfficeId { get; set; }
+        public Nullable<System.DateTime> DeliveredDate { get; set; }
+        public byte[] Files { get; set; }
     
+        public virtual Offices Offices { get; set; }
+        public virtual Suppliers Suppliers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PurchaseOrders> PurchaseOrders { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Deliveries> Deliveries { get; set; }
+        public virtual ICollection<EquipmentProfiles> EquipmentProfiles { get; set; }
     }
 }

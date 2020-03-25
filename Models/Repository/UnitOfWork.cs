@@ -23,6 +23,19 @@ namespace Models.Repository
 
         }
 
+
+        private GenericRepository<Deliveries> _DeliveriesRepo;
+        public GenericRepository<Deliveries> DeliveriesRepo
+        {
+            get
+            {
+                if (this._DeliveriesRepo == null)
+                    this._DeliveriesRepo = new GenericRepository<Deliveries>(context);
+                return _DeliveriesRepo;
+            }
+            set { _DeliveriesRepo = value; }
+        }
+
         private GenericRepository<MES> _MESRepo;
         public GenericRepository<MES> MESRepo
         {

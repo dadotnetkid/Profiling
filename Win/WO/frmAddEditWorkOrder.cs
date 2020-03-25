@@ -69,6 +69,7 @@ namespace Win.WO
             this.WorkOrderBindingSource.DataSource = unitOfWork.WorkOrdersRepo.Get();
             this.EquipmentTypeBindingSource.DataSource = unitOfWork.EquipmentTypesRepo.Get();
             this.PPEBindingSource.DataSource = unitOfWork.PPEsRepo.Get(includeProperties: "Employees");
+
             this.dtRequestedDate.EditValue = DateTime.Now;
             LoadWorkOrderDetails();
         }
@@ -83,7 +84,7 @@ namespace Win.WO
                 cboEmployeeId.EditValue = item.Employees?.Id;
                 txtPosition.Text = item.Position;
                 this.FolderNo = item.FolderNo;
-                txtOffice.Text = item.Employees.Offices.OfficeName;
+                txtOffice.Text = item.Employees?.Offices?.OfficeName;
                 dtRequestedDate.EditValue = item.RequestedDate;
                 cboEquipmentType.EditValue = item?.PPEs?.EquipmentTypeId;
                 txtDescription.Text = item.PPEs?.Description;
@@ -92,7 +93,9 @@ namespace Win.WO
                 txtProblems.Text = item.Problem;
                 txtRecommendation.Text = item.Recommendation;
                 WorkOrderId = item.WorkOrderId;
-                txtBox.EditValue = item.PPEs.BoxNumber;
+                txtBox.EditValue = item.PPEs?.BoxNumber;
+                txtItemDelivered.Text = item.DeliveredDescription;
+                cboDeliveredBy.Text = item.DeliveredBy;
 
             }
             catch (Exception e)
@@ -122,7 +125,12 @@ namespace Win.WO
                         Findings = txtFindings.Text,
                         DateCreated = DateTime.Now,
                         FolderNo = this.txtFolderNo.Text,
-                        Box = this.txtBox.EditValue.ToInt()
+                        Box = this.txtBox.EditValue.ToInt(),
+                        Recommendation = this.txtRecommendation.EditValue?.ToString(),
+                        DeliveredDescription = txtItemDelivered.Text,
+                        DeliveredBy = cboDeliveredBy.EditValue?.ToString(),
+                        Position = (cboDeliveredBy.GetSelectedDataRow() as Employees)?.Position
+
 
                     };
                     unitOfWork.WorkOrdersRepo.Update(workOrder);

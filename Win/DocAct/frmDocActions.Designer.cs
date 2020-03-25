@@ -396,11 +396,11 @@
             // 
             this.labelControl9.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.labelControl9.Appearance.Options.UseFont = true;
-            this.labelControl9.Location = new System.Drawing.Point(31, 256);
+            this.labelControl9.Location = new System.Drawing.Point(21, 254);
             this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(50, 17);
+            this.labelControl9.Size = new System.Drawing.Size(60, 34);
             this.labelControl9.TabIndex = 0;
-            this.labelControl9.Text = "Remarks";
+            this.labelControl9.Text = "Remarks/\r\nInstruction";
             // 
             // txtRemarks
             // 

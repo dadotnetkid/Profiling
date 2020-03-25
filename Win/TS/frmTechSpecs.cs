@@ -33,6 +33,7 @@ namespace Win.TS
         {
             UcTechSpecGrid.CreateUcControl();
             UcTechSpecGrid.GridView.FocusedRowChanged += GridView_FocusedRowChanged;
+
         }
 
         private void GridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -44,6 +45,9 @@ namespace Win.TS
                     TechSpecDetails.Details(item);
                     lblPODescription.Text = item.TechSpecsId;
                     ucTSEquipmentProfiles1.Details(item.Id, "TechSpecs");
+                    this.DocumentBindingSource.DataSource =
+                        new UnitOfWork().DocumentsRepo.Get(m => m.RefId == item.Id && m.TableName == "TechSpecs");
+                    LoadActions();
                 }
             }
 
@@ -106,11 +110,7 @@ namespace Win.TS
                         refId: item.Id);
 
                     var res = frm.ShowDialogResult();
-                    if (!res.HasAction)
-                        return;
-                    var unitOfWork = new UnitOfWork();
-                    unitOfWork.DocActionsRepo.Insert(res.DocActions);
-                    unitOfWork.Save();
+            
                 }
 
 
@@ -144,7 +144,7 @@ namespace Win.TS
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-           
+
 
         }
 

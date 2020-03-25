@@ -21,6 +21,7 @@ namespace Models
             this.PPEs = new HashSet<PPEs>();
             this.PurchaseOrders = new HashSet<PurchaseOrders>();
             this.MES = new HashSet<MES>();
+            this.Deliveries = new HashSet<Deliveries>();
         }
     
         public int Id { get; set; }
@@ -41,5 +42,7 @@ namespace Models
         public virtual ICollection<PurchaseOrders> PurchaseOrders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MES> MES { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Deliveries> Deliveries { get; set; }
     }
 }

@@ -38,7 +38,8 @@ namespace Win.Rpt
                 {
                     DateFrom = dateEdit1.EditValue.ToDate(),
                     DateTo = dateEdit2.EditValue.ToDate(),
-                    UserId = ((Users)lookUpEdit1.GetSelectedDataRow())?.Id
+                    UserId = ((Users)lookUpEdit1.GetSelectedDataRow())?.Id,
+                    PrintedBy = User.GetUserName()
                 };
                 report.AccomplishmentReport = report.GetAccomplishmentReport();
                 frmReportViewer frm = new frmReportViewer()

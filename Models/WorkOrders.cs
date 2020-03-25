@@ -35,6 +35,8 @@ namespace Models
         public string FolderNo { get; set; }
         public Nullable<int> BoxNo { get; set; }
         public string CreatedBy { get; set; }
+        public string DeliveredBy { get; set; }
+        public string DeliveredDescription { get; set; }
     
         public virtual PPEs PPEs { get; set; }
         public virtual Employees Employees { get; set; }

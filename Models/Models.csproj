@@ -148,6 +148,9 @@
     </Compile>
     <Compile Include="ControllersActionsPartial.cs" />
     <Compile Include="Controllers\IdentityController.cs" />
+    <Compile Include="Deliveries.cs">
+      <DependentUpon>ModelDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="DocActions.cs">
       <DependentUpon>ModelDb.tt</DependentUpon>
     </Compile>

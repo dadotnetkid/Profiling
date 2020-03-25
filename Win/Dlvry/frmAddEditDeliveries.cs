@@ -13,41 +13,88 @@ using Models;
 using Models.Repository;
 using Win.Emp;
 using Win.Properties;
+using System.Data.Entity;
 
 namespace Win.Dlvry
 {
     public partial class frmAddEditDeliveries : DevExpress.XtraEditors.XtraForm
     {
-        public frmAddEditDeliveries()
+        public MethodType methodType;
+        private Deliveries oldValue;
+        private string deliveryId;
+
+        public frmAddEditDeliveries(Deliveries oldValue, MethodType methodType)
         {
             InitializeComponent();
             this.Icon = Resources.maintenance.ToIcon();
+
+
+
+            this.oldValue = oldValue;
+            this.methodType = methodType;
+
+
         }
 
-        private void frmAddEditTechSpecs_Load(object sender, EventArgs e)
+        void init()
         {
-            Initialize();
-            LoadTechSpecs();
-            if (MethodType == MethodType.Edit)
-                LoadTechSpecsDetails(new UnitOfWork().TechSpecsRepo.Find(m => m.Id == TechSpecsId));
-        }
-        public void Initialize()
-        {
-            this.dtDateRequest.EditValue = DateTime.Now;
 
-            if (MethodType == MethodType.Edit)
+            if (methodType == MethodType.Edit)
                 return;
+            var unitOfWork = new UnitOfWork();
+            this.Id = (unitOfWork.DeliveriesRepo.Fetch().Select(x => new { x.Id }).FirstOrDefault()?.Id ?? 0) + 1;
+            this.deliveryId = Id.ToString("EPiS-0000");
+            unitOfWork.DeliveriesRepo.Insert(new Deliveries()
+            {
+                Id = Id,
+                DeliveryId = deliveryId
+            });
+            unitOfWork.Save();
+            this.lblDelNo.Text = this.deliveryId;
+            EquipmentProfileBindingSource.DataSource =
+                new UnitOfWork().EquipmentProfilesRepo.Get(m => m.RefId == Id && m.TableName == "Deliveries");
 
+        }
+
+        Deliveries deliveries()
+        {
+            return new Deliveries()
+            {
+                Id = Id,
+                SupplierId = txtSupplierName.EditValue?.ToInt(),
+                OfficeId = txtOffice.EditValue?.ToInt(),
+                DeliveredDate = dtDeliveredDate.EditValue?.ToDate(),
+                DeliveryId = deliveryId,
+          
+            };
+        }
+
+        void details(Deliveries item)
+        {
+            if (methodType == MethodType.Add)
+                return;
+            Id = item.Id;
+            deliveryId = item.DeliveryId;
+            txtChief.EditValue = item.Offices?.Chief;
+            txtOffice.Text = item.Offices?.OfficeName;
+            txtTel.Text = item.Offices?.TelNo;
+            txtSupplierName.Text = item.Suppliers?.SupplierName;
+            txtSupplierAddress.Text = item.Suppliers?.Address;
+            txtSupplierTelNo.Text = item.Suppliers?.ContactNumber;
+            dtDeliveredDate.EditValue = item.DeliveredDate;
+            lblDelNo.Text = item.DeliveryId;
+            EquipmentProfileBindingSource.DataSource =
+                new UnitOfWork().EquipmentProfilesRepo.Get(m => m.RefId == Id && m.TableName == "Deliveries");
+            isDelete = false;
+        }
+
+        void add(Deliveries item)
+        {
             try
             {
-                using (UnitOfWork unitOfWork = new UnitOfWork())
-                {
-                    this.TechSpecsId = (unitOfWork.TechSpecsRepo.Fetch().Select(x => new { x.Id }).OrderByDescending(x => x.Id)
-                                .FirstOrDefault()?.Id ?? 0) + 1;
-                    unitOfWork.TechSpecsRepo.Insert(new TechSpecs() { Id = TechSpecsId });
-                    unitOfWork.Save();
-                    lblTechSpecNo.Text = TechSpecsId.ToString("EPIS-0000");
-                }
+                var unitOfWork = new UnitOfWork();
+                unitOfWork.DeliveriesRepo.Update(item);
+                unitOfWork.Save();
             }
             catch (Exception e)
             {
@@ -56,151 +103,58 @@ namespace Win.Dlvry
 
         }
 
-        public MethodType MethodType { get; set; }
-
-        public int TechSpecsId { get; set; }
-        public frmDeliveries frmTechSpecs { get; set; }
-
-        public void LoadTechSpecs()
+        void edit(Deliveries item)
         {
             try
             {
-                UnitOfWork unitOfWork = new UnitOfWork();
-           
-                this.cboAssignedTo.EditValue = User.UserId;
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message, "Load Tech Specs", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-
-
-        }
-        void LoadTechSpecsDetails(TechSpecs item)
-        {
-
-            try
-            {
-         
-                new UnitOfWork().DocActionsRepo.Get(m => m.RefId == item.Id && m.TableName == "TechSpecs");
                 var unitOfWork = new UnitOfWork();
-                lblTechSpecNo.Text = item.Id.ToString("EPIS-0000");
 
-                cboOffice.EditValue = item?.Employees?.OfficeId;
-                txtChief.Text = item?.Employees?.Offices?.Chief;
-                txtTel.Text = item?.Employees?.Offices?.Chief;
-                cboEmployeeId.EditValue = item?.Employees?.Id;
-                txtPosition.Text = item.Employees?.Position;
-                cboOffice.EditValue = item.Employees?.Offices?.Id;
-                txtTel.Text = item.Employees?.Offices?.TelNo;
-                txtChief.Text = item.Employees?.Offices?.Chief;
-                cboAssignedTo.EditValue = item.AssignedTo;
-                dtDateRequest.EditValue = item.DateRequested;
+                unitOfWork.DeliveriesRepo.Update(item);
+                unitOfWork.Save();
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Load Tech Specs Details", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(e.Message, e.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
         }
 
-        private void cboOffice_EditValueChanged(object sender, EventArgs e)
+
+
+        private void frmAddEditTechSpecs_Load(object sender, EventArgs e)
         {
-            if (sender is GridLookUpEdit gridLookUp)
+            UnitOfWork unitOfWork = new UnitOfWork();
+            txtOffice.Properties.DataSource = new BindingList<Offices>(unitOfWork.OfficesRepo.Get());
+            txtSupplierName.Properties.DataSource = new BindingList<Suppliers>(unitOfWork.SuppliersRepo.Get());
+            UOMBindingSource.DataSource = new BindingList<UnitTypes>(unitOfWork.UnitTypesRepo.Get());
+            EquipTypeBindingSource.DataSource = new BindingList<EquipmentTypes>(unitOfWork.EquipmentTypesRepo.Get());
+            init();
+            details(oldValue);
+        }
+
+        private void txtOffice_EditValueChanged(object sender, EventArgs e)
+        {
+            if (sender is LookUpEdit lookUpEdit)
             {
-                if (gridLookUp.GetSelectedDataRow() is Offices item)
+                if (lookUpEdit.GetSelectedDataRow() is Offices offices)
                 {
-                    txtChief.Text = item.Chief;
-                    txtTel.Text = item.TelNo;
+                    txtChief.Text = offices.Chief;
+                    txtTel.Text = offices.TelNo;
+
                 }
             }
         }
 
-        private void cboEmployeeId_EditValueChanged(object sender, EventArgs e)
+        private void txtSupplierName_EditValueChanged(object sender, EventArgs e)
         {
-            if (sender is GridLookUpEdit gridLookUp)
+            if (sender is LookUpEdit lookUpEdit)
             {
-                if (gridLookUp.GetSelectedDataRow() is Employees item)
+                if (lookUpEdit.GetSelectedDataRow() is Suppliers item)
                 {
-                    txtPosition.Text = item.Position;
-                }
-            }
-        }
-
-
-        private void btnNewPO_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Do you want to submit this?", "Submit", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                return;
-
-            try
-            {
-                using (UnitOfWork unitOfWork = new UnitOfWork())
-                {
-                    var workOrder = new TechSpecs()
-                    {
-                        Id = TechSpecsId,
-                        Requestedby = cboEmployeeId.EditValue.ToInt(),
-                        DateRequested = dtDateRequest.EditValue.ToDate(),
-                        AssignedTo = cboAssignedTo.EditValue.ToString(),
-
-                    };
-                    unitOfWork.TechSpecsRepo.Update(workOrder);
-                    unitOfWork.Save();
-                    unitOfWork.TechSpecRequestsRepo.DeleteRange(m =>
-                        m.TechSpecsId == TechSpecsId && m.ItemNumber == null);
-                    unitOfWork.Save();
-                    foreach (var i in unitOfWork.EquipmentProfilesRepo.Get(m =>
-                        m.RefId == TechSpecsId && m.TableName == "TechSpecs"))
-                    {
-                        if (i.ItemNumber != null)
-                            this.ItemNumber = i.ItemNumber;
-                        else
-                        {
-                            i.ParentItem = this.ItemNumber;
-                        }
-
-                        unitOfWork.EquipmentProfilesRepo.Update(i);
-                        unitOfWork.Save();
-                    }
-
+                    txtSupplierAddress.Text = item.Address;
+                    txtSupplierTelNo.Text = item.ContactNumber ?? item.PhoneNumber;
 
                 }
             }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message, exception.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            MethodType = MethodType.Edit;
-
-            this.Close();
-        }
-
-        private void frmAddEditTechSpecs_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (MethodType == MethodType.Edit)
-                return;
-            try
-            {
-                using (UnitOfWork unitOfWork = new UnitOfWork())
-                {
-                    unitOfWork.EquipmentProfilesRepo.DeleteRange(m => m.RefId == TechSpecsId && m.TableName == "TechSpecs");
-                    unitOfWork.TechSpecsRepo.Delete(TechSpecsId);
-                    unitOfWork.Save();
-                }
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message, exception.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-
-        }
-
-        private void btnEditPo_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void EquipmentGrid_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
@@ -218,13 +172,9 @@ namespace Win.Dlvry
                         {
                             this.ItemNumber = item.ItemNumber;
                         }
-                        else
-                        {
 
-                            item.ParentItem = ItemNumber;
-                        }
-                        item.RefId = TechSpecsId;
-                        item.TableName = "TechSpecs";
+                        item.RefId = this.Id;
+                        item.TableName = "Deliveries";
 
                         if (!string.IsNullOrEmpty(item.Description))
                         {
@@ -258,77 +208,52 @@ namespace Win.Dlvry
             }
         }
 
-        public int? ItemNumber { get; set; }
+        public int? ItemNumber;
+        private int Id;
+        private bool isDelete = true;
 
 
-        private void repositoryItemButtonEdit1_ButtonPressed(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        private void btnNewPO_Click_1(object sender, EventArgs e)
         {
-            if (!User.UserInAction("Delete Tech Spec"))
+
+            if (MessageBox.Show("Do you want to submit this?", "Submit", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 return;
+            if (methodType == MethodType.Add)
+                add(deliveries());
+            else
+                edit(deliveries());
+            isDelete = false;
+            this.Close();
+        }
 
-            if (MessageBox.Show("Do you want to delete this", "Deleting", MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question) == DialogResult.No)
+        private void btnEditPo_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+
+        private void frmAddEditDeliveries_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+            if (this.isDelete)
+            {
+                var unitOfWork = new UnitOfWork();
+                unitOfWork.DeliveriesRepo.Delete(m => m.Id == Id);
+                unitOfWork.Save();
+            }
+        }
+
+        private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+
+            if (MessageBox.Show("Do you want to delete this?", "Submit", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 return;
-            using (UnitOfWork unitOfWork = new UnitOfWork())
+            if (EquipmentGrid.GetFocusedRow() is EquipmentProfiles item)
             {
-                var eP = this.EquipmentGrid.GetFocusedRow() as EquipmentProfiles;
-                if (eP == null || eP?.Id == null)
-                    return;
-                try
-                {
-                    unitOfWork.EquipmentProfilesRepo.Delete(m => m.Id == eP.Id && m.TableName == "TechSpecs");
-                    unitOfWork.Save();
-                }
-                catch (Exception ex)
-                {
-
-                    MessageBox.Show(ex.Message, ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
+                var unitOfWork = new UnitOfWork();
+                unitOfWork.EquipmentProfilesRepo.Delete(m => m.Id == item.Id && m.TableName == "Deliveries");
+                unitOfWork.Save();
             }
-
-            EquipmentGrid.RefreshData();
-        }
-
-        private void groupControl2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void btnAddEmployee_Click(object sender, EventArgs e)
-        {
-            frmAddEditEmployees frm = new frmAddEditEmployees();
-            frm.ShowDialog();
-            if (cboOffice.GetSelectedDataRow() is Offices office)
-            {
-      
-            }
-        }
-
-      
-      
-      
-
-        private void frmAddEditTechSpecs_Activated(object sender, EventArgs e)
-        {
-            cboOffice.Focus();
-        }
-
-        private void TechSpecReqEquipmentTypeRepo_Leave(object sender, EventArgs e)
-        {
-            if (sender is LookUpEdit lookUpEdit)
-            {
-                var req = lookUpEdit.EditValue;
-
-            }
-        }
-
-      
-
-        private void EquipmentGrid_FocusedColumnChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedColumnChangedEventArgs e)
-        {
-            var index = e.FocusedColumn.AbsoluteIndex;
-
         }
     }
 }

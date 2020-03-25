@@ -18,10 +18,13 @@ namespace Models
         public string RootDirectory { get; set; }
         public string FileId { get; set; }
         public string ExtName { get; set; }
-        public Nullable<int> FileSize { get; set; }
+        public Nullable<long> FileSize { get; set; }
         public Nullable<int> RefId { get; set; }
         public string TableName { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> DateCreated { get; set; }
+        public string DocumentDescription { get; set; }
+    
+        public virtual Users Users { get; set; }
     }
 }

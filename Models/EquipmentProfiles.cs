@@ -39,5 +39,6 @@ namespace Models
         public virtual PurchaseOrders PurchaseOrders { get; set; }
         public virtual TechSpecs TechSpecs { get; set; }
         public virtual TechSpecEquipmentProfiles TechSpecEquipmentProfiles { get; set; }
+        public virtual Deliveries Deliveries { get; set; }
     }
 }

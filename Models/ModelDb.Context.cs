@@ -42,7 +42,6 @@ namespace Models
         public virtual DbSet<WorkOrders> WorkOrders { get; set; }
         public virtual DbSet<Statuses> Statuses { get; set; }
         public virtual DbSet<DocActions> DocActions { get; set; }
-        public virtual DbSet<Dropdowns> Dropdowns { get; set; }
         public virtual DbSet<EquipmentProfiles> EquipmentProfiles { get; set; }
         public virtual DbSet<EvaluationSheets> EvaluationSheets { get; set; }
         public virtual DbSet<TechnicalEvaluationSheet> TechnicalEvaluationSheet { get; set; }
@@ -53,7 +52,9 @@ namespace Models
         public virtual DbSet<Offices> Offices { get; set; }
         public virtual DbSet<TechSpecRequests> TechSpecRequests { get; set; }
         public virtual DbSet<TechSpecEquipmentProfiles> TechSpecEquipmentProfiles { get; set; }
-        public virtual DbSet<Documents> Documents { get; set; }
         public virtual DbSet<MES> MES { get; set; }
+        public virtual DbSet<Deliveries> Deliveries { get; set; }
+        public virtual DbSet<Dropdowns> Dropdowns { get; set; }
+        public virtual DbSet<Documents> Documents { get; set; }
     }
 }

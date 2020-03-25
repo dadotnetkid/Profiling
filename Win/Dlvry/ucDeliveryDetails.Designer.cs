@@ -398,6 +398,7 @@
             this.cboEmployeeId.EditValue = "";
             this.cboEmployeeId.Location = new System.Drawing.Point(77, 47);
             this.cboEmployeeId.Name = "cboEmployeeId";
+            this.cboEmployeeId.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
             this.cboEmployeeId.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cboEmployeeId.Properties.Appearance.Options.UseFont = true;
             this.cboEmployeeId.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -528,6 +529,7 @@
             this.cboOffice.EditValue = "";
             this.cboOffice.Location = new System.Drawing.Point(77, 24);
             this.cboOffice.Name = "cboOffice";
+            this.cboOffice.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
             this.cboOffice.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cboOffice.Properties.Appearance.Options.UseFont = true;
             this.cboOffice.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {

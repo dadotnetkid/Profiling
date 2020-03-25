@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Linq;
 using System.Linq.Expressions;
@@ -42,7 +43,7 @@ namespace Win.WO
             UnitOfWork unitOfWork = new UnitOfWork();
 
             this.WorkOrderBindingSource.DataSource = unitOfWork.WorkOrdersRepo.Paginate(m => m.OrderByDescending(x => x.Id).ThenBy(x => x.Id),
-                filter: x => x.WorkOrderId.Contains(search) || x.PPEs.PropertyNo.StartsWith(search) || x.PPEs.Employees.FirstName.StartsWith(search) || x.PPEs.Offices.OfficeName.StartsWith(search));
+                filter: x => (x.WorkOrderId.Contains(search) || x.PPEs.PropertyNo.StartsWith(search) || x.PPEs.Employees.FirstName.StartsWith(search) || x.PPEs.Offices.OfficeName.StartsWith(search)) && x.DocActions.Any(m => m.Status != "Completed"));
             LoadWorkOrderDetails(0);
         }
         public void LoadWorkOrders()
@@ -56,6 +57,7 @@ namespace Win.WO
             this.MainActLookUpRepo.DataSource = unitOfWork.DropdownsRepo.Get(m => m.Category == "Projects");
             this.ActivityLookUpRepo.DataSource = unitOfWork.DropdownsRepo.Get(m => m.Category == "Activity");
             this.SubActLookUpRepo.DataSource = unitOfWork.DropdownsRepo.Get(m => m.Category == "SubActivity");
+
             WorkOrderGrid.RefreshData();
             LoadWorkOrderDetails(0);
         }
@@ -71,7 +73,7 @@ namespace Win.WO
                 dtRequestedDate.EditValue = item.RequestedDate;
                 cboEquipmentType.EditValue = item.PPEs?.EquipmentTypeId;
                 txtDescription.Text = item.PPEs?.Description;
-                lblPODescription.Text = item.WorkOrderId + " - " + item.Employees?.EmployeeName;
+                lblPODescription.Text = item.WorkOrderId + " - " + item.PPEs?.PPEId + " - " + item.PPEs?.EquipmentTypes?.EquipmentType;
                 txtFindings.Text = item.Findings;
                 txtProblems.Text = item.Problem;
                 txtRecommendation.Text = item.Recommendation;
@@ -79,6 +81,10 @@ namespace Win.WO
                 this.WOId = item.Id;
                 this.WorkOrders = item;
                 lblFolderNo.Text = item.FolderNo;
+                txtDeliveredDescription.Text = item.DeliveredDescription;
+                cboDeliveredBy.EditValue = item.DeliveredBy;
+                this.DocumentBindingSource.DataSource =
+                    new UnitOfWork().DocumentsRepo.Get(m => m.RefId == item.Id && m.TableName == "WorkOrders");
                 LoadActions();
                 LoadTechEvalSheet();
 
@@ -303,6 +309,76 @@ namespace Win.WO
                 Rpt.frmReportViewer frm = new Rpt.frmReportViewer(rpt);
                 frm.ShowDialog();
             }
+        }
+
+        private void tabNavigationPage3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void btnFileDownload_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (DocumentGrid.GetFocusedRow() is Documents documents)
+            {
+                SaveFileDialog dialog = new SaveFileDialog()
+                {
+                    OverwritePrompt = true,
+                    AddExtension = true,
+                    DefaultExt = documents.ExtName.Replace(".", "")
+                };
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    using (NetworkShareAccesser.Access("PLGUNV_ADSERVER", @"PLGUNV", "administrator", "itpower@123"))
+                    {
+                        try
+                        {
+                            File.Copy(Path.Combine(documents.RootDirectory, documents.FileId + documents.ExtName),
+                                dialog.FileName);
+                        }
+                        catch (Exception exception)
+                        {
+                            MessageBox.Show(exception.Message, exception.Message, MessageBoxButtons.OK,
+                                MessageBoxIcon.Exclamation);
+                        }
+
+                    }
+                }
+            }
+
+        }
+
+        private void btnFileView_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (DocumentGrid.GetFocusedRow() is Documents documents)
+            {
+                using (NetworkShareAccesser.Access("PLGUNV_ADSERVER", @"PLGUNV", "administrator", "itpower@123"))
+                {
+                    try
+                    {
+                        XtraForm xtraForm = new XtraForm() { StartPosition = FormStartPosition.CenterScreen };
+                        var pct = new PictureEdit()
+                        {
+                            Dock = DockStyle.Fill,
+                            Image = Image.FromFile(Path.Combine(documents.RootDirectory,
+                                documents.FileId + documents.ExtName)),
+                        };
+                        pct.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+                        xtraForm.Controls.Add(pct);
+                        xtraForm.ShowDialog();
+                    }
+                    catch (Exception exception)
+                    {
+                        MessageBox.Show(exception.Message, exception.Message, MessageBoxButtons.OK,
+                            MessageBoxIcon.Exclamation);
+                    }
+
+                }
+            }
+
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -25,6 +25,7 @@ namespace Models
             this.CreatedBy = new HashSet<DocActions>();
             this.EndorseTo = new HashSet<DocActions>();
             this.CreatedByWorkOrders = new HashSet<WorkOrders>();
+            this.Documents = new HashSet<Documents>();
         }
     
         public string Id { get; set; }
@@ -75,5 +76,7 @@ namespace Models
         public virtual ICollection<DocActions> EndorseTo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WorkOrders> CreatedByWorkOrders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Documents> Documents { get; set; }
     }
 }

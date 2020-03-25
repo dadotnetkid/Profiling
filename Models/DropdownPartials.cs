@@ -20,5 +20,21 @@ namespace Models
             }
             set => _dropdownValue = value;
         }
+
+        public int ImageIndex
+        {
+            get
+            {
+                if (this.Category == "Programs")
+                    return 0;
+                if (this.Category == "Projects")
+                    return 1;
+                if (this.Category == "Activity")
+                    return 2;
+                if (this.Category == "SubActivity")
+                    return 3;
+                return 0;
+            }
+        }
     }
 }
