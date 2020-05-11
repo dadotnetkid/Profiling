@@ -5,6 +5,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -12,8 +13,14 @@ namespace Helpers
 {
     public static class StringExtensions
     {
-     
 
+        public static string ToSentenceCase(this string obj)
+        {
+            string input = obj; //"THIS IS YELLING! WHY ARE WE YELLING? BECAUSE WE CAN. THAT IS ALL.";
+            var sentenceRegex = new Regex(@"(^[a-z])|[?!.:,;]\s+(.)", RegexOptions.ExplicitCapture);
+            input = sentenceRegex.Replace(input.ToLower(), s => s.Value.ToUpper());
+            return input;
+        }
         public static Icon ToIcon(this Bitmap bitmap)
         {
             return Icon.FromHandle(bitmap.GetHicon());

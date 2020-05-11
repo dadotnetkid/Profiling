@@ -11,6 +11,7 @@ namespace Win.Rpt
         public rptTechnicalReport()
         {
             InitializeComponent();
+            
         }
 
     }

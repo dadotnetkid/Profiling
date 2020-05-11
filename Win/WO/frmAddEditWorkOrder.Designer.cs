@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.btnAddEmployee = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
@@ -44,9 +44,11 @@
             this.EmployeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtPosition = new DevExpress.XtraEditors.TextEdit();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.txtProblems = new DevExpress.XtraEditors.MemoEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.txtRecommendation = new DevExpress.XtraEditors.MemoEdit();
+            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.txtFindings = new DevExpress.XtraEditors.MemoEdit();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -54,7 +56,6 @@
             this.EquipmentTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.txtDescription = new DevExpress.XtraEditors.MemoEdit();
-            this.txtProblems = new DevExpress.XtraEditors.MemoEdit();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
@@ -66,6 +67,10 @@
             this.txtFolderNo = new DevExpress.XtraEditors.TextEdit();
             this.txtBox = new DevExpress.XtraEditors.SpinEdit();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
+            this.txtItemDelivered = new DevExpress.XtraEditors.MemoEdit();
+            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
+            this.cboDeliveredBy = new DevExpress.XtraEditors.LookUpEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.lblFolderNo = new DevExpress.XtraEditors.LabelControl();
             this.lblWorkOrderNo = new DevExpress.XtraEditors.LabelControl();
@@ -77,11 +82,6 @@
             this.OfficeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.EquipmentProfileBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.UnitTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
-            this.txtItemDelivered = new DevExpress.XtraEditors.MemoEdit();
-            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
-            this.cboDeliveredBy = new DevExpress.XtraEditors.LookUpEdit();
-            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtOffice.Properties)).BeginInit();
@@ -90,6 +90,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPosition.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtProblems.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRecommendation.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFindings.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -97,7 +98,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboEquipmentType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EquipmentTypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDescription.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtProblems.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboPropertyNo.Properties)).BeginInit();
@@ -108,14 +108,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtItemDelivered.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboDeliveredBy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WorkOrderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OfficeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EquipmentProfileBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UnitTypeBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtItemDelivered.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboDeliveredBy.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl4
@@ -207,6 +207,7 @@
             this.cboEmployeeId.Properties.ValueMember = "Id";
             this.cboEmployeeId.Size = new System.Drawing.Size(288, 22);
             this.cboEmployeeId.TabIndex = 10;
+            this.cboEmployeeId.Tag = "Employee is required";
             this.cboEmployeeId.EditValueChanged += new System.EventHandler(this.cboEmployeeId_EditValueChanged);
             // 
             // txtPosition
@@ -238,6 +239,16 @@
             this.groupControl3.TabIndex = 16;
             this.groupControl3.Text = "Solutions";
             // 
+            // txtProblems
+            // 
+            this.txtProblems.Location = new System.Drawing.Point(130, 22);
+            this.txtProblems.Name = "txtProblems";
+            this.txtProblems.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtProblems.Properties.Appearance.Options.UseFont = true;
+            this.txtProblems.Properties.UseReadOnlyAppearance = false;
+            this.txtProblems.Size = new System.Drawing.Size(259, 34);
+            this.txtProblems.TabIndex = 7;
+            // 
             // labelControl7
             // 
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -248,16 +259,6 @@
             this.labelControl7.TabIndex = 11;
             this.labelControl7.Text = "Recommendation";
             // 
-            // labelControl6
-            // 
-            this.labelControl6.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Location = new System.Drawing.Point(66, 58);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(45, 15);
-            this.labelControl6.TabIndex = 11;
-            this.labelControl6.Text = "Findings";
-            // 
             // txtRecommendation
             // 
             this.txtRecommendation.Location = new System.Drawing.Point(496, 23);
@@ -267,6 +268,26 @@
             this.txtRecommendation.Properties.UseReadOnlyAppearance = false;
             this.txtRecommendation.Size = new System.Drawing.Size(259, 39);
             this.txtRecommendation.TabIndex = 7;
+            // 
+            // labelControl14
+            // 
+            this.labelControl14.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.labelControl14.Appearance.Options.UseFont = true;
+            this.labelControl14.Location = new System.Drawing.Point(61, 24);
+            this.labelControl14.Name = "labelControl14";
+            this.labelControl14.Size = new System.Drawing.Size(50, 15);
+            this.labelControl14.TabIndex = 11;
+            this.labelControl14.Text = "Problems";
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.labelControl6.Appearance.Options.UseFont = true;
+            this.labelControl6.Location = new System.Drawing.Point(66, 58);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(45, 15);
+            this.labelControl6.TabIndex = 11;
+            this.labelControl6.Text = "Findings";
             // 
             // txtFindings
             // 
@@ -323,6 +344,7 @@
             this.cboEquipmentType.Properties.ValueMember = "Id";
             this.cboEquipmentType.Size = new System.Drawing.Size(312, 22);
             this.cboEquipmentType.TabIndex = 10;
+            this.cboEquipmentType.Tag = "Equipment Type is Required";
             this.cboEquipmentType.EditValueChanged += new System.EventHandler(this.cboEquipmentType_EditValueChanged);
             // 
             // labelControl3
@@ -345,16 +367,6 @@
             this.txtDescription.Properties.UseReadOnlyAppearance = false;
             this.txtDescription.Size = new System.Drawing.Size(312, 44);
             this.txtDescription.TabIndex = 7;
-            // 
-            // txtProblems
-            // 
-            this.txtProblems.Location = new System.Drawing.Point(130, 22);
-            this.txtProblems.Name = "txtProblems";
-            this.txtProblems.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtProblems.Properties.Appearance.Options.UseFont = true;
-            this.txtProblems.Properties.UseReadOnlyAppearance = false;
-            this.txtProblems.Size = new System.Drawing.Size(259, 34);
-            this.txtProblems.TabIndex = 7;
             // 
             // groupControl1
             // 
@@ -438,6 +450,7 @@
             this.cboPropertyNo.Properties.ValueMember = "Id";
             this.cboPropertyNo.Size = new System.Drawing.Size(312, 22);
             this.cboPropertyNo.TabIndex = 10;
+            this.cboPropertyNo.Tag = "Property No is Required";
             this.cboPropertyNo.EditValueChanged += new System.EventHandler(this.cboPropertyNo_EditValueChanged);
             // 
             // PPEBindingSource
@@ -458,6 +471,7 @@
             this.dtRequestedDate.Properties.UseReadOnlyAppearance = false;
             this.dtRequestedDate.Size = new System.Drawing.Size(312, 22);
             this.dtRequestedDate.TabIndex = 2;
+            this.dtRequestedDate.Tag = "Delivery Date is Required";
             // 
             // txtFolderNo
             // 
@@ -481,7 +495,7 @@
             this.txtBox.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtBox.Properties.Appearance.Options.UseFont = true;
             this.txtBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.txtBox.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
             this.txtBox.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
             this.txtBox.Properties.UseReadOnlyAppearance = false;
@@ -503,6 +517,57 @@
             this.groupControl5.Size = new System.Drawing.Size(414, 98);
             this.groupControl5.TabIndex = 19;
             this.groupControl5.Text = "Item Delivered/Delivered By:";
+            // 
+            // txtItemDelivered
+            // 
+            this.txtItemDelivered.Location = new System.Drawing.Point(77, 46);
+            this.txtItemDelivered.Name = "txtItemDelivered";
+            this.txtItemDelivered.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtItemDelivered.Properties.Appearance.Options.UseFont = true;
+            this.txtItemDelivered.Properties.UseReadOnlyAppearance = false;
+            this.txtItemDelivered.Size = new System.Drawing.Size(312, 36);
+            this.txtItemDelivered.TabIndex = 7;
+            // 
+            // labelControl16
+            // 
+            this.labelControl16.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.labelControl16.Appearance.Options.UseFont = true;
+            this.labelControl16.Location = new System.Drawing.Point(10, 27);
+            this.labelControl16.Name = "labelControl16";
+            this.labelControl16.Size = new System.Drawing.Size(65, 15);
+            this.labelControl16.TabIndex = 11;
+            this.labelControl16.Text = "Delivered By";
+            // 
+            // labelControl15
+            // 
+            this.labelControl15.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.labelControl15.Appearance.Options.UseFont = true;
+            this.labelControl15.Location = new System.Drawing.Point(26, 49);
+            this.labelControl15.Name = "labelControl15";
+            this.labelControl15.Size = new System.Drawing.Size(49, 30);
+            this.labelControl15.TabIndex = 0;
+            this.labelControl15.Text = "Item \r\nDelivered";
+            // 
+            // cboDeliveredBy
+            // 
+            this.cboDeliveredBy.Location = new System.Drawing.Point(77, 24);
+            this.cboDeliveredBy.Name = "cboDeliveredBy";
+            this.cboDeliveredBy.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cboDeliveredBy.Properties.Appearance.Options.UseFont = true;
+            this.cboDeliveredBy.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboDeliveredBy.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 33, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("EmployeeName", "Employee Name", 97, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            this.cboDeliveredBy.Properties.DataSource = this.EmployeeBindingSource;
+            this.cboDeliveredBy.Properties.DisplayMember = "EmployeeName";
+            this.cboDeliveredBy.Properties.NullText = "";
+            this.cboDeliveredBy.Properties.UseReadOnlyAppearance = false;
+            this.cboDeliveredBy.Properties.ValueMember = "EmployeeName";
+            this.cboDeliveredBy.Size = new System.Drawing.Size(312, 22);
+            this.cboDeliveredBy.TabIndex = 10;
+            this.cboDeliveredBy.Tag = "Delivered By is required";
+            this.cboDeliveredBy.EditValueChanged += new System.EventHandler(this.cboEmployeeId_EditValueChanged);
             // 
             // panelControl1
             // 
@@ -588,66 +653,6 @@
             this.btnNewPO.Text = "Submit";
             this.btnNewPO.Click += new System.EventHandler(this.btnNewPO_Click);
             // 
-            // labelControl14
-            // 
-            this.labelControl14.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.labelControl14.Appearance.Options.UseFont = true;
-            this.labelControl14.Location = new System.Drawing.Point(61, 24);
-            this.labelControl14.Name = "labelControl14";
-            this.labelControl14.Size = new System.Drawing.Size(50, 15);
-            this.labelControl14.TabIndex = 11;
-            this.labelControl14.Text = "Problems";
-            // 
-            // txtItemDelivered
-            // 
-            this.txtItemDelivered.Location = new System.Drawing.Point(77, 46);
-            this.txtItemDelivered.Name = "txtItemDelivered";
-            this.txtItemDelivered.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtItemDelivered.Properties.Appearance.Options.UseFont = true;
-            this.txtItemDelivered.Properties.UseReadOnlyAppearance = false;
-            this.txtItemDelivered.Size = new System.Drawing.Size(312, 36);
-            this.txtItemDelivered.TabIndex = 7;
-            // 
-            // labelControl15
-            // 
-            this.labelControl15.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.labelControl15.Appearance.Options.UseFont = true;
-            this.labelControl15.Location = new System.Drawing.Point(26, 49);
-            this.labelControl15.Name = "labelControl15";
-            this.labelControl15.Size = new System.Drawing.Size(49, 30);
-            this.labelControl15.TabIndex = 0;
-            this.labelControl15.Text = "Item \r\nDelivered";
-            // 
-            // cboDeliveredBy
-            // 
-            this.cboDeliveredBy.Location = new System.Drawing.Point(77, 24);
-            this.cboDeliveredBy.Name = "cboDeliveredBy";
-            this.cboDeliveredBy.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.cboDeliveredBy.Properties.Appearance.Options.UseFont = true;
-            this.cboDeliveredBy.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboDeliveredBy.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 33, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("EmployeeName", "Employee Name", 97, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
-            this.cboDeliveredBy.Properties.DataSource = this.EmployeeBindingSource;
-            this.cboDeliveredBy.Properties.DisplayMember = "EmployeeName";
-            this.cboDeliveredBy.Properties.NullText = "";
-            this.cboDeliveredBy.Properties.UseReadOnlyAppearance = false;
-            this.cboDeliveredBy.Properties.ValueMember = "EmployeeName";
-            this.cboDeliveredBy.Size = new System.Drawing.Size(312, 22);
-            this.cboDeliveredBy.TabIndex = 10;
-            this.cboDeliveredBy.EditValueChanged += new System.EventHandler(this.cboEmployeeId_EditValueChanged);
-            // 
-            // labelControl16
-            // 
-            this.labelControl16.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.labelControl16.Appearance.Options.UseFont = true;
-            this.labelControl16.Location = new System.Drawing.Point(10, 27);
-            this.labelControl16.Name = "labelControl16";
-            this.labelControl16.Size = new System.Drawing.Size(65, 15);
-            this.labelControl16.TabIndex = 11;
-            this.labelControl16.Text = "Delivered By";
-            // 
             // frmAddEditWorkOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -676,6 +681,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             this.groupControl3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtProblems.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRecommendation.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFindings.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
@@ -684,7 +690,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboEquipmentType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EquipmentTypeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDescription.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtProblems.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
@@ -697,6 +702,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
             this.groupControl5.ResumeLayout(false);
             this.groupControl5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtItemDelivered.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboDeliveredBy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
@@ -704,8 +711,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.OfficeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EquipmentProfileBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UnitTypeBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtItemDelivered.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboDeliveredBy.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -508,7 +508,7 @@
             this.xrLabel83.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel83.SizeF = new System.Drawing.SizeF(149.8512F, 25.51434F);
             this.xrLabel83.StylePriority.UseBorders = false;
-            this.xrLabel83.Text = "Realeased By:";
+            this.xrLabel83.Text = "Received By:";
             // 
             // xrLabel84
             // 
@@ -519,7 +519,7 @@
             this.xrLabel84.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel84.SizeF = new System.Drawing.SizeF(149.8512F, 25.51434F);
             this.xrLabel84.StylePriority.UseBorders = false;
-            this.xrLabel84.Text = "Realeased By:";
+            this.xrLabel84.Text = "Released By:";
             // 
             // xrLabel72
             // 
@@ -574,7 +574,7 @@
             this.xrLabel68.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel68.SizeF = new System.Drawing.SizeF(149.8512F, 25.51434F);
             this.xrLabel68.StylePriority.UseBorders = false;
-            this.xrLabel68.Text = "Realeased By:";
+            this.xrLabel68.Text = "Released By:";
             // 
             // xrLabel67
             // 
@@ -585,7 +585,7 @@
             this.xrLabel67.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel67.SizeF = new System.Drawing.SizeF(149.8512F, 25.51434F);
             this.xrLabel67.StylePriority.UseBorders = false;
-            this.xrLabel67.Text = "Realeased By:";
+            this.xrLabel67.Text = "Received By:";
             // 
             // xrLabel66
             // 

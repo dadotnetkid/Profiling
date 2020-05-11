@@ -42,7 +42,7 @@ namespace Win.Dlvry
             if (methodType == MethodType.Edit)
                 return;
             var unitOfWork = new UnitOfWork();
-            this.Id = (unitOfWork.DeliveriesRepo.Fetch().Select(x => new { x.Id }).FirstOrDefault()?.Id ?? 0) + 1;
+            this.Id = (unitOfWork.DeliveriesRepo.Fetch().OrderByDescending(m => m.Id).Select(x => new { x.Id }).FirstOrDefault()?.Id ?? 0) + 1;
             this.deliveryId = Id.ToString("EPiS-0000");
             unitOfWork.DeliveriesRepo.Insert(new Deliveries()
             {
@@ -65,7 +65,7 @@ namespace Win.Dlvry
                 OfficeId = txtOffice.EditValue?.ToInt(),
                 DeliveredDate = dtDeliveredDate.EditValue?.ToDate(),
                 DeliveryId = deliveryId,
-          
+
             };
         }
 
@@ -93,7 +93,13 @@ namespace Win.Dlvry
             try
             {
                 var unitOfWork = new UnitOfWork();
-                unitOfWork.DeliveriesRepo.Update(item);
+                var deliveries = unitOfWork.DeliveriesRepo.Find(m => m.Id == item.Id);
+                deliveries.OfficeId = item.OfficeId;
+                deliveries.DeliveredDate = item.DeliveredDate;
+                deliveries.DeliveryId = item.DeliveryId;
+                deliveries.Files = item.Files;
+                deliveries.SupplierId = item.SupplierId;
+
                 unitOfWork.Save();
             }
             catch (Exception e)
@@ -108,8 +114,13 @@ namespace Win.Dlvry
             try
             {
                 var unitOfWork = new UnitOfWork();
+                var deliveries = unitOfWork.DeliveriesRepo.Find(m => m.Id == item.Id);
+                deliveries.OfficeId = item.OfficeId;
+                deliveries.DeliveredDate = item.DeliveredDate;
+                deliveries.DeliveryId = item.DeliveryId;
+                deliveries.Files = item.Files;
+                deliveries.SupplierId = item.SupplierId;
 
-                unitOfWork.DeliveriesRepo.Update(item);
                 unitOfWork.Save();
             }
             catch (Exception e)

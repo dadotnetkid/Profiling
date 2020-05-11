@@ -107,6 +107,8 @@ namespace Win.WO
 
         private void btnNewPO_Click(object sender, EventArgs e)
         {
+            if (!((XtraForm)this).ValidateForm())
+                return;
             if (MessageBox.Show("Do you want to submit this?", "Submit", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 return;
 

@@ -10,7 +10,7 @@ namespace Models
     public partial class WorkOrders
     {
 
-        
+
 
         public string GeneratedId(PPEs ppe, int wOId)
         {
@@ -21,7 +21,7 @@ namespace Models
             return ppe?.Employees?.Offices?.BoxNo + "-" + ppe?.EquipmentTypes?.Box + "-" + count.ToString("0000");
         }
 
-        public string Actions => string.Join(Environment.NewLine, this.DocActions.Select(x => x.ActionTaken));
+        public string Actions => string.Join(Environment.NewLine, this.DocActions.Where(x=>x.TableName=="WorkOrders").Select(x => x.ActionTaken));
         public string PrintedBy { get; set; }
     }
 }

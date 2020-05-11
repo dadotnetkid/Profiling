@@ -10,7 +10,6 @@ namespace Models
     {
         public string TechSpecsId => "EPiS-" + this.Id;
         public string PrintedBy { get; set; }
-        
 
     }
 }
