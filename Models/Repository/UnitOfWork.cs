@@ -23,7 +23,29 @@ namespace Models.Repository
 
         }
 
+        private GenericRepository<PGNs> _PGNsRepo;
+        public GenericRepository<PGNs> PGNsRepo
+        {
+            get
+            {
+                if (this._PGNsRepo == null)
+                    this._PGNsRepo = new GenericRepository<PGNs>(context);
+                return _PGNsRepo;
+            }
+            set { _PGNsRepo = value; }
+        }
 
+        private GenericRepository<ActionLists> _ActionListsRepo;
+        public GenericRepository<ActionLists> ActionListsRepo
+        {
+            get
+            {
+                if (this._ActionListsRepo == null)
+                    this._ActionListsRepo = new GenericRepository<ActionLists>(context);
+                return _ActionListsRepo;
+            }
+            set { _ActionListsRepo = value; }
+        }
         private GenericRepository<Deliveries> _DeliveriesRepo;
         public GenericRepository<Deliveries> DeliveriesRepo
         {

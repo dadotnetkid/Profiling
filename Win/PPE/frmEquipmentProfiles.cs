@@ -18,7 +18,7 @@ using Win.Properties;
 
 namespace Win
 {
-    public partial class frmEquipmentProfiles : DevExpress.XtraEditors.XtraForm
+    public partial class frmEquipmentProfiles : DevExpress.XtraEditors.XtraUserControl
     {
         private PPEs PPEs;
         public int PropertyId { get; set; }
@@ -27,7 +27,6 @@ namespace Win
         public frmEquipmentProfiles()
         {
             InitializeComponent();
-            this.Icon = Resources.computer.ToIcon();
         }
 
         private void frmEquipmentProfiles_Load(object sender, EventArgs e)
@@ -40,7 +39,7 @@ namespace Win
             try
             {
                 this.EquipmentProfileBindingSource.DataSource =
-                    new UnitOfWork().EquipmentProfilesRepo.Get(m => m.RefId == item.Id && m.TableName == "EquipmentProfiles");
+                    new UnitOfWork().EquipmentProfilesRepo.Get(m => m.RefId == item.Id && m.TableName == "EquipmentProfiles", orderBy: x => x.OrderByDescending(m => m.Id));
                 this.ActionGridControl.DataSource =
                     new UnitOfWork().DocActionsRepo.Get(m => m.RefId == item.Id && m.TableName == "PPEs");
                 var unitOfWork = new UnitOfWork();
@@ -83,7 +82,7 @@ namespace Win
             try
             {
                 UnitOfWork unitOfWork = new UnitOfWork();
-                this.PPEBindingSource.DataSource = unitOfWork.PPEsRepo.Paginate(m => m.OrderBy(x => x.Id), 20, 0);
+                this.PPEBindingSource.DataSource = unitOfWork.PPEsRepo.Get(orderBy: x => x.OrderByDescending(m => m.Id));
                 this.OfficeBindingSource.DataSource = unitOfWork.OfficesRepo.Get();
                 this.EmployeeBindingSource.DataSource = unitOfWork.EmployeesRepo.Get();
                 this.EquipmentTypeBindingSource.DataSource = unitOfWork.EquipmentTypesRepo.Get();
@@ -161,11 +160,18 @@ namespace Win
             if (MessageBox.Show("Do you want to delete this", "Deleting", MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question) == DialogResult.No)
                 return;
-            using (UnitOfWork unitOfWork = new UnitOfWork())
+            try
             {
-                unitOfWork.PPEsRepo.Delete(PropertyId);
+                UnitOfWork unitOfWork = new UnitOfWork();
+                unitOfWork.PPEsRepo.Delete(x => x.Id == PropertyId);
                 unitOfWork.Save();
             }
+            catch (Exception exception)
+            {
+
+                MessageBox.Show(exception.Message, exception.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
 
             this.LoadEquipmentProfiles();
             PPEGrid.RefreshData();
@@ -185,10 +191,10 @@ namespace Win
             if (!User.UserInAction("New Equipment Profile Action"))
                 return;
 
-            frmDocActions frm = new frmDocActions( tableName: "PPEs",
+            frmDocActions frm = new frmDocActions(tableName: "PPEs",
                label: PPEs?.Employees?.EmployeeName + " - " + PPEs?.EquipmentTypes?.EquipmentType, refId: this.PropertyId);
 
-            var res = frm.ShowDialogResult();
+            frmDocActions res = frm.ShowDialogResult() as frmDocActions;
             if (!res.HasAction)
                 return;
 
@@ -217,7 +223,13 @@ namespace Win
         public void search(string search = "")
         {
             UnitOfWork unitOfWork = new UnitOfWork();
-            this.PPEBindingSource.DataSource = unitOfWork.PPEsRepo.Paginate(m => m.OrderBy(x => x.Id), 20, 0, m => m.PPEId.StartsWith(search) || m.Description.StartsWith(search) || m.Employees.FirstName.StartsWith(search) || m.Employees.LastName.StartsWith(search));
+            if (string.IsNullOrEmpty(search))
+                return;
+            var res = unitOfWork.PPEsRepo.Paginate(m => m.OrderBy(x => x.Id), 1, 0, m => m.PPEId.Contains(search) || m.Description.StartsWith(search) || m.Employees.FirstName.StartsWith(search) || m.Employees.LastName.StartsWith(search));
+
+
+
+            this.PPEBindingSource.DataSource = res;
 
             if (PPEGrid.GetRow(0) is PPEs item)
             {
@@ -273,8 +285,8 @@ namespace Win
 
 
 
-            searchTimer.Interval = random.Next(150, 1500);
-            searchTimer.Stop();
+            //searchTimer.Interval = random.Next(150, 1500);
+            //searchTimer.Stop();
         }
 
         private void txtSearch_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)

@@ -69,7 +69,7 @@ namespace Win.PO
                     frmDocActions frm = new frmDocActions("PurchaseOrders",
                         purchaseOrders?.Employees?.EmployeeName + " - " + purchaseOrders?.EquipmentTypes?.EquipmentType, purchaseOrders.Id);
 
-                    var res = frm.ShowDialogResult();
+                    frmDocActions res = frm.ShowDialogResult() as frmDocActions;
                     if (!res.HasAction)
                         return;
                     var unitOfWork = new UnitOfWork();

@@ -11,8 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-using Models.Repository;
 using Microsoft.Data.ConnectionUI;
+using Models.Repository;
 using Win.Properties;
 using DataSource = Microsoft.Data.ConnectionUI.DataSource;
 
@@ -94,8 +94,8 @@ namespace Win
 
         private void btnServerSetup_Click(object sender, EventArgs e)
         {
-            DataConnectionDialog dataConnectionDialog = new DataConnectionDialog();
-            dataConnectionDialog.ShowDialog();
+            //DataConnectionDialog dataConnectionDialog = new DataConnectionDialog();
+            //dataConnectionDialog.ShowDialog();
         }
 
         private void btnServerSetup_Click_1(object sender, EventArgs e)

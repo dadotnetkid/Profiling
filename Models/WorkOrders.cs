@@ -18,11 +18,13 @@ namespace Models
         public WorkOrders()
         {
             this.DocActions = new HashSet<DocActions>();
+            this.TechSpecs = new HashSet<TechSpecs>();
         }
     
         public int Id { get; set; }
         public Nullable<int> PPEId { get; set; }
         public string WorkOrderId { get; set; }
+        public Nullable<int> Box { get; set; }
         public Nullable<System.DateTime> RequestedDate { get; set; }
         public Nullable<int> RequestedBy { get; set; }
         public string Position { get; set; }
@@ -31,17 +33,22 @@ namespace Models
         public string Findings { get; set; }
         public string Recommendation { get; set; }
         public Nullable<System.DateTime> DateCreated { get; set; }
-        public Nullable<int> Box { get; set; }
         public string FolderNo { get; set; }
         public Nullable<int> BoxNo { get; set; }
         public string CreatedBy { get; set; }
         public string DeliveredBy { get; set; }
         public string DeliveredDescription { get; set; }
+        public Nullable<int> OfficeNo { get; set; }
+        public Nullable<int> EquipmentTypeNo { get; set; }
+        public string SerialNumber { get; set; }
+        public Nullable<int> EquipmentCount { get; set; }
     
-        public virtual PPEs PPEs { get; set; }
-        public virtual Employees Employees { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DocActions> DocActions { get; set; }
-        public virtual Users CreatedByUser { get; set; }
+        public virtual Employees Employees { get; set; }
+        public virtual PPEs PPEs { get; set; }
+        public virtual Users Users { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TechSpecs> TechSpecs { get; set; }
     }
 }

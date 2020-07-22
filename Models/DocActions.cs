@@ -30,9 +30,9 @@ namespace Models
         public Nullable<int> ActivityId { get; set; }
     
         public virtual PPEs PPEs { get; set; }
-        public virtual WorkOrders WorkOrders { get; set; }
         public virtual TechSpecs TechSpecs { get; set; }
         public virtual Users CreatedByUsers { get; set; }
         public virtual Users EndorsedToUsers { get; set; }
+        public virtual WorkOrders WorkOrders { get; set; }
     }
 }

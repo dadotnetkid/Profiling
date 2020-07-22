@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions13 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject49 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject50 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject51 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject52 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions14 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject53 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject54 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject55 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject56 = new DevExpress.Utils.SerializableAppearanceObject();
             this.UniTypesLookUpRepo = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.UnitTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
@@ -138,6 +138,8 @@
             this.txtChief = new DevExpress.XtraEditors.TextEdit();
             this.DropdownBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.searchTimer = new System.Windows.Forms.Timer(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.UniTypesLookUpRepo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UnitTypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
@@ -205,6 +207,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTel.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtChief.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DropdownBindingSource)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // UniTypesLookUpRepo
@@ -241,8 +244,10 @@
             // 
             // gridControl1
             // 
+            this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gridControl1.DataSource = this.EquipmentProfileBindingSource;
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl1.EmbeddedNavigator.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
             this.gridControl1.Location = new System.Drawing.Point(2, 2);
             this.gridControl1.MainView = this.EquipmentGrid;
@@ -258,6 +263,10 @@
             this.gridControl1.UseEmbeddedNavigator = true;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.EquipmentGrid});
+            // 
+            // EquipmentProfileBindingSource
+            // 
+            this.EquipmentProfileBindingSource.Sort = "Id DESC";
             // 
             // EquipmentGrid
             // 
@@ -311,11 +320,11 @@
             // repositoryItemButtonEdit1
             // 
             this.repositoryItemButtonEdit1.AutoHeight = false;
-            editorButtonImageOptions1.Image = global::Win.Properties.Resources.cancel_16;
-            serializableAppearanceObject1.Image = global::Win.Properties.Resources.cancel_16;
-            serializableAppearanceObject1.Options.UseImage = true;
+            editorButtonImageOptions13.Image = global::Win.Properties.Resources.cancel_16;
+            serializableAppearanceObject49.Image = global::Win.Properties.Resources.cancel_16;
+            serializableAppearanceObject49.Options.UseImage = true;
             this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions13, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject49, serializableAppearanceObject50, serializableAppearanceObject51, serializableAppearanceObject52, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
             this.repositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
@@ -423,9 +432,9 @@
             this.panelControl1.Controls.Add(this.Grid);
             this.panelControl1.Controls.Add(this.panelControl2);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelControl1.Location = new System.Drawing.Point(0, 0);
+            this.panelControl1.Location = new System.Drawing.Point(0, 41);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(389, 740);
+            this.panelControl1.Size = new System.Drawing.Size(389, 731);
             this.panelControl1.TabIndex = 1;
             // 
             // Grid
@@ -434,18 +443,20 @@
             this.Grid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Grid.Location = new System.Drawing.Point(2, 46);
             this.Grid.MainView = this.PPEGrid;
-            this.Grid.MaximumSize = new System.Drawing.Size(385, 692);
-            this.Grid.MinimumSize = new System.Drawing.Size(385, 692);
             this.Grid.Name = "Grid";
             this.Grid.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.OfficeLookUpRepo,
             this.repositoryItemDateEdit1,
             this.EmployeeLookUpRepo,
             this.repositoryItemButtonEdit2});
-            this.Grid.Size = new System.Drawing.Size(385, 692);
+            this.Grid.Size = new System.Drawing.Size(385, 683);
             this.Grid.TabIndex = 1;
             this.Grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.PPEGrid});
+            // 
+            // PPEBindingSource
+            // 
+            this.PPEBindingSource.Sort = "Id DESC";
             // 
             // PPEGrid
             // 
@@ -489,11 +500,11 @@
             this.repositoryItemButtonEdit2.Appearance.Image = global::Win.Properties.Resources.cancel_16;
             this.repositoryItemButtonEdit2.Appearance.Options.UseImage = true;
             this.repositoryItemButtonEdit2.AutoHeight = false;
-            editorButtonImageOptions2.Image = global::Win.Properties.Resources.cancel_16;
-            serializableAppearanceObject5.Image = global::Win.Properties.Resources.cancel_16;
-            serializableAppearanceObject5.Options.UseImage = true;
+            editorButtonImageOptions14.Image = global::Win.Properties.Resources.cancel_16;
+            serializableAppearanceObject53.Image = global::Win.Properties.Resources.cancel_16;
+            serializableAppearanceObject53.Options.UseImage = true;
             this.repositoryItemButtonEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions14, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject53, serializableAppearanceObject54, serializableAppearanceObject55, serializableAppearanceObject56, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButtonEdit2.ContextImageOptions.Image = global::Win.Properties.Resources.cancel_16;
             this.repositoryItemButtonEdit2.Name = "repositoryItemButtonEdit2";
             this.repositoryItemButtonEdit2.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
@@ -600,9 +611,9 @@
             this.panelControl3.Controls.Add(this.btnEditPo);
             this.panelControl3.Controls.Add(this.btnNewPO);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl3.Location = new System.Drawing.Point(389, 0);
+            this.panelControl3.Location = new System.Drawing.Point(389, 41);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(857, 78);
+            this.panelControl3.Size = new System.Drawing.Size(859, 78);
             this.panelControl3.TabIndex = 2;
             // 
             // btnScan
@@ -672,23 +683,25 @@
             // 
             this.panelControl4.Controls.Add(this.tabPane1);
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl4.Location = new System.Drawing.Point(389, 78);
+            this.panelControl4.Location = new System.Drawing.Point(389, 119);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(857, 662);
+            this.panelControl4.Size = new System.Drawing.Size(859, 653);
             this.panelControl4.TabIndex = 3;
             // 
             // tabPane1
             // 
+            this.tabPane1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabPane1.Controls.Add(this.tabNavigationPage1);
-            this.tabPane1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabPane1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.tabPane1.Location = new System.Drawing.Point(2, 2);
             this.tabPane1.Name = "tabPane1";
             this.tabPane1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.tabNavigationPage1});
-            this.tabPane1.RegularSize = new System.Drawing.Size(853, 658);
+            this.tabPane1.RegularSize = new System.Drawing.Size(853, 617);
             this.tabPane1.SelectedPage = this.tabNavigationPage1;
-            this.tabPane1.Size = new System.Drawing.Size(853, 658);
+            this.tabPane1.Size = new System.Drawing.Size(853, 617);
             this.tabPane1.TabIndex = 0;
             // 
             // tabNavigationPage1
@@ -701,11 +714,14 @@
             this.tabNavigationPage1.Controls.Add(this.groupControl1);
             this.tabNavigationPage1.Controls.Add(this.groupControl3);
             this.tabNavigationPage1.Name = "tabNavigationPage1";
-            this.tabNavigationPage1.Size = new System.Drawing.Size(853, 631);
+            this.tabNavigationPage1.Size = new System.Drawing.Size(853, 590);
             this.tabNavigationPage1.Paint += new System.Windows.Forms.PaintEventHandler(this.tabNavigationPage1_Paint);
             // 
             // ActionGridControl
             // 
+            this.ActionGridControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ActionGridControl.Location = new System.Drawing.Point(8, 456);
             this.ActionGridControl.MainView = this.ActionGrid;
             this.ActionGridControl.Name = "ActionGridControl";
@@ -852,6 +868,9 @@
             // 
             // panelControl5
             // 
+            this.panelControl5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelControl5.Controls.Add(this.gridControl1);
             this.panelControl5.Location = new System.Drawing.Point(6, 217);
             this.panelControl5.Name = "panelControl5";
@@ -1288,19 +1307,38 @@
             this.searchTimer.Interval = 3000;
             this.searchTimer.Tick += new System.EventHandler(this.searchTimer_Tick);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Navy;
+            this.panel1.Controls.Add(this.labelControl16);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1248, 41);
+            this.panel1.TabIndex = 4;
+            // 
+            // labelControl16
+            // 
+            this.labelControl16.Appearance.Font = new System.Drawing.Font("Segoe UI", 16F);
+            this.labelControl16.Appearance.ForeColor = System.Drawing.Color.White;
+            this.labelControl16.Appearance.Options.UseFont = true;
+            this.labelControl16.Appearance.Options.UseForeColor = true;
+            this.labelControl16.Location = new System.Drawing.Point(15, 6);
+            this.labelControl16.Name = "labelControl16";
+            this.labelControl16.Size = new System.Drawing.Size(165, 30);
+            this.labelControl16.TabIndex = 0;
+            this.labelControl16.Text = "Equipment Profile";
+            // 
             // frmEquipmentProfiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1246, 740);
             this.Controls.Add(this.panelControl4);
             this.Controls.Add(this.panelControl3);
             this.Controls.Add(this.panelControl1);
-            this.MaximumSize = new System.Drawing.Size(1248, 772);
-            this.MinimumSize = new System.Drawing.Size(1248, 772);
+            this.Controls.Add(this.panel1);
             this.Name = "frmEquipmentProfiles";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Equipment Profile";
+            this.Size = new System.Drawing.Size(1248, 772);
             this.Load += new System.EventHandler(this.frmEquipmentProfiles_Load);
             ((System.ComponentModel.ISupportInitialize)(this.UniTypesLookUpRepo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UnitTypeBindingSource)).EndInit();
@@ -1375,6 +1413,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTel.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtChief.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DropdownBindingSource)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1480,5 +1520,7 @@
         private DevExpress.XtraEditors.TextEdit txtBarcode;
         private DevExpress.XtraEditors.TextEdit txtPropNo;
         private System.Windows.Forms.Timer searchTimer;
+        private System.Windows.Forms.Panel panel1;
+        private DevExpress.XtraEditors.LabelControl labelControl16;
     }
 }

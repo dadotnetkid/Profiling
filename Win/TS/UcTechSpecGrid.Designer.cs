@@ -55,9 +55,9 @@
             this.colOfficeId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colEmployeeId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDateRequested = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TechSpecId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.txtSearch = new DevExpress.XtraEditors.SearchControl();
-            this.TechSpecId = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.UnitTypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EquipmentTypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EquipmentProfileBindingSource)).BeginInit();
@@ -187,6 +187,15 @@
             this.colDateRequested.VisibleIndex = 2;
             this.colDateRequested.Width = 67;
             // 
+            // TechSpecId
+            // 
+            this.TechSpecId.Caption = "Id";
+            this.TechSpecId.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.TechSpecId.FieldName = "TechSpecsId";
+            this.TechSpecId.Name = "TechSpecId";
+            this.TechSpecId.Visible = true;
+            this.TechSpecId.VisibleIndex = 1;
+            // 
             // panelControl2
             // 
             this.panelControl2.Controls.Add(this.txtSearch);
@@ -211,16 +220,6 @@
             this.txtSearch.Properties.EditValueChanged += new System.EventHandler(this.txtSearch_Properties_EditValueChanged);
             this.txtSearch.Size = new System.Drawing.Size(460, 28);
             this.txtSearch.TabIndex = 1;
-            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
-            // 
-            // TechSpecId
-            // 
-            this.TechSpecId.Caption = "Id";
-            this.TechSpecId.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.TechSpecId.FieldName = "TechSpecsId";
-            this.TechSpecId.Name = "TechSpecId";
-            this.TechSpecId.Visible = true;
-            this.TechSpecId.VisibleIndex = 1;
             // 
             // UcTechSpecGrid
             // 
@@ -276,7 +275,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colEmployeeId;
         private DevExpress.XtraGrid.Columns.GridColumn colDateRequested;
         private DevExpress.XtraEditors.PanelControl panelControl2;
-        private DevExpress.XtraEditors.SearchControl txtSearch;
         private DevExpress.XtraGrid.Columns.GridColumn TechSpecId;
+        public DevExpress.XtraEditors.SearchControl txtSearch;
     }
 }

@@ -18,10 +18,11 @@ namespace Models
         public Employees()
         {
             this.PPEs = new HashSet<PPEs>();
-            this.WorkOrders = new HashSet<WorkOrders>();
             this.PurchaseOrders = new HashSet<PurchaseOrders>();
             this.TechSpecs = new HashSet<TechSpecs>();
             this.MES = new HashSet<MES>();
+            this.WorkOrders = new HashSet<WorkOrders>();
+            this.PGNs = new HashSet<PGNs>();
         }
     
         public int Id { get; set; }
@@ -36,13 +37,15 @@ namespace Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PPEs> PPEs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WorkOrders> WorkOrders { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseOrders> PurchaseOrders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TechSpecs> TechSpecs { get; set; }
         public virtual Offices Offices { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MES> MES { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<WorkOrders> WorkOrders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PGNs> PGNs { get; set; }
     }
 }

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraRichEdit;
 using Helpers;
 using Models;
 using Models.Repository;
@@ -21,18 +22,39 @@ using Win.Xcanner;
 
 namespace Win.TS
 {
-    public partial class frmTechSpecs : DevExpress.XtraEditors.XtraForm
+    public partial class frmTechSpecs : DevExpress.XtraEditors.XtraUserControl
     {
+        private TechSpecs oldData;
+        private int oldSelectedRow;
+
         public frmTechSpecs()
         {
             InitializeComponent();
-            this.Icon = Resources.maintenance.ToIcon();
+            //  this.Icon = Resources.maintenance.ToIcon();
         }
 
         private void frmTechSpecs_Load(object sender, EventArgs e)
         {
             UcTechSpecGrid.CreateUcControl();
             UcTechSpecGrid.GridView.FocusedRowChanged += GridView_FocusedRowChanged;
+            UcTechSpecGrid.txtSearch.KeyDown += TxtSearch_KeyDown;
+
+        }
+
+        private void TxtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                var item = UcTechSpecGrid.Search(UcTechSpecGrid.txtSearch.Text)?.FirstOrDefault();
+                if (item == null)
+                    return;
+                TechSpecDetails.Details(item);
+                lblPODescription.Text = item.TechSpecsId;
+                ucTSEquipmentProfiles1.Details(item.Id, "TechSpecs");
+                this.DocumentBindingSource.DataSource =
+                    new UnitOfWork().DocumentsRepo.Get(m => m.RefId == item.Id && m.TableName == "TechSpecs");
+                LoadActions();
+            }
 
         }
 
@@ -64,28 +86,26 @@ namespace Win.TS
                 frmTechSpecs = this
 
             };
-            frm.ShowDialog();
+            frmAddEditTechSpecs res = frm.ShowDialogResult() as frmAddEditTechSpecs;
             UcTechSpecGrid.CreateUcControl();
             if (UcTechSpecGrid.GridView.GetFocusedRow() is TechSpecs item)
             {
                 TechSpecDetails.Details(item);
                 lblPODescription.Text = item.TechSpecsId;
                 ucTSEquipmentProfiles1.Details(item.Id, "TechSpecs");
+
             }
+            var rowHandle = this.UcTechSpecGrid.GridView.LocateByValue("Id", res.TechSpecsId);
+            this.UcTechSpecGrid.GridView.FocusedRowHandle = rowHandle;
+            this.UcTechSpecGrid.GridView.MakeRowVisible(rowHandle);
         }
 
-
-
-
-        private void btnEditPo_Click(object sender, EventArgs e)
+        public void NewTS(WorkOrders workOrders)
         {
-            if (!User.UserInAction("Edit Tech Spec"))
-                return;
-            frmAddEditTechSpecs frm = new frmAddEditTechSpecs()
+            frmAddEditTechSpecs frm = new frmAddEditTechSpecs(workOrders)
             {
-                frmTechSpecs = this,
-                TechSpecsId = Convert.ToInt32((UcTechSpecGrid.GridView.GetFocusedRow() as TechSpecs)?.Id),
-                MethodType = MethodType.Edit
+                MethodType = MethodType.Add,
+                frmTechSpecs = this
             };
             frm.ShowDialog();
             UcTechSpecGrid.CreateUcControl();
@@ -94,6 +114,34 @@ namespace Win.TS
                 TechSpecDetails.Details(item);
                 lblPODescription.Text = item.TechSpecsId;
                 ucTSEquipmentProfiles1.Details(item.Id, "TechSpecs");
+
+            }
+        }
+
+
+        private void btnEditPo_Click(object sender, EventArgs e)
+        {
+            if (!User.UserInAction("Edit Tech Spec"))
+                return;
+            if (UcTechSpecGrid.GridView.GetFocusedRow() is TechSpecs item)
+            {
+                this.oldData = item;
+                this.oldSelectedRow = UcTechSpecGrid.GridView.FocusedRowHandle;
+                frmAddEditTechSpecs frm = new frmAddEditTechSpecs()
+                {
+                    frmTechSpecs = this,
+                    TechSpecsId = Convert.ToInt32((UcTechSpecGrid.GridView.GetFocusedRow() as TechSpecs)?.Id),
+                    MethodType = MethodType.Edit
+                };
+                frm.ShowDialog();
+                UcTechSpecGrid.CreateUcControl();
+
+                TechSpecDetails.Details(item);
+                lblPODescription.Text = item.TechSpecsId;
+                ucTSEquipmentProfiles1.Details(item.Id, "TechSpecs");
+                UcTechSpecGrid.GridView.SelectRow(this.oldSelectedRow);
+                UcTechSpecGrid.GridView.FocusedRowHandle = this.oldSelectedRow;
+                UcTechSpecGrid.GridView.MakeRowVisible(oldSelectedRow);
             }
         }
 
@@ -110,7 +158,7 @@ namespace Win.TS
                         refId: item.Id);
 
                     var res = frm.ShowDialogResult();
-            
+
                 }
 
 
@@ -139,6 +187,21 @@ namespace Win.TS
 
         }
 
+        public void LoadDocuments()
+        {
+            try
+            {
+                if (UcTechSpecGrid.GridView.GetFocusedRow() is TechSpecs item)
+                {
+                    UcActionGrid.LoadActions(item.Id, "TechSpecs");
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Load Tech Specs", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
+        }
 
 
 
@@ -227,19 +290,39 @@ namespace Win.TS
         private void btnPrint_Click(object sender, EventArgs e)
         {
             TechSpecRequestDetailViewModel vm = new TechSpecRequestDetailViewModel();
-            var techSpecs = UcTechSpecGrid.GridView.GetFocusedRow() as TechSpecs;
-            var res = vm.GenerateReport(techSpecs.Id);
-            techSpecs.TechSpecRequests.Clear();
-            techSpecs.TechSpecRequests = res;
-            techSpecs.PrintedBy = User.GetUserName();
-            frmReportViewer frm = new frmReportViewer()
+            if (UcTechSpecGrid.GridView.GetFocusedRow() is TechSpecs techSpecs)
             {
-                xtraReport = new rptTechSpecs()
+                UnitOfWork unitOfWork = new UnitOfWork();
+                techSpecs = unitOfWork.TechSpecsRepo.Find(x => x.Id == techSpecs.Id);
+                var res = vm.GenerateReport(techSpecs.Id);
+                techSpecs.TechSpecRequests.Clear();
+                techSpecs.TechSpecRequests = res;
+                techSpecs.PrintedBy = User.GetUserName();
+                foreach (var i in techSpecs.TechSpecRequests)
                 {
-                    DataSource = new List<TechSpecs>() { techSpecs }
+                    foreach (var x in i.EquipmentProfiles)
+                    {
+
+                        if (!x.Description?.ToLower().Contains("rtf") == true)
+                        {
+                            RichTextBox rtf = new RichTextBox();
+                            rtf.Text = x.Description;
+                            x.Description = rtf.Rtf;
+                        }
+                    }
+
                 }
-            };
-            frm.ShowDialog();
+
+                frmReportViewer frm = new frmReportViewer()
+                {
+                    xtraReport = new rptTechSpecs()
+                    {
+                        DataSource = new List<TechSpecs>() { techSpecs }
+                    }
+                };
+                frm.ShowDialog();
+            }
+
         }
     }
 }

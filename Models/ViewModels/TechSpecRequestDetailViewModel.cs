@@ -25,10 +25,10 @@ namespace Models.ViewModels
             foreach (var i in techSpecs)
             {
                 i.EquipmentProfiles.AddRange(new UnitOfWork().EquipmentProfilesRepo.Get(m =>
-                    m.TableName == "TechSpecs" && m.RefId == techSpecsId && m.ItemNumber == i.ItemNumber).ToList());
+                    m.TableName == "TechSpecs" && m.RefId == techSpecsId && m.ItemNumber == i.ItemNumber,x=>x.OrderBy(m=>m.RowNumber)).ToList());
                 i.EquipmentProfiles.AddRange(
                 new UnitOfWork().EquipmentProfilesRepo.Get(m =>
-                        m.TableName == "TechSpecs" && m.RefId == techSpecsId && m.ParentItem == i.ItemNumber).ToList()
+                        m.TableName == "TechSpecs" && m.RefId == techSpecsId && m.ParentItem == i.ItemNumber, x => x.OrderBy(m => m.RowNumber)).ToList()
                 );
             }
 

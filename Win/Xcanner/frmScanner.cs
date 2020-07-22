@@ -38,7 +38,7 @@ namespace Win.Xcanner
         {
 
 
-            var res = new frmListOfScanner().ShowDialogResult();
+            var res = new frmListOfScanner().ShowDialogResult() as frmListOfScanner; 
             this.pictureEdit1.Image = res.scanImage;
             Scanners.ScanImage = res.scanImage;
         }

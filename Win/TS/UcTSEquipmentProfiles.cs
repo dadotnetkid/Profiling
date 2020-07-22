@@ -23,7 +23,7 @@ namespace Win.TS
       
         public void Details(int id, string tableName)
         {
-            this.EquipmentProfileBindingSource.DataSource =new UnitOfWork().EquipmentProfilesRepo.Get(m => m.RefId == id && m.TableName == tableName);
+            this.EquipmentProfileBindingSource.DataSource =new UnitOfWork().EquipmentProfilesRepo.Get(m => m.RefId == id && m.TableName == tableName,orderBy:x=>x.OrderBy(m=>m.RowNumber));
         }
 
     }

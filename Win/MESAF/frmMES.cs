@@ -5,7 +5,7 @@ using Models.Repository;
 
 namespace Win.MESAF
 {
-    public partial class frmMES : DevExpress.XtraEditors.XtraForm
+    public partial class frmMES : DevExpress.XtraEditors.XtraUserControl
     {
         public frmMES()
         {
@@ -62,6 +62,7 @@ namespace Win.MESAF
         {
             frmAddEditMES frm = new frmAddEditMES();
             frm.ShowDialog();
+            ucMES1.Create();
             Detail();
         }
 
@@ -72,6 +73,7 @@ namespace Win.MESAF
                 item = new UnitOfWork().MESRepo.Find(m => m.Id == item.Id);
                 frmAddEditMES frm = new frmAddEditMES(item, MethodType.Edit);
                 frm.ShowDialog();
+                ucMES1.Create();
                 Detail();
 
             }

@@ -29,31 +29,32 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.btnAddEmployee = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
-            this.txtOffice = new DevExpress.XtraEditors.TextEdit();
-            this.cboEmployeeId = new DevExpress.XtraEditors.LookUpEdit();
-            this.EmployeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtPosition = new DevExpress.XtraEditors.TextEdit();
+            this.cboOffice = new DevExpress.XtraEditors.LookUpEdit();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
+            this.txtFindings = new DevExpress.XtraEditors.MemoEdit();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.txtProblems = new DevExpress.XtraEditors.MemoEdit();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.txtRecommendation = new DevExpress.XtraEditors.MemoEdit();
-            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.txtFindings = new DevExpress.XtraEditors.MemoEdit();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.cboEquipmentType = new DevExpress.XtraEditors.LookUpEdit();
-            this.EquipmentTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.txtDescription = new DevExpress.XtraEditors.MemoEdit();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
@@ -62,7 +63,6 @@
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.cboPropertyNo = new DevExpress.XtraEditors.LookUpEdit();
-            this.PPEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtRequestedDate = new DevExpress.XtraEditors.DateEdit();
             this.txtFolderNo = new DevExpress.XtraEditors.TextEdit();
             this.txtBox = new DevExpress.XtraEditors.SpinEdit();
@@ -77,31 +77,33 @@
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.btnEditPo = new DevExpress.XtraEditors.SimpleButton();
-            this.btnNewPO = new DevExpress.XtraEditors.SimpleButton();
-            this.WorkOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.OfficeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.EquipmentProfileBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.UnitTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnNewWO = new DevExpress.XtraEditors.SimpleButton();
+            this.cboEmployeeId = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.employeesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.colEmployeeName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPosition = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOffices = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtOffice.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboEmployeeId.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EmployeeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPosition.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboOffice.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtProblems.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtRecommendation.Properties)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtFindings.Properties)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtProblems.Properties)).BeginInit();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRecommendation.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboEquipmentType.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EquipmentTypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDescription.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboPropertyNo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PPEBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtRequestedDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtRequestedDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFolderNo.Properties)).BeginInit();
@@ -112,10 +114,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboDeliveredBy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.WorkOrderBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OfficeBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EquipmentProfileBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UnitTypeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEmployeeId.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl4
@@ -128,9 +129,9 @@
             this.groupControl4.Controls.Add(this.labelControl5);
             this.groupControl4.Controls.Add(this.labelControl9);
             this.groupControl4.Controls.Add(this.labelControl10);
-            this.groupControl4.Controls.Add(this.txtOffice);
-            this.groupControl4.Controls.Add(this.cboEmployeeId);
             this.groupControl4.Controls.Add(this.txtPosition);
+            this.groupControl4.Controls.Add(this.cboOffice);
+            this.groupControl4.Controls.Add(this.cboEmployeeId);
             this.groupControl4.Location = new System.Drawing.Point(11, 141);
             this.groupControl4.Name = "groupControl4";
             this.groupControl4.Size = new System.Drawing.Size(414, 98);
@@ -178,38 +179,6 @@
             this.labelControl10.TabIndex = 0;
             this.labelControl10.Text = "Position";
             // 
-            // txtOffice
-            // 
-            this.txtOffice.Location = new System.Drawing.Point(77, 68);
-            this.txtOffice.Name = "txtOffice";
-            this.txtOffice.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtOffice.Properties.Appearance.Options.UseFont = true;
-            this.txtOffice.Properties.ReadOnly = true;
-            this.txtOffice.Properties.UseReadOnlyAppearance = false;
-            this.txtOffice.Size = new System.Drawing.Size(312, 22);
-            this.txtOffice.TabIndex = 9;
-            // 
-            // cboEmployeeId
-            // 
-            this.cboEmployeeId.Location = new System.Drawing.Point(77, 24);
-            this.cboEmployeeId.Name = "cboEmployeeId";
-            this.cboEmployeeId.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.cboEmployeeId.Properties.Appearance.Options.UseFont = true;
-            this.cboEmployeeId.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboEmployeeId.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 33, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("EmployeeName", "Employee Name", 97, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
-            this.cboEmployeeId.Properties.DataSource = this.EmployeeBindingSource;
-            this.cboEmployeeId.Properties.DisplayMember = "EmployeeName";
-            this.cboEmployeeId.Properties.NullText = "";
-            this.cboEmployeeId.Properties.UseReadOnlyAppearance = false;
-            this.cboEmployeeId.Properties.ValueMember = "Id";
-            this.cboEmployeeId.Size = new System.Drawing.Size(288, 22);
-            this.cboEmployeeId.TabIndex = 10;
-            this.cboEmployeeId.Tag = "Employee is required";
-            this.cboEmployeeId.EditValueChanged += new System.EventHandler(this.cboEmployeeId_EditValueChanged);
-            // 
             // txtPosition
             // 
             this.txtPosition.Location = new System.Drawing.Point(77, 46);
@@ -221,39 +190,141 @@
             this.txtPosition.Size = new System.Drawing.Size(312, 22);
             this.txtPosition.TabIndex = 7;
             // 
+            // cboOffice
+            // 
+            this.cboOffice.Location = new System.Drawing.Point(77, 68);
+            this.cboOffice.Name = "cboOffice";
+            this.cboOffice.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cboOffice.Properties.Appearance.Options.UseFont = true;
+            this.cboOffice.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboOffice.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("BoxNo", "Box No", 49, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("OffcAcr", "Offc Acr", 54, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("OfficeName", "Office Name", 77, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            this.cboOffice.Properties.DataSource = typeof(Models.Offices);
+            this.cboOffice.Properties.DisplayMember = "OfficeName";
+            this.cboOffice.Properties.NullText = "";
+            this.cboOffice.Properties.UseReadOnlyAppearance = false;
+            this.cboOffice.Properties.ValueMember = "Id";
+            this.cboOffice.Size = new System.Drawing.Size(312, 22);
+            this.cboOffice.TabIndex = 9;
+            this.cboOffice.EditValueChanged += new System.EventHandler(this.cboOffice_EditValueChanged);
+            // 
             // groupControl3
             // 
+            this.groupControl3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupControl3.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.groupControl3.Appearance.Options.UseFont = true;
             this.groupControl3.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.groupControl3.AppearanceCaption.Options.UseFont = true;
-            this.groupControl3.Controls.Add(this.txtProblems);
-            this.groupControl3.Controls.Add(this.labelControl7);
-            this.groupControl3.Controls.Add(this.txtRecommendation);
-            this.groupControl3.Controls.Add(this.labelControl14);
-            this.groupControl3.Controls.Add(this.labelControl6);
-            this.groupControl3.Controls.Add(this.txtFindings);
+            this.groupControl3.Controls.Add(this.tableLayoutPanel1);
             this.groupControl3.Location = new System.Drawing.Point(12, 245);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(829, 100);
+            this.groupControl3.Size = new System.Drawing.Size(829, 297);
             this.groupControl3.TabIndex = 16;
             this.groupControl3.Text = "Solutions";
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panel3, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 21);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(825, 274);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.labelControl14);
+            this.panel1.Controls.Add(this.txtFindings);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(406, 131);
+            this.panel1.TabIndex = 0;
+            // 
+            // labelControl14
+            // 
+            this.labelControl14.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.labelControl14.Appearance.Options.UseFont = true;
+            this.labelControl14.Location = new System.Drawing.Point(29, 3);
+            this.labelControl14.Name = "labelControl14";
+            this.labelControl14.Size = new System.Drawing.Size(50, 15);
+            this.labelControl14.TabIndex = 11;
+            this.labelControl14.Text = "Problems";
+            // 
+            // txtFindings
+            // 
+            this.txtFindings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFindings.Location = new System.Drawing.Point(100, 3);
+            this.txtFindings.Name = "txtFindings";
+            this.txtFindings.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtFindings.Properties.Appearance.Options.UseFont = true;
+            this.txtFindings.Properties.UseReadOnlyAppearance = false;
+            this.txtFindings.Size = new System.Drawing.Size(303, 125);
+            this.txtFindings.TabIndex = 7;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.txtProblems);
+            this.panel2.Controls.Add(this.labelControl6);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 140);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(406, 131);
+            this.panel2.TabIndex = 1;
+            // 
             // txtProblems
             // 
-            this.txtProblems.Location = new System.Drawing.Point(130, 22);
+            this.txtProblems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtProblems.Location = new System.Drawing.Point(100, 3);
             this.txtProblems.Name = "txtProblems";
             this.txtProblems.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtProblems.Properties.Appearance.Options.UseFont = true;
             this.txtProblems.Properties.UseReadOnlyAppearance = false;
-            this.txtProblems.Size = new System.Drawing.Size(259, 34);
+            this.txtProblems.Size = new System.Drawing.Size(303, 125);
             this.txtProblems.TabIndex = 7;
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.labelControl6.Appearance.Options.UseFont = true;
+            this.labelControl6.Location = new System.Drawing.Point(29, 3);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(45, 15);
+            this.labelControl6.TabIndex = 11;
+            this.labelControl6.Text = "Findings";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.labelControl7);
+            this.panel3.Controls.Add(this.txtRecommendation);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(415, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(407, 131);
+            this.panel3.TabIndex = 2;
             // 
             // labelControl7
             // 
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.labelControl7.Appearance.Options.UseFont = true;
-            this.labelControl7.Location = new System.Drawing.Point(397, 37);
+            this.labelControl7.Location = new System.Drawing.Point(12, 5);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(95, 15);
             this.labelControl7.TabIndex = 11;
@@ -261,43 +332,16 @@
             // 
             // txtRecommendation
             // 
-            this.txtRecommendation.Location = new System.Drawing.Point(496, 23);
+            this.txtRecommendation.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRecommendation.Location = new System.Drawing.Point(113, 5);
             this.txtRecommendation.Name = "txtRecommendation";
             this.txtRecommendation.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtRecommendation.Properties.Appearance.Options.UseFont = true;
             this.txtRecommendation.Properties.UseReadOnlyAppearance = false;
-            this.txtRecommendation.Size = new System.Drawing.Size(259, 39);
+            this.txtRecommendation.Size = new System.Drawing.Size(291, 123);
             this.txtRecommendation.TabIndex = 7;
-            // 
-            // labelControl14
-            // 
-            this.labelControl14.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.labelControl14.Appearance.Options.UseFont = true;
-            this.labelControl14.Location = new System.Drawing.Point(61, 24);
-            this.labelControl14.Name = "labelControl14";
-            this.labelControl14.Size = new System.Drawing.Size(50, 15);
-            this.labelControl14.TabIndex = 11;
-            this.labelControl14.Text = "Problems";
-            // 
-            // labelControl6
-            // 
-            this.labelControl6.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Location = new System.Drawing.Point(66, 58);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(45, 15);
-            this.labelControl6.TabIndex = 11;
-            this.labelControl6.Text = "Findings";
-            // 
-            // txtFindings
-            // 
-            this.txtFindings.Location = new System.Drawing.Point(130, 56);
-            this.txtFindings.Name = "txtFindings";
-            this.txtFindings.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtFindings.Properties.Appearance.Options.UseFont = true;
-            this.txtFindings.Properties.UseReadOnlyAppearance = false;
-            this.txtFindings.Size = new System.Drawing.Size(259, 34);
-            this.txtFindings.TabIndex = 7;
             // 
             // groupControl2
             // 
@@ -336,10 +380,8 @@
             this.cboEquipmentType.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 33, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("EquipmentType", "Equipment Type", 96, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
-            this.cboEquipmentType.Properties.DataSource = this.EquipmentTypeBindingSource;
             this.cboEquipmentType.Properties.DisplayMember = "EquipmentType";
             this.cboEquipmentType.Properties.NullText = "";
-            this.cboEquipmentType.Properties.ReadOnly = true;
             this.cboEquipmentType.Properties.UseReadOnlyAppearance = false;
             this.cboEquipmentType.Properties.ValueMember = "Id";
             this.cboEquipmentType.Size = new System.Drawing.Size(312, 22);
@@ -441,7 +483,6 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("PropertyNo", "Property No", 20, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("EmployeeName", "Employee Name"),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Position", "Position")});
-            this.cboPropertyNo.Properties.DataSource = this.PPEBindingSource;
             this.cboPropertyNo.Properties.DisplayMember = "PropertyNo";
             this.cboPropertyNo.Properties.NullText = "";
             this.cboPropertyNo.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
@@ -452,10 +493,6 @@
             this.cboPropertyNo.TabIndex = 10;
             this.cboPropertyNo.Tag = "Property No is Required";
             this.cboPropertyNo.EditValueChanged += new System.EventHandler(this.cboPropertyNo_EditValueChanged);
-            // 
-            // PPEBindingSource
-            // 
-            this.PPEBindingSource.CurrentChanged += new System.EventHandler(this.PPEBindingSource_CurrentChanged);
             // 
             // dtRequestedDate
             // 
@@ -495,7 +532,7 @@
             this.txtBox.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtBox.Properties.Appearance.Options.UseFont = true;
             this.txtBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.txtBox.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
             this.txtBox.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
             this.txtBox.Properties.UseReadOnlyAppearance = false;
@@ -557,17 +594,15 @@
             this.cboDeliveredBy.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cboDeliveredBy.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 33, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("EmployeeName", "Employee Name", 97, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
-            this.cboDeliveredBy.Properties.DataSource = this.EmployeeBindingSource;
             this.cboDeliveredBy.Properties.DisplayMember = "EmployeeName";
             this.cboDeliveredBy.Properties.NullText = "";
+            this.cboDeliveredBy.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.cboDeliveredBy.Properties.UseReadOnlyAppearance = false;
             this.cboDeliveredBy.Properties.ValueMember = "EmployeeName";
             this.cboDeliveredBy.Size = new System.Drawing.Size(312, 22);
             this.cboDeliveredBy.TabIndex = 10;
             this.cboDeliveredBy.Tag = "Delivered By is required";
-            this.cboDeliveredBy.EditValueChanged += new System.EventHandler(this.cboEmployeeId_EditValueChanged);
             // 
             // panelControl1
             // 
@@ -627,11 +662,12 @@
             // 
             // btnEditPo
             // 
+            this.btnEditPo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEditPo.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnEditPo.Appearance.Options.UseFont = true;
             this.btnEditPo.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
             this.btnEditPo.ImageOptions.Image = global::Win.Properties.Resources.cancel_16;
-            this.btnEditPo.Location = new System.Drawing.Point(766, 351);
+            this.btnEditPo.Location = new System.Drawing.Point(770, 548);
             this.btnEditPo.Name = "btnEditPo";
             this.btnEditPo.Size = new System.Drawing.Size(75, 26);
             this.btnEditPo.TabIndex = 21;
@@ -639,62 +675,119 @@
             this.btnEditPo.Text = "Cancel";
             this.btnEditPo.Click += new System.EventHandler(this.btnEditPo_Click);
             // 
-            // btnNewPO
+            // btnNewWO
             // 
-            this.btnNewPO.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnNewPO.Appearance.Options.UseFont = true;
-            this.btnNewPO.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
-            this.btnNewPO.ImageOptions.Image = global::Win.Properties.Resources.save_16;
-            this.btnNewPO.Location = new System.Drawing.Point(685, 351);
-            this.btnNewPO.Name = "btnNewPO";
-            this.btnNewPO.Size = new System.Drawing.Size(75, 26);
-            this.btnNewPO.TabIndex = 20;
-            this.btnNewPO.TabStop = false;
-            this.btnNewPO.Text = "Submit";
-            this.btnNewPO.Click += new System.EventHandler(this.btnNewPO_Click);
+            this.btnNewWO.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNewWO.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnNewWO.Appearance.Options.UseFont = true;
+            this.btnNewWO.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
+            this.btnNewWO.ImageOptions.Image = global::Win.Properties.Resources.save_16;
+            this.btnNewWO.Location = new System.Drawing.Point(689, 548);
+            this.btnNewWO.Name = "btnNewWO";
+            this.btnNewWO.Size = new System.Drawing.Size(75, 26);
+            this.btnNewWO.TabIndex = 20;
+            this.btnNewWO.TabStop = false;
+            this.btnNewWO.Text = "Submit";
+            this.btnNewWO.Click += new System.EventHandler(this.btnNewPO_Click);
+            // 
+            // cboEmployeeId
+            // 
+            this.cboEmployeeId.Location = new System.Drawing.Point(77, 24);
+            this.cboEmployeeId.Name = "cboEmployeeId";
+            this.cboEmployeeId.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cboEmployeeId.Properties.Appearance.Options.UseFont = true;
+            this.cboEmployeeId.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboEmployeeId.Properties.DataSource = this.employeesBindingSource;
+            this.cboEmployeeId.Properties.DisplayMember = "EmployeeName";
+            this.cboEmployeeId.Properties.NullText = "";
+            this.cboEmployeeId.Properties.PopupView = this.searchLookUpEdit1View;
+            this.cboEmployeeId.Properties.UseReadOnlyAppearance = false;
+            this.cboEmployeeId.Properties.ValueMember = "Id";
+            this.cboEmployeeId.Size = new System.Drawing.Size(288, 22);
+            this.cboEmployeeId.TabIndex = 10;
+            this.cboEmployeeId.Tag = "Employee is required";
+            // 
+            // searchLookUpEdit1View
+            // 
+            this.searchLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colEmployeeName,
+            this.colPosition,
+            this.colOffices});
+            this.searchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.searchLookUpEdit1View.Name = "searchLookUpEdit1View";
+            this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // employeesBindingSource
+            // 
+            this.employeesBindingSource.DataSource = typeof(Models.Employees);
+            // 
+            // colEmployeeName
+            // 
+            this.colEmployeeName.FieldName = "EmployeeName";
+            this.colEmployeeName.Name = "colEmployeeName";
+            this.colEmployeeName.Visible = true;
+            this.colEmployeeName.VisibleIndex = 0;
+            // 
+            // colPosition
+            // 
+            this.colPosition.FieldName = "Position";
+            this.colPosition.Name = "colPosition";
+            this.colPosition.Visible = true;
+            this.colPosition.VisibleIndex = 1;
+            // 
+            // colOffices
+            // 
+            this.colOffices.FieldName = "Offices.OfficeName";
+            this.colOffices.Name = "colOffices";
+            this.colOffices.Visible = true;
+            this.colOffices.VisibleIndex = 2;
             // 
             // frmAddEditWorkOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(853, 393);
+            this.ClientSize = new System.Drawing.Size(853, 577);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.btnEditPo);
-            this.Controls.Add(this.btnNewPO);
+            this.Controls.Add(this.btnNewWO);
             this.Controls.Add(this.groupControl5);
             this.Controls.Add(this.groupControl4);
             this.Controls.Add(this.groupControl3);
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);
+            this.MinimumSize = new System.Drawing.Size(855, 466);
             this.Name = "frmAddEditWorkOrder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Work Order";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAddEditWorkOrder_FormClosed);
-            this.Load += new System.EventHandler(this.frmAddEditWorkOrder_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
             this.groupControl4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtOffice.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboEmployeeId.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EmployeeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPosition.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboOffice.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
-            this.groupControl3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtProblems.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtRecommendation.Properties)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtFindings.Properties)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtProblems.Properties)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRecommendation.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboEquipmentType.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EquipmentTypeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDescription.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboPropertyNo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PPEBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtRequestedDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtRequestedDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFolderNo.Properties)).EndInit();
@@ -707,28 +800,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.WorkOrderBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OfficeBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EquipmentProfileBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UnitTypeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEmployeeId.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.BindingSource WorkOrderBindingSource;
-        private System.Windows.Forms.BindingSource OfficeBindingSource;
-        private System.Windows.Forms.BindingSource EmployeeBindingSource;
-        private System.Windows.Forms.BindingSource EquipmentProfileBindingSource;
-        private System.Windows.Forms.BindingSource EquipmentTypeBindingSource;
-        private System.Windows.Forms.BindingSource UnitTypeBindingSource;
         private DevExpress.XtraEditors.GroupControl groupControl4;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.LabelControl labelControl10;
-        private DevExpress.XtraEditors.TextEdit txtOffice;
-        private DevExpress.XtraEditors.LookUpEdit cboEmployeeId;
         private DevExpress.XtraEditors.TextEdit txtPosition;
         private DevExpress.XtraEditors.GroupControl groupControl3;
         private DevExpress.XtraEditors.LabelControl labelControl7;
@@ -745,10 +828,9 @@
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.DateEdit dtRequestedDate;
         private DevExpress.XtraEditors.SimpleButton btnEditPo;
-        private DevExpress.XtraEditors.SimpleButton btnNewPO;
+        private DevExpress.XtraEditors.SimpleButton btnNewWO;
         private DevExpress.XtraEditors.LabelControl labelControl11;
         private DevExpress.XtraEditors.LookUpEdit cboPropertyNo;
-        private System.Windows.Forms.BindingSource PPEBindingSource;
         private DevExpress.XtraEditors.GroupControl groupControl5;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.LabelControl lblWorkOrderNo;
@@ -765,5 +847,16 @@
         private DevExpress.XtraEditors.LabelControl labelControl15;
         private DevExpress.XtraEditors.LabelControl labelControl16;
         private DevExpress.XtraEditors.LookUpEdit cboDeliveredBy;
+        private DevExpress.XtraEditors.LookUpEdit cboOffice;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private DevExpress.XtraEditors.SearchLookUpEdit cboEmployeeId;
+        private System.Windows.Forms.BindingSource employeesBindingSource;
+        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEdit1View;
+        private DevExpress.XtraGrid.Columns.GridColumn colEmployeeName;
+        private DevExpress.XtraGrid.Columns.GridColumn colPosition;
+        private DevExpress.XtraGrid.Columns.GridColumn colOffices;
     }
 }

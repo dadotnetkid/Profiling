@@ -146,6 +146,7 @@ namespace Win.MESAF
         {
             Emp.frmAddEditEmployees frm = new Emp.frmAddEditEmployees();
             frm.ShowDialog();
+            EmployeeBindingSource.DataSource =new UnitOfWork().EmployeesRepo.Fetch().ToList();
         }
 
         private void txtEmployee_EditValueChanged(object sender, EventArgs e)

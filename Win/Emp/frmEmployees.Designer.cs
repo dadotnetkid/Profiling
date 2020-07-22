@@ -45,14 +45,20 @@
             this.LastName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Position = new DevExpress.XtraGrid.Columns.GridColumn();
             this.OfficeId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.OfficeLookUpRepo = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.searchOfficeRepo = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.OfficeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colOfficeName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOfficeAcr = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.OfficeLookUpRepo = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonDEL)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OfficeLookUpRepo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchOfficeRepo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OfficeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OfficeLookUpRepo)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl1
@@ -65,7 +71,8 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonDEL,
-            this.OfficeLookUpRepo});
+            this.OfficeLookUpRepo,
+            this.searchOfficeRepo});
             this.gridControl1.Size = new System.Drawing.Size(921, 571);
             this.gridControl1.TabIndex = 16;
             this.gridControl1.UseEmbeddedNavigator = true;
@@ -159,12 +166,50 @@
             // OfficeId
             // 
             this.OfficeId.Caption = "Office";
-            this.OfficeId.ColumnEdit = this.OfficeLookUpRepo;
+            this.OfficeId.ColumnEdit = this.searchOfficeRepo;
             this.OfficeId.FieldName = "OfficeId";
             this.OfficeId.Name = "OfficeId";
             this.OfficeId.Visible = true;
             this.OfficeId.VisibleIndex = 5;
             this.OfficeId.Width = 229;
+            // 
+            // searchOfficeRepo
+            // 
+            this.searchOfficeRepo.AutoHeight = false;
+            this.searchOfficeRepo.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.searchOfficeRepo.DataSource = this.OfficeBindingSource;
+            this.searchOfficeRepo.DisplayMember = "OfficeName";
+            this.searchOfficeRepo.Name = "searchOfficeRepo";
+            this.searchOfficeRepo.NullText = "";
+            this.searchOfficeRepo.PopupView = this.repositoryItemSearchLookUpEdit1View;
+            this.searchOfficeRepo.ValueMember = "Id";
+            // 
+            // repositoryItemSearchLookUpEdit1View
+            // 
+            this.repositoryItemSearchLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colOfficeName,
+            this.colOfficeAcr});
+            this.repositoryItemSearchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.repositoryItemSearchLookUpEdit1View.Name = "repositoryItemSearchLookUpEdit1View";
+            this.repositoryItemSearchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.repositoryItemSearchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // colOfficeName
+            // 
+            this.colOfficeName.Caption = "Office Name";
+            this.colOfficeName.FieldName = "OfficeName";
+            this.colOfficeName.Name = "colOfficeName";
+            this.colOfficeName.Visible = true;
+            this.colOfficeName.VisibleIndex = 0;
+            // 
+            // colOfficeAcr
+            // 
+            this.colOfficeAcr.Caption = "Office ACR";
+            this.colOfficeAcr.FieldName = "OffcAcr";
+            this.colOfficeAcr.Name = "colOfficeAcr";
+            this.colOfficeAcr.Visible = true;
+            this.colOfficeAcr.VisibleIndex = 1;
             // 
             // OfficeLookUpRepo
             // 
@@ -195,8 +240,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonDEL)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OfficeLookUpRepo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchOfficeRepo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OfficeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OfficeLookUpRepo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -216,5 +263,9 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit OfficeLookUpRepo;
         private System.Windows.Forms.BindingSource OfficeBindingSource;
         private DevExpress.XtraGrid.Columns.GridColumn Position;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit searchOfficeRepo;
+        private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit1View;
+        private DevExpress.XtraGrid.Columns.GridColumn colOfficeName;
+        private DevExpress.XtraGrid.Columns.GridColumn colOfficeAcr;
     }
 }

@@ -23,6 +23,15 @@ namespace Win.TS
             InitializeComponent();
             this.Icon = Resources.maintenance.ToIcon();
         }
+        public frmAddEditTechSpecs(WorkOrders workOrders)
+        {
+            InitializeComponent();
+            this.Icon = Resources.maintenance.ToIcon();
+            this.workOrders = workOrders;
+            //Initialize(workOrders);
+        }
+
+        private WorkOrders workOrders;
 
         private void frmAddEditTechSpecs_Load(object sender, EventArgs e)
         {
@@ -36,7 +45,25 @@ namespace Win.TS
             this.dtDateRequest.EditValue = DateTime.Now;
 
             if (MethodType == MethodType.Edit)
+            {
+                UnitOfWork uow = new UnitOfWork();
+                var res = uow.EquipmentProfilesRepo
+                    .Fetch(x => x.RowNumber == null && x.RefId == TechSpecsId && x.TableName == "TechSpecs").Any();
+                if (res)
+                {
+                    var rowNumber = 1;
+                    foreach (var i in uow.EquipmentProfilesRepo
+                        .Get(x => x.RefId == TechSpecsId && x.TableName == "TechSpecs"))
+                    {
+                        var eq = uow.EquipmentProfilesRepo.Find(x => x.Id == i.Id);
+                        eq.RowNumber = rowNumber;
+                        rowNumber++;
+                        uow.Save();
+                    }
+
+                }
                 return;
+            }
 
             try
             {
@@ -44,9 +71,18 @@ namespace Win.TS
                 {
                     this.TechSpecsId = (unitOfWork.TechSpecsRepo.Fetch().Select(x => new { x.Id }).OrderByDescending(x => x.Id)
                                 .FirstOrDefault()?.Id ?? 0) + 1;
-                    unitOfWork.TechSpecsRepo.Insert(new TechSpecs() { Id = TechSpecsId });
+                    var ts = new TechSpecs()
+                    {
+                        Id = TechSpecsId,
+                        WorOrderId = workOrders?.Id,
+                        Requestedby = workOrders?.RequestedBy,
+                        DateRequested = DateTime.Now
+                    };
+                    unitOfWork.TechSpecsRepo.Insert(ts);
                     unitOfWork.Save();
                     lblTechSpecNo.Text = TechSpecsId.ToString("EPIS-0000");
+                    LoadTechSpecs();
+                    LoadTechSpecsDetails(ts);
                 }
             }
             catch (Exception e)
@@ -72,6 +108,7 @@ namespace Win.TS
                 this.EquipmentTypeBindingSource.DataSource = unitOfWork.EquipmentTypesRepo.Get();
                 this.UnitTypeBindingSource.DataSource = unitOfWork.UnitTypesRepo.Get();
                 this.AssignedToBindingSource.DataSource = unitOfWork.UsersRepo.Get();
+                this.workOrdersBindingSource.DataSource = unitOfWork.WorkOrdersRepo.Get();
                 this.EquipmentProfileBindingSource.DataSource = new List<EquipmentProfiles>();
                 this.cboAssignedTo.EditValue = User.UserId;
             }
@@ -88,12 +125,12 @@ namespace Win.TS
             try
             {
                 this.EquipmentProfileBindingSource.DataSource =
-                    new UnitOfWork().EquipmentProfilesRepo.Get(m => m.RefId == item.Id && m.TableName == "TechSpecs");
+                    new UnitOfWork().EquipmentProfilesRepo.Get(m => m.RefId == item.Id && m.TableName == "TechSpecs", orderBy: x => x.OrderBy(m => m.RowNumber));
                 new UnitOfWork().DocActionsRepo.Get(m => m.RefId == item.Id && m.TableName == "TechSpecs");
                 var unitOfWork = new UnitOfWork();
                 lblTechSpecNo.Text = item.Id.ToString("EPIS-0000");
                 this.TechSpecsRequestDetailBindingSource.DataSource = unitOfWork.TechSpecRequestsRepo.Get(m => m.TechSpecsId == item.Id);
-
+                item = unitOfWork.TechSpecsRepo.Find(x => x.Id == item.Id);
                 cboOffice.EditValue = item?.Employees?.OfficeId;
                 txtChief.Text = item?.Employees?.Offices?.Chief;
                 txtTel.Text = item?.Employees?.Offices?.Chief;
@@ -104,7 +141,9 @@ namespace Win.TS
                 txtChief.Text = item.Employees?.Offices?.Chief;
                 cboAssignedTo.EditValue = item.AssignedTo;
                 dtDateRequest.EditValue = item.DateRequested;
-                this.EquipmentProfileBindingSource.DataSource = unitOfWork.EquipmentProfilesRepo.Get(m => m.RefId == item.Id && m.TableName == "TechSpecs");
+                lblWONo.Text = item.WorkOrders?.WorkOrderId;
+                cboWO.EditValue = item.WorOrderId;
+                this.EquipmentProfileBindingSource.DataSource = unitOfWork.EquipmentProfilesRepo.Get(m => m.RefId == item.Id && m.TableName == "TechSpecs", orderBy: x => x.OrderBy(m => m.RowNumber));
             }
             catch (Exception e)
             {
@@ -116,7 +155,7 @@ namespace Win.TS
 
         private void cboOffice_EditValueChanged(object sender, EventArgs e)
         {
-            if (sender is GridLookUpEdit gridLookUp)
+            if (sender is SearchLookUpEdit gridLookUp)
             {
                 if (gridLookUp.GetSelectedDataRow() is Offices item)
                 {
@@ -129,7 +168,7 @@ namespace Win.TS
 
         private void cboEmployeeId_EditValueChanged(object sender, EventArgs e)
         {
-            if (sender is GridLookUpEdit gridLookUp)
+            if (sender is SearchLookUpEdit gridLookUp)
             {
                 if (gridLookUp.GetSelectedDataRow() is Employees item)
                 {
@@ -148,21 +187,27 @@ namespace Win.TS
             {
                 using (UnitOfWork unitOfWork = new UnitOfWork())
                 {
-                    var workOrder = new TechSpecs()
-                    {
-                        Id = TechSpecsId,
-                        Requestedby = cboEmployeeId.EditValue.ToInt(),
-                        DateRequested = dtDateRequest.EditValue.ToDate(),
-                        AssignedTo = cboAssignedTo.EditValue.ToString(),
+                    //var workOrder = new TechSpecs()
+                    //{
+                    //    Id = TechSpecsId,
+                    //    Requestedby = cboEmployeeId.EditValue.ToInt(),
+                    //    DateRequested = dtDateRequest.EditValue.ToDate(),
+                    //    AssignedTo = cboAssignedTo.EditValue?.ToString(),
 
-                    };
-                    unitOfWork.TechSpecsRepo.Update(workOrder);
+                    //};
+
+                    var techSpecs = unitOfWork.TechSpecsRepo.Find(x => x.Id == TechSpecsId);
+                    techSpecs.Requestedby = cboEmployeeId.EditValue?.ToInt();
+                    techSpecs.DateRequested = dtDateRequest.EditValue?.ToDate();
+                    techSpecs.AssignedTo = cboAssignedTo.EditValue?.ToString();
+                    techSpecs.WorOrderId = cboWO.EditValue?.ToInt();
+                    //unitOfWork.TechSpecsRepo.Update(techSpecs);
                     unitOfWork.Save();
                     unitOfWork.TechSpecRequestsRepo.DeleteRange(m =>
                         m.TechSpecsId == TechSpecsId && m.ItemNumber == null);
                     unitOfWork.Save();
                     foreach (var i in unitOfWork.EquipmentProfilesRepo.Get(m =>
-                        m.RefId == TechSpecsId && m.TableName == "TechSpecs"))
+                        m.RefId == TechSpecsId && m.TableName == "TechSpecs",x=>x.OrderBy(m=>m.RowNumber)))
                     {
                         if (i.ItemNumber != null)
                             this.ItemNumber = i.ItemNumber;
@@ -423,6 +468,62 @@ namespace Win.TS
         {
             var index = e.FocusedColumn.AbsoluteIndex;
 
+        }
+
+        private void cboWO_EditValueChanged(object sender, EventArgs e)
+        {
+            lblWONo.Text = cboWO.Text;
+        }
+
+        private void addTopRowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (EquipmentGrid.GetFocusedRow() is EquipmentProfiles item)
+                {
+                    UnitOfWork unitOfWork = new UnitOfWork();
+                    var rowNumber = item.RowNumber;
+                    foreach (var i in unitOfWork.EquipmentProfilesRepo.Get(x => x.RefId == item.RefId && x.TableName == "TechSpecs" && x.RowNumber >= rowNumber))
+                    {
+                        var eq = unitOfWork.EquipmentProfilesRepo.Find(x => x.Id == i.Id);
+                        eq.RowNumber = i.RowNumber + 1;
+                        unitOfWork.Save();
+                    }
+
+                    unitOfWork = new UnitOfWork();
+                    unitOfWork.EquipmentProfilesRepo.Insert(new EquipmentProfiles() { RefId = TechSpecsId, TableName = "TechSpecs", RowNumber = rowNumber, ParentItem = item.ParentItem });
+                    unitOfWork.Save();
+
+                    this.EquipmentProfileBindingSource.DataSource = unitOfWork.EquipmentProfilesRepo.Get(m => m.RefId == TechSpecsId && m.TableName == "TechSpecs", orderBy: x => x.OrderBy(m => m.RowNumber));
+                }
+
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
+            }
+        }
+
+        private void addBottomRowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (EquipmentGrid.GetFocusedRow() is EquipmentProfiles item)
+            {
+                UnitOfWork unitOfWork = new UnitOfWork();
+                var rowNumber = item.RowNumber + 1;
+                foreach (var i in unitOfWork.EquipmentProfilesRepo.Get(x => x.RefId == item.RefId && x.TableName == "TechSpecs" && x.RowNumber >= rowNumber))
+                {
+                    var eq = unitOfWork.EquipmentProfilesRepo.Find(x => x.Id == i.Id);
+                    eq.RowNumber = i.RowNumber + 1;
+                    unitOfWork.Save();
+                }
+
+                unitOfWork = new UnitOfWork();
+                unitOfWork.EquipmentProfilesRepo.Insert(new EquipmentProfiles() { RefId = TechSpecsId, TableName = "TechSpecs", RowNumber = rowNumber, ParentItem = item.ParentItem });
+                unitOfWork.Save();
+
+                this.EquipmentProfileBindingSource.DataSource = unitOfWork.EquipmentProfilesRepo.Get(m => m.RefId == TechSpecsId && m.TableName == "TechSpecs", orderBy: x => x.OrderBy(m => m.RowNumber));
+            }
         }
     }
 }

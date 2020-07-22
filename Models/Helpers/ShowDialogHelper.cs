@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 
 namespace Helpers
 {
     public static class ShowDialogHelper
     {
-        public static TEntity ShowDialogResult<TEntity>(this TEntity form)
+        public static XtraForm ShowDialogResult(this XtraForm form)
         {
-            (form as Form)?.ShowDialog();
+            form.ShowDialog();
             return form;
         }
     }

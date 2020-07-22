@@ -13,78 +13,86 @@ using Models;
 using Models.Repository;
 using Win.Properties;
 using System.Data.Entity;
+using Models.Interfaces;
 
 namespace Win.WO
 {
-    public partial class frmAddEditWorkOrder : DevExpress.XtraEditors.XtraForm
+    public partial class frmAddEditWorkOrder : DevExpress.XtraEditors.XtraForm, ITransaction<WorkOrders>
     {
-        public frmAddEditWorkOrder()
+        private MethodType methodType;
+        public WorkOrders workOrders;
+        private bool isClosed;
+
+        public frmAddEditWorkOrder(WorkOrders workOrders, MethodType methodType)
         {
             InitializeComponent();
             this.Icon = Resources.maintenance.ToIcon();
+            this.workOrders = workOrders;
+            this.methodType = methodType;
+            Init();
+
         }
 
-        public frmWorkOrders frmWorkOrders { get; set; }
-        public int WOId { get; set; }
-        public MethodType MethodType { get; set; }
-        public string WorkOrderId { get; set; }
-
-        private void frmAddEditWorkOrder_Load(object sender, EventArgs e)
+        public void Search(string search)
         {
-            Initialize();
-            LoadWorkOrders();
-            // this.Text = $"Work Order - {WorkOrderId}";
-
-            this.lblWorkOrderNo.Text = this.WorkOrderId;
+            throw new NotImplementedException();
         }
 
-        public void Initialize()
+        public void Init()
         {
-            if (MethodType == MethodType.Edit)
-                return;
-
             try
             {
-                using (UnitOfWork unitOfWork = new UnitOfWork())
+                if (methodType == MethodType.Edit)
                 {
-                    WOId = (unitOfWork.WorkOrdersRepo.Fetch().Select(x => new { x.Id }).OrderByDescending(x => x.Id)
-                                   .FirstOrDefault()?.Id ?? 0) + 1;
-                    this.WorkOrderId = "EPiS-" + WOId.ToString("0000");
-
-                    unitOfWork.WorkOrdersRepo.InsertIdentity("WorkOrders", $"insert into WorkOrders(Id,WorkOrderId) values({WOId},'{WorkOrderId}')");
+                    Details(workOrders);
+                    return;
                 }
+                UnitOfWork unitOfWork = new UnitOfWork();
+                var id = (unitOfWork.WorkOrdersRepo.Fetch().OrderByDescending(x => x.Id).FirstOrDefault()?.Id ?? 0) + 1;
+
+                workOrders = new WorkOrders()
+                {
+                    Id = id,
+                    WorkOrderId = id.ToString("EPiS-0000")
+                };
+                unitOfWork.WorkOrdersRepo.Insert(workOrders);
+                unitOfWork.Save();
+                Details(workOrders);
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message, e.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
-
-        public void LoadWorkOrders()
+        public void Details()
+        {
+            throw new NotImplementedException();
+        }
+        private void btnAddEmployee_Click(object sender, EventArgs e)
+        {
+            Emp.frmEmployees frm = new Emp.frmEmployees();
+            frm.ShowDialog();
+        }
+        public void Details(WorkOrders item)
         {
             UnitOfWork unitOfWork = new UnitOfWork();
-            this.EmployeeBindingSource.DataSource = unitOfWork.EmployeesRepo.Get();
-            this.WorkOrderBindingSource.DataSource = unitOfWork.WorkOrdersRepo.Get();
-            this.EquipmentTypeBindingSource.DataSource = unitOfWork.EquipmentTypesRepo.Get();
-            this.PPEBindingSource.DataSource = unitOfWork.PPEsRepo.Get(includeProperties: "Employees");
+            cboPropertyNo.Properties.DataSource = unitOfWork.PPEsRepo.Get(orderBy: x => x.OrderByDescending(m => m.Id));
+            cboEmployeeId.Properties.DataSource = unitOfWork.EmployeesRepo.Get();
+            cboEquipmentType.Properties.DataSource = unitOfWork.EquipmentTypesRepo.Get();
+            cboDeliveredBy.Properties.DataSource = unitOfWork.EmployeesRepo.Get();
+            cboOffice.Properties.DataSource = unitOfWork.OfficesRepo.Get();
+            
 
-            this.dtRequestedDate.EditValue = DateTime.Now;
-            LoadWorkOrderDetails();
-        }
-        public void LoadWorkOrderDetails()
-        {
-            if (MethodType == MethodType.Add)
-                return;
             try
             {
-                UnitOfWork unitOfWork = new UnitOfWork();
-                var item = unitOfWork.WorkOrdersRepo.Find(m => m.Id == WOId);
+
+                item = unitOfWork.WorkOrdersRepo.Find(m => m.Id == item.Id);
+
+
                 cboEmployeeId.EditValue = item.Employees?.Id;
                 txtPosition.Text = item.Position;
-                this.FolderNo = item.FolderNo;
-                txtOffice.Text = item.Employees?.Offices?.OfficeName;
+                cboOffice.EditValue = item.Employees?.Offices?.Id;
                 dtRequestedDate.EditValue = item.RequestedDate;
                 cboEquipmentType.EditValue = item?.PPEs?.EquipmentTypeId;
                 txtDescription.Text = item.PPEs?.Description;
@@ -92,81 +100,71 @@ namespace Win.WO
                 txtFindings.Text = item.Findings;
                 txtProblems.Text = item.Problem;
                 txtRecommendation.Text = item.Recommendation;
-                WorkOrderId = item.WorkOrderId;
                 txtBox.EditValue = item.PPEs?.BoxNumber;
                 txtItemDelivered.Text = item.DeliveredDescription;
                 cboDeliveredBy.Text = item.DeliveredBy;
-
+                lblFolderNo.Text = item.FolderNo;
+                txtFolderNo.Text = item.FolderNo;
+                lblWorkOrderNo.Text = item.WorkOrderId ?? item.Id.ToString("EPiS-0000");
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message, e.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
-        private void btnNewPO_Click(object sender, EventArgs e)
+        public void Save()
         {
-            if (!((XtraForm)this).ValidateForm())
-                return;
-            if (MessageBox.Show("Do you want to submit this?", "Submit", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                return;
-
             try
             {
-                using (UnitOfWork unitOfWork = new UnitOfWork())
-                {
-                    var workOrder = new WorkOrders()
-                    {
-                        Id = WOId,
-                        WorkOrderId = WorkOrderId,
-                        PPEId = cboPropertyNo.EditValue?.ToInt(),
-                        RequestedDate = dtRequestedDate.EditValue?.ToDate(),
-                        RequestedBy = cboEmployeeId.EditValue?.ToInt(),
-                        Problem = txtProblems.Text,
-                        Findings = txtFindings.Text,
-                        DateCreated = DateTime.Now,
-                        FolderNo = this.txtFolderNo.Text,
-                        Box = this.txtBox.EditValue.ToInt(),
-                        Recommendation = this.txtRecommendation.EditValue?.ToString(),
-                        DeliveredDescription = txtItemDelivered.Text,
-                        DeliveredBy = cboDeliveredBy.EditValue?.ToString(),
-                        Position = (cboDeliveredBy.GetSelectedDataRow() as Employees)?.Position
 
-
-                    };
-                    unitOfWork.WorkOrdersRepo.Update(workOrder);
-                    unitOfWork.Save();
-                    this.MethodType = MethodType.Edit;
-                }
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message, exception.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-
-            this.frmWorkOrders.LoadWorkOrders();
-            this.Close();
-        }
-
-        private void frmAddEditWorkOrder_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (MethodType == MethodType.Edit)
-                return;
-            using (UnitOfWork unitOfWork = new UnitOfWork())
-            {
-                unitOfWork.WorkOrdersRepo.Delete(WOId);
+                if (MessageBox.Show("Do you want to submit this?", "Submit", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    return;
+                UnitOfWork unitOfWork = new UnitOfWork();
+                var item = unitOfWork.WorkOrdersRepo.Find(x => x.Id == workOrders.Id);
+                item.WorkOrderId = item.Id.ToString("EPiS-0000");
+                item.PPEId = cboPropertyNo.EditValue?.ToInt();
+                item.RequestedDate = dtRequestedDate.EditValue?.ToDate();
+                item.RequestedBy = cboEmployeeId.EditValue?.ToInt();
+                item.Problem = txtProblems.Text;
+                item.Findings = txtFindings.Text;
+                item.DateCreated = DateTime.Now;
+                item.FolderNo = this.txtFolderNo.Text;
+                item.Box = this.txtBox.EditValue.ToInt();
+                item.Recommendation = this.txtRecommendation.EditValue?.ToString();
+                item.DeliveredDescription = txtItemDelivered.Text;
+                item.DeliveredBy = cboDeliveredBy.EditValue?.ToString();
+                item.Position = (cboDeliveredBy.GetSelectedDataRow() as Employees)?.Position;
+                item.OfficeNo = (cboOffice.GetSelectedDataRow() as Offices)?.BoxNo;
+                item.EquipmentTypeNo = (cboEquipmentType.GetSelectedDataRow() as EquipmentTypes)?.Box;
+                item.EquipmentCount = txtFolderNo.Text.Split('-')[2].ToInt();
                 unitOfWork.Save();
+                isClosed = true;
+                this.Close();
             }
-
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, e.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-
-        private void btnEditPo_Click(object sender, EventArgs e)
+        private void cboEquipmentType_EditValueChanged(object sender, EventArgs e)
         {
-            this.Close();
+            if (cboEquipmentType.GetSelectedDataRow() is EquipmentTypes item)
+            {
+                var employee = cboOffice.GetSelectedDataRow() as Offices;
+                lblFolderNo.Text = new WorkOrders().GeneratedId(employee?.BoxNo, item.Box, workOrders.Id);
+                txtFolderNo.Text = lblFolderNo.Text;
+            }
         }
-
+        private void cboOffice_EditValueChanged(object sender, EventArgs e)
+        {
+            if (cboOffice.GetSelectedDataRow() is Offices item)
+            {
+                var equipmentTypes = cboEquipmentType.GetSelectedDataRow() as EquipmentTypes;
+                lblFolderNo.Text = new WorkOrders().GeneratedId(item.BoxNo, equipmentTypes?.Box, workOrders.Id);
+                txtFolderNo.Text = lblFolderNo.Text;
+            }
+        }
         private void cboPropertyNo_EditValueChanged(object sender, EventArgs e)
         {
             if (cboPropertyNo.GetSelectedDataRow() is PPEs item)
@@ -175,37 +173,47 @@ namespace Win.WO
                 txtDescription.Text = item.Description;
                 cboEmployeeId.EditValue = item.EmployeeId;
                 txtPosition.Text = item.Employees?.Position;
-                txtOffice.Text = item?.Employees?.Offices?.OfficeName;
-                if (this.MethodType == MethodType.Add)
-                    this.FolderNo = new WorkOrders().GeneratedId(item, WOId);
-                lblWorkOrderNo.Text = WorkOrderId;
+                cboOffice.Text = item?.Employees?.Offices?.OfficeName;
+                if (this.methodType == MethodType.Add)
+                    this.FolderNo = new WorkOrders().GeneratedId(item, item.Id);
+                lblWorkOrderNo.Text = workOrders.Id.ToString("EPiS-0000");
                 lblFolderNo.Text = FolderNo;
                 txtFolderNo.Text = FolderNo;
                 txtBox.EditValue = item.BoxNumber;
             }
         }
+        private void btnEditPo_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnNewPO_Click(object sender, EventArgs e)
+        {
+            Save();
+        }
+        private void frmAddEditWorkOrder_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (methodType == MethodType.Edit)
+                return;
+            if (isClosed)
+                return;
+            try
+            {
+                using (UnitOfWork unitOfWork = new UnitOfWork())
+                {
+                    unitOfWork.WorkOrdersRepo.Delete(workOrders.Id);
+                    unitOfWork.Save();
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, exception.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+        }
+
 
         public string FolderNo { get; set; }
-
-        private void PPEBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cboEquipmentType_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cboEmployeeId_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnAddEmployee_Click(object sender, EventArgs e)
-        {
-            Emp.frmEmployees frm = new Emp.frmEmployees();
-            frm.ShowDialog();
-        }
     }
 }

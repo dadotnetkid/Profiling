@@ -68,9 +68,9 @@ namespace Win.EquipProfile
                     this.PropertyId = (unitOfWork.PPEsRepo.Fetch().Select(x => new { x.Id }).OrderByDescending(m => m.Id)
                                            .FirstOrDefault()?.Id ?? 0) + 1;
 
-                    this.PPENo = PropertyId.ToString("0000");
+                    this.PPENo = PropertyId.ToString("EPiS-0000");
                     this.txtPropNo.EditValue = PPENo;
-                    unitOfWork.PPEsRepo.ExecuteQuery("insert into ppes(id,PPEId) values(@p0,@p1)", PropertyId.ToString(), PropertyId.ToString());
+                    unitOfWork.PPEsRepo.ExecuteQuery("insert into ppes(id,PPEId) values(@p0,@p1)", PropertyId.ToString(), PPENo);
                     //       unitOfWork.Save();
 
                 }
@@ -110,7 +110,7 @@ namespace Win.EquipProfile
 
         private void cboOffice_EditValueChanged(object sender, EventArgs e)
         {
-            DevExpress.XtraEditors.LookUpEdit editor = sender as DevExpress.XtraEditors.LookUpEdit;
+            DevExpress.XtraEditors.SearchLookUpEdit editor = sender as DevExpress.XtraEditors.SearchLookUpEdit;
 
             if (editor.GetSelectedDataRow() is Offices item)
             {
@@ -123,7 +123,7 @@ namespace Win.EquipProfile
         private void cboEmployeeId_EditValueChanged(object sender, EventArgs e)
         {
 
-            DevExpress.XtraEditors.LookUpEdit editor = sender as DevExpress.XtraEditors.LookUpEdit;
+            DevExpress.XtraEditors.SearchLookUpEdit editor = sender as DevExpress.XtraEditors.SearchLookUpEdit;
 
             if (editor.GetSelectedDataRow() is Employees item)
             {
@@ -308,6 +308,7 @@ namespace Win.EquipProfile
         {
             Emp.frmEmployees frm = new Emp.frmEmployees();
             frm.ShowDialog();
+            EmployeeBindingSource.DataSource = new UnitOfWork().EmployeesRepo.Fetch().ToList();
         }
     }
 }

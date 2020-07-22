@@ -51,14 +51,47 @@ namespace Win.TS
 
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-                Search(txtSearch.Text);
+
         }
-        public void Search(string search = "")
+        public List<TechSpecs> Search(string search = "")
         {
             UnitOfWork unitOfWork = new UnitOfWork();
-            this.TechSpecBindingSource.DataSource = unitOfWork.TechSpecsRepo.Paginate(m => m.OrderBy(x => x.Id), 20, 0, m => m.Requestedby == 0 || m.Employees.FirstName.StartsWith(search) || m.Employees.LastName.StartsWith(search));
+            IQueryable<TechSpecs> techSpecs = unitOfWork.TechSpecsRepo.Fetch(x => x.DateRequested != null);
+            if (search == "")
+            {
+                this.TechSpecBindingSource.DataSource = techSpecs.ToList();
+                return techSpecs.ToList();
+            }
+               
+            if (techSpecs.Any(x => (x.Employees.FirstName + " " + x.Employees.MiddleName + " " + x.Employees.LastName).Contains(search)))
+            {
+                techSpecs = techSpecs.Where(x =>
+                    (x.Employees.FirstName + " " + x.Employees.MiddleName + " " + x.Employees.LastName)
+                    .Contains(search));
+            }
 
+
+
+            if (techSpecs.Any(m => m.Employees.Offices.OfficeName.Contains(search)))
+            {
+                techSpecs = techSpecs.Where(m => m.Employees.Offices.OfficeName.Contains(search));
+            }
+            if (techSpecs.Any(m => m.Employees.Offices.OffcAcr.Contains(search)))
+            {
+                techSpecs = techSpecs.Where(m => m.Employees.Offices.OffcAcr.Contains(search));
+            }
+            if (techSpecs.ToList().Any(m => m.TechSpecsId.Contains(search)))
+            {
+                techSpecs = techSpecs.ToList().Where(m => m.TechSpecsId.Contains(search)).AsQueryable();
+            }
+            this.TechSpecBindingSource.DataSource = techSpecs.ToList();
+            return techSpecs.ToList();
+            /*  this.TechSpecBindingSource.DataSource = unitOfWork.TechSpecsRepo.Paginate(m => m.OrderBy(x => x.Id), 1000, 0, 
+                  m => m.Requestedby == 0 || 
+                       m.TechSpecsId.Contains(search) ||
+                       m.Employees.Offices.OfficeName.Contains(search)||
+                       m.Employees.FirstName.StartsWith(search) || m.Employees.LastName.StartsWith(search) || m.Employees.FirstName=="");
+                       */
 
         }
         public void CreateUcControl()

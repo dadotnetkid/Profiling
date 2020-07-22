@@ -34,6 +34,7 @@ namespace Models
         public string Notes { get; set; }
         public Nullable<System.DateTime> DateRequested { get; set; }
         public string TableName { get; set; }
+        public Nullable<int> WorOrderId { get; set; }
     
         public virtual Employees Employees { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -44,5 +45,6 @@ namespace Models
         public virtual ICollection<TechSpecRequests> TechSpecRequests { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DocActions> DocActions { get; set; }
+        public virtual WorkOrders WorkOrders { get; set; }
     }
 }

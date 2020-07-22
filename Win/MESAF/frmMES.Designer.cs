@@ -203,7 +203,9 @@ namespace Win.MESAF
             // 
             // ucActionGrid1
             // 
-            this.ucActionGrid1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ucActionGrid1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ucActionGrid1.Location = new System.Drawing.Point(286, 198);
             this.ucActionGrid1.Name = "ucActionGrid1";
             this.ucActionGrid1.Size = new System.Drawing.Size(716, 203);
@@ -342,7 +344,6 @@ namespace Win.MESAF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1002, 401);
             this.Controls.Add(this.labelControl6);
             this.Controls.Add(this.txtItemSpec);
             this.Controls.Add(this.labelControl5);
@@ -358,10 +359,8 @@ namespace Win.MESAF
             this.Controls.Add(this.panelControl3);
             this.Controls.Add(this.ucMES1);
             this.Controls.Add(this.txtRequest);
-            this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Glow;
             this.Name = "frmMES";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Mobile/External Storage";
+            this.Size = new System.Drawing.Size(1002, 401);
             this.Load += new System.EventHandler(this.frmMES_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
             this.dockPanel1.ResumeLayout(false);

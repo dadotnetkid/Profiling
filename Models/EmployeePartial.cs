@@ -18,7 +18,7 @@ namespace Models
             get
             {
                 if (_EmployeeName == null)
-                    _EmployeeName = this.LastName + ", " + this.FirstName;
+                    _EmployeeName =  this.FirstName + " " + this.LastName;
                 return _EmployeeName;
             }
             set { _EmployeeName = value; }

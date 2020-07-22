@@ -72,6 +72,9 @@
             this.tabPane2 = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabNavigationPage3 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.addTopRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addBottomRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EquipmentProfileBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.EquipmentGrid = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Id = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -88,26 +91,27 @@
             this.EquipmentTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.EquipmentName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Description = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
+            this.rteDescriptionRepo = new DevExpress.XtraEditors.Repository.RepositoryItemRichTextEdit();
             this.QTY = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.UnitCost = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Total = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             this.DetailGrid = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.btnAddEmployee = new DevExpress.XtraEditors.SimpleButton();
-            this.cboEmployeeId = new DevExpress.XtraEditors.GridLookUpEdit();
-            this.EmployeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.txtPosition = new DevExpress.XtraEditors.TextEdit();
             this.dtDateRequest = new DevExpress.XtraEditors.DateEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.cboEmployeeId = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.EmployeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.cboAssignedTo = new DevExpress.XtraEditors.GridLookUpEdit();
             this.AssignedToBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -115,21 +119,23 @@
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
-            this.cboOffice = new DevExpress.XtraEditors.GridLookUpEdit();
-            this.OfficeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colOfficeName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colOfcAcr = new DevExpress.XtraGrid.Columns.GridColumn();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txtTel = new DevExpress.XtraEditors.TextEdit();
             this.txtChief = new DevExpress.XtraEditors.TextEdit();
+            this.cboOffice = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.OfficeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DropdownBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.searchTimer = new System.Windows.Forms.Timer(this.components);
             this.PPEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.lblWONo = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.lblTechSpecNo = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.btnEditPo = new DevExpress.XtraEditors.SimpleButton();
             this.btnNewPO = new DevExpress.XtraEditors.SimpleButton();
@@ -150,10 +156,14 @@
             this.TechSpecReqEmployee = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.cboWO = new DevExpress.XtraEditors.LookUpEdit();
+            this.workOrdersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.tabPane2)).BeginInit();
             this.tabPane2.SuspendLayout();
             this.tabNavigationPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EquipmentProfileBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EquipmentGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
@@ -161,27 +171,28 @@
             ((System.ComponentModel.ISupportInitialize)(this.UnitTypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EquipmentTypeLookUp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EquipmentTypeBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rteDescriptionRepo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DetailGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboEmployeeId.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EmployeeBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPosition.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtDateRequest.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtDateRequest.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEmployeeId.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EmployeeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAssignedTo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AssignedToBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboOffice.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OfficeBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTel.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtChief.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboOffice.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OfficeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DropdownBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PPEBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -196,18 +207,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.TechSpecReqEquipmentTypeRepo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TechSpecReqEmployee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboWO.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.workOrdersBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPane2
             // 
+            this.tabPane2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabPane2.Controls.Add(this.tabNavigationPage3);
-            this.tabPane2.Location = new System.Drawing.Point(12, 253);
+            this.tabPane2.Location = new System.Drawing.Point(12, 327);
             this.tabPane2.Name = "tabPane2";
             this.tabPane2.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.tabNavigationPage3});
-            this.tabPane2.RegularSize = new System.Drawing.Size(809, 188);
+            this.tabPane2.RegularSize = new System.Drawing.Size(810, 238);
             this.tabPane2.SelectedPage = this.tabNavigationPage3;
-            this.tabPane2.Size = new System.Drawing.Size(809, 188);
+            this.tabPane2.Size = new System.Drawing.Size(810, 238);
             this.tabPane2.TabIndex = 26;
             this.tabPane2.Text = "tabPane2";
             // 
@@ -217,10 +233,11 @@
             this.tabNavigationPage3.Controls.Add(this.gridControl1);
             this.tabNavigationPage3.Name = "tabNavigationPage3";
             this.tabNavigationPage3.PageText = "Details";
-            this.tabNavigationPage3.Size = new System.Drawing.Size(809, 161);
+            this.tabNavigationPage3.Size = new System.Drawing.Size(810, 211);
             // 
             // gridControl1
             // 
+            this.gridControl1.ContextMenuStrip = this.contextMenuStrip1;
             this.gridControl1.DataSource = this.EquipmentProfileBindingSource;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl1.EmbeddedNavigator.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
@@ -232,13 +249,36 @@
             this.EquipmentTypeLookUp,
             this.repositoryItemSpinEdit1,
             this.UnitTypesLookUpRepo,
-            this.repositoryItemMemoEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(809, 161);
+            this.repositoryItemMemoEdit1,
+            this.rteDescriptionRepo});
+            this.gridControl1.Size = new System.Drawing.Size(810, 211);
             this.gridControl1.TabIndex = 10;
             this.gridControl1.UseEmbeddedNavigator = true;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.EquipmentGrid,
             this.DetailGrid});
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addTopRowToolStripMenuItem,
+            this.addBottomRowToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            // 
+            // addTopRowToolStripMenuItem
+            // 
+            this.addTopRowToolStripMenuItem.Name = "addTopRowToolStripMenuItem";
+            this.addTopRowToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addTopRowToolStripMenuItem.Text = "Add Top Row";
+            this.addTopRowToolStripMenuItem.Click += new System.EventHandler(this.addTopRowToolStripMenuItem_Click);
+            // 
+            // addBottomRowToolStripMenuItem
+            // 
+            this.addBottomRowToolStripMenuItem.Name = "addBottomRowToolStripMenuItem";
+            this.addBottomRowToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addBottomRowToolStripMenuItem.Text = "Add Bottom Row";
+            this.addBottomRowToolStripMenuItem.Click += new System.EventHandler(this.addBottomRowToolStripMenuItem_Click);
             // 
             // EquipmentGrid
             // 
@@ -265,12 +305,13 @@
             this.EquipmentGrid.OptionsBehavior.AutoExpandAllGroups = true;
             this.EquipmentGrid.OptionsEditForm.EditFormColumnCount = 2;
             this.EquipmentGrid.OptionsNavigation.AutoFocusNewRow = true;
-            this.EquipmentGrid.OptionsView.BestFitMode = DevExpress.XtraGrid.Views.Grid.GridBestFitMode.Full;
             this.EquipmentGrid.OptionsView.BestFitUseErrorInfo = DevExpress.Utils.DefaultBoolean.True;
             this.EquipmentGrid.OptionsView.HeaderFilterButtonShowMode = DevExpress.XtraEditors.Controls.FilterButtonShowMode.Button;
             this.EquipmentGrid.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
+            this.EquipmentGrid.OptionsView.RowAutoHeight = true;
             this.EquipmentGrid.OptionsView.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
             this.EquipmentGrid.OptionsView.ShowGroupPanel = false;
+            this.EquipmentGrid.RowHeight = 50;
             this.EquipmentGrid.FocusedColumnChanged += new DevExpress.XtraGrid.Views.Base.FocusedColumnChangedEventHandler(this.EquipmentGrid_FocusedColumnChanged);
             this.EquipmentGrid.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.EquipmentGrid_RowUpdated);
             // 
@@ -381,16 +422,17 @@
             // Description
             // 
             this.Description.Caption = "Description";
-            this.Description.ColumnEdit = this.repositoryItemMemoEdit1;
+            this.Description.ColumnEdit = this.rteDescriptionRepo;
             this.Description.FieldName = "Description";
             this.Description.Name = "Description";
             this.Description.Visible = true;
             this.Description.VisibleIndex = 5;
             this.Description.Width = 119;
             // 
-            // repositoryItemMemoEdit1
+            // rteDescriptionRepo
             // 
-            this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
+            this.rteDescriptionRepo.Name = "rteDescriptionRepo";
+            this.rteDescriptionRepo.ShowCaretInReadOnly = false;
             // 
             // QTY
             // 
@@ -434,6 +476,10 @@
             this.Total.VisibleIndex = 7;
             this.Total.Width = 126;
             // 
+            // repositoryItemMemoEdit1
+            // 
+            this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
+            // 
             // DetailGrid
             // 
             this.DetailGrid.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
@@ -455,13 +501,13 @@
             this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.groupControl1.AppearanceCaption.Options.UseFont = true;
             this.groupControl1.Controls.Add(this.btnAddEmployee);
-            this.groupControl1.Controls.Add(this.cboEmployeeId);
             this.groupControl1.Controls.Add(this.txtPosition);
             this.groupControl1.Controls.Add(this.dtDateRequest);
             this.groupControl1.Controls.Add(this.labelControl4);
             this.groupControl1.Controls.Add(this.labelControl5);
             this.groupControl1.Controls.Add(this.labelControl8);
-            this.groupControl1.Location = new System.Drawing.Point(10, 140);
+            this.groupControl1.Controls.Add(this.cboEmployeeId);
+            this.groupControl1.Location = new System.Drawing.Point(10, 170);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(414, 101);
             this.groupControl1.TabIndex = 23;
@@ -477,59 +523,6 @@
             this.btnAddEmployee.Size = new System.Drawing.Size(18, 20);
             this.btnAddEmployee.TabIndex = 13;
             this.btnAddEmployee.Click += new System.EventHandler(this.btnAddEmployee_Click);
-            // 
-            // cboEmployeeId
-            // 
-            this.cboEmployeeId.EditValue = "";
-            this.cboEmployeeId.Location = new System.Drawing.Point(77, 47);
-            this.cboEmployeeId.Name = "cboEmployeeId";
-            this.cboEmployeeId.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.cboEmployeeId.Properties.Appearance.Options.UseFont = true;
-            this.cboEmployeeId.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboEmployeeId.Properties.DataSource = this.EmployeeBindingSource;
-            this.cboEmployeeId.Properties.DisplayMember = "EmployeeName";
-            this.cboEmployeeId.Properties.PopupView = this.gridView1;
-            this.cboEmployeeId.Properties.ValueMember = "Id";
-            this.cboEmployeeId.Size = new System.Drawing.Size(296, 22);
-            this.cboEmployeeId.TabIndex = 4;
-            this.cboEmployeeId.EditValueChanged += new System.EventHandler(this.cboEmployeeId_EditValueChanged);
-            // 
-            // gridView1
-            // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn8,
-            this.gridColumn2,
-            this.gridColumn3});
-            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            // 
-            // gridColumn8
-            // 
-            this.gridColumn8.Caption = "Employee Name";
-            this.gridColumn8.FieldName = "EmployeeName";
-            this.gridColumn8.Name = "gridColumn8";
-            this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 0;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "Office Name";
-            this.gridColumn2.FieldName = "Offices.OfficeName";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
-            // 
-            // gridColumn3
-            // 
-            this.gridColumn3.Caption = "OfcAcr";
-            this.gridColumn3.FieldName = "Offices.OffcAcr";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
             // 
             // txtPosition
             // 
@@ -585,10 +578,63 @@
             this.labelControl8.TabIndex = 0;
             this.labelControl8.Text = "Name";
             // 
+            // cboEmployeeId
+            // 
+            this.cboEmployeeId.EditValue = "";
+            this.cboEmployeeId.Location = new System.Drawing.Point(77, 47);
+            this.cboEmployeeId.Name = "cboEmployeeId";
+            this.cboEmployeeId.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cboEmployeeId.Properties.Appearance.Options.UseFont = true;
+            this.cboEmployeeId.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboEmployeeId.Properties.DataSource = this.EmployeeBindingSource;
+            this.cboEmployeeId.Properties.DisplayMember = "EmployeeName";
+            this.cboEmployeeId.Properties.PopupView = this.searchLookUpEdit1View;
+            this.cboEmployeeId.Properties.ValueMember = "Id";
+            this.cboEmployeeId.Size = new System.Drawing.Size(296, 22);
+            this.cboEmployeeId.TabIndex = 4;
+            this.cboEmployeeId.EditValueChanged += new System.EventHandler(this.cboEmployeeId_EditValueChanged);
+            // 
+            // searchLookUpEdit1View
+            // 
+            this.searchLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn4,
+            this.gridColumn5,
+            this.gridColumn9});
+            this.searchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.searchLookUpEdit1View.Name = "searchLookUpEdit1View";
+            this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Employee Name";
+            this.gridColumn4.FieldName = "EmployeeName";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 0;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "Office Name";
+            this.gridColumn5.FieldName = "Offices.OfficeName";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 1;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "OfcAcr";
+            this.gridColumn9.FieldName = "Offices.OffcAcr";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 2;
+            // 
             // cboAssignedTo
             // 
             this.cboAssignedTo.EditValue = "";
-            this.cboAssignedTo.Location = new System.Drawing.Point(505, 225);
+            this.cboAssignedTo.Location = new System.Drawing.Point(505, 255);
             this.cboAssignedTo.Name = "cboAssignedTo";
             this.cboAssignedTo.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cboAssignedTo.Properties.Appearance.Options.UseFont = true;
@@ -631,7 +677,7 @@
             // 
             this.labelControl13.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.labelControl13.Appearance.Options.UseFont = true;
-            this.labelControl13.Location = new System.Drawing.Point(438, 229);
+            this.labelControl13.Location = new System.Drawing.Point(438, 259);
             this.labelControl13.Name = "labelControl13";
             this.labelControl13.Size = new System.Drawing.Size(64, 15);
             this.labelControl13.TabIndex = 12;
@@ -644,60 +690,17 @@
             this.groupControl3.Appearance.Options.UseFont = true;
             this.groupControl3.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.groupControl3.AppearanceCaption.Options.UseFont = true;
-            this.groupControl3.Controls.Add(this.cboOffice);
             this.groupControl3.Controls.Add(this.labelControl7);
             this.groupControl3.Controls.Add(this.labelControl6);
             this.groupControl3.Controls.Add(this.labelControl1);
             this.groupControl3.Controls.Add(this.txtTel);
             this.groupControl3.Controls.Add(this.txtChief);
-            this.groupControl3.Location = new System.Drawing.Point(10, 40);
+            this.groupControl3.Controls.Add(this.cboOffice);
+            this.groupControl3.Location = new System.Drawing.Point(10, 66);
             this.groupControl3.Name = "groupControl3";
             this.groupControl3.Size = new System.Drawing.Size(412, 98);
             this.groupControl3.TabIndex = 25;
             this.groupControl3.Text = "Requesting Office";
-            // 
-            // cboOffice
-            // 
-            this.cboOffice.EditValue = "";
-            this.cboOffice.Location = new System.Drawing.Point(77, 24);
-            this.cboOffice.Name = "cboOffice";
-            this.cboOffice.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.cboOffice.Properties.Appearance.Options.UseFont = true;
-            this.cboOffice.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboOffice.Properties.DataSource = this.OfficeBindingSource;
-            this.cboOffice.Properties.DisplayMember = "OffcAcr";
-            this.cboOffice.Properties.PopupView = this.gridLookUpEdit1View;
-            this.cboOffice.Properties.ValueMember = "Id";
-            this.cboOffice.Size = new System.Drawing.Size(312, 22);
-            this.cboOffice.TabIndex = 0;
-            this.cboOffice.EditValueChanged += new System.EventHandler(this.cboOffice_EditValueChanged);
-            // 
-            // gridLookUpEdit1View
-            // 
-            this.gridLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colOfficeName,
-            this.colOfcAcr});
-            this.gridLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gridLookUpEdit1View.Name = "gridLookUpEdit1View";
-            this.gridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
-            // 
-            // colOfficeName
-            // 
-            this.colOfficeName.Caption = "Office Name";
-            this.colOfficeName.FieldName = "OfficeName";
-            this.colOfficeName.Name = "colOfficeName";
-            this.colOfficeName.Visible = true;
-            this.colOfficeName.VisibleIndex = 0;
-            // 
-            // colOfcAcr
-            // 
-            this.colOfcAcr.Caption = "OfcAcr";
-            this.colOfcAcr.FieldName = "OffcAcr";
-            this.colOfcAcr.Name = "colOfcAcr";
-            this.colOfcAcr.Visible = true;
-            this.colOfcAcr.VisibleIndex = 1;
             // 
             // labelControl7
             // 
@@ -751,19 +754,74 @@
             this.txtChief.Size = new System.Drawing.Size(312, 22);
             this.txtChief.TabIndex = 1;
             // 
+            // cboOffice
+            // 
+            this.cboOffice.EditValue = "";
+            this.cboOffice.Location = new System.Drawing.Point(77, 24);
+            this.cboOffice.Name = "cboOffice";
+            this.cboOffice.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cboOffice.Properties.Appearance.Options.UseFont = true;
+            this.cboOffice.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboOffice.Properties.DataSource = this.OfficeBindingSource;
+            this.cboOffice.Properties.DisplayMember = "OffcAcr";
+            this.cboOffice.Properties.PopupView = this.gridView1;
+            this.cboOffice.Properties.ValueMember = "Id";
+            this.cboOffice.Size = new System.Drawing.Size(312, 22);
+            this.cboOffice.TabIndex = 0;
+            this.cboOffice.EditValueChanged += new System.EventHandler(this.cboOffice_EditValueChanged);
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn2,
+            this.gridColumn3});
+            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Office Name";
+            this.gridColumn2.FieldName = "OfficeName";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 0;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "OfcAcr";
+            this.gridColumn3.FieldName = "OffcAcr";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 1;
+            // 
             // searchTimer
             // 
             this.searchTimer.Interval = 3000;
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.lblWONo);
             this.panelControl1.Controls.Add(this.lblTechSpecNo);
+            this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.labelControl9);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(829, 36);
             this.panelControl1.TabIndex = 27;
+            // 
+            // lblWONo
+            // 
+            this.lblWONo.Appearance.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.lblWONo.Appearance.Options.UseFont = true;
+            this.lblWONo.Location = new System.Drawing.Point(650, -1);
+            this.lblWONo.Name = "lblWONo";
+            this.lblWONo.Size = new System.Drawing.Size(106, 32);
+            this.lblWONo.TabIndex = 12;
+            this.lblWONo.Text = "EPIS-0000";
             // 
             // lblTechSpecNo
             // 
@@ -777,6 +835,16 @@
             this.lblTechSpecNo.TabIndex = 11;
             this.lblTechSpecNo.Text = "0001";
             // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Location = new System.Drawing.Point(560, -1);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(84, 32);
+            this.labelControl2.TabIndex = 11;
+            this.labelControl2.Text = "WO No.";
+            // 
             // labelControl9
             // 
             this.labelControl9.Appearance.Font = new System.Drawing.Font("Segoe UI", 18F);
@@ -789,11 +857,12 @@
             // 
             // btnEditPo
             // 
+            this.btnEditPo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEditPo.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnEditPo.Appearance.Options.UseFont = true;
             this.btnEditPo.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
             this.btnEditPo.ImageOptions.Image = global::Win.Properties.Resources.cancel_16;
-            this.btnEditPo.Location = new System.Drawing.Point(746, 447);
+            this.btnEditPo.Location = new System.Drawing.Point(746, 571);
             this.btnEditPo.Name = "btnEditPo";
             this.btnEditPo.Size = new System.Drawing.Size(75, 26);
             this.btnEditPo.TabIndex = 29;
@@ -803,11 +872,12 @@
             // 
             // btnNewPO
             // 
+            this.btnNewPO.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNewPO.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnNewPO.Appearance.Options.UseFont = true;
             this.btnNewPO.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
             this.btnNewPO.ImageOptions.Image = global::Win.Properties.Resources.save_16;
-            this.btnNewPO.Location = new System.Drawing.Point(666, 447);
+            this.btnNewPO.Location = new System.Drawing.Point(666, 571);
             this.btnNewPO.Name = "btnNewPO";
             this.btnNewPO.Size = new System.Drawing.Size(75, 26);
             this.btnNewPO.TabIndex = 28;
@@ -1000,11 +1070,43 @@
             this.gridColumn20.Visible = true;
             this.gridColumn20.VisibleIndex = 0;
             // 
+            // cboWO
+            // 
+            this.cboWO.Location = new System.Drawing.Point(87, 42);
+            this.cboWO.Name = "cboWO";
+            this.cboWO.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cboWO.Properties.Appearance.Options.UseFont = true;
+            this.cboWO.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboWO.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("WorkOrderId", "Work Order Id", 84, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            this.cboWO.Properties.DataSource = this.workOrdersBindingSource;
+            this.cboWO.Properties.DisplayMember = "WorkOrderId";
+            this.cboWO.Properties.NullText = "Select Work Order Number";
+            this.cboWO.Properties.ValueMember = "Id";
+            this.cboWO.Size = new System.Drawing.Size(312, 22);
+            this.cboWO.TabIndex = 12;
+            this.cboWO.EditValueChanged += new System.EventHandler(this.cboWO_EditValueChanged);
+            // 
+            // workOrdersBindingSource
+            // 
+            this.workOrdersBindingSource.DataSource = typeof(Models.WorkOrders);
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(20, 43);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(41, 13);
+            this.labelControl3.TabIndex = 31;
+            this.labelControl3.Text = "WO No.";
+            // 
             // frmAddEditTechSpecs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(829, 489);
+            this.ClientSize = new System.Drawing.Size(829, 613);
+            this.Controls.Add(this.labelControl3);
+            this.Controls.Add(this.cboWO);
             this.Controls.Add(this.cboAssignedTo);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.labelControl13);
@@ -1025,6 +1127,7 @@
             this.tabPane2.ResumeLayout(false);
             this.tabNavigationPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.EquipmentProfileBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EquipmentGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
@@ -1032,29 +1135,30 @@
             ((System.ComponentModel.ISupportInitialize)(this.UnitTypeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EquipmentTypeLookUp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EquipmentTypeBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rteDescriptionRepo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DetailGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboEmployeeId.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EmployeeBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPosition.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtDateRequest.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtDateRequest.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEmployeeId.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EmployeeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAssignedTo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AssignedToBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             this.groupControl3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboOffice.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OfficeBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTel.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtChief.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboOffice.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OfficeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DropdownBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PPEBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
@@ -1070,6 +1174,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.TechSpecReqEquipmentTypeRepo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TechSpecReqEmployee)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboWO.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.workOrdersBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1079,11 +1185,6 @@
         private DevExpress.XtraBars.Navigation.TabPane tabPane2;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage3;
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.GridLookUpEdit cboEmployeeId;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraEditors.TextEdit txtPosition;
         private DevExpress.XtraEditors.DateEdit dtDateRequest;
         private DevExpress.XtraEditors.LabelControl labelControl4;
@@ -1095,10 +1196,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraEditors.LabelControl labelControl13;
         private DevExpress.XtraEditors.GroupControl groupControl3;
-        private DevExpress.XtraEditors.GridLookUpEdit cboOffice;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridLookUpEdit1View;
-        private DevExpress.XtraGrid.Columns.GridColumn colOfficeName;
-        private DevExpress.XtraGrid.Columns.GridColumn colOfcAcr;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.LabelControl labelControl1;
@@ -1157,5 +1254,23 @@
         private System.Windows.Forms.BindingSource TechSpecsRequestDetailBindingSource;
         private DevExpress.XtraGrid.Columns.GridColumn colTechSpecReqItem;
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
+        private DevExpress.XtraEditors.SearchLookUpEdit cboEmployeeId;
+        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEdit1View;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraEditors.SearchLookUpEdit cboOffice;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraEditors.Repository.RepositoryItemRichTextEdit rteDescriptionRepo;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.HyperlinkLabelControl lblWONo;
+        private DevExpress.XtraEditors.LookUpEdit cboWO;
+        private System.Windows.Forms.BindingSource workOrdersBindingSource;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem addTopRowToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addBottomRowToolStripMenuItem;
     }
 }

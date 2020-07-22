@@ -24,6 +24,7 @@ namespace Win.WO
 {
     public partial class frmWorkOrders : DevExpress.XtraEditors.XtraForm
     {
+        private BackgroundWorker backgroundWorker = new BackgroundWorker();
         private int WOId;
         private WorkOrders WorkOrders;
         public frmWorkOrders()
@@ -34,17 +35,22 @@ namespace Win.WO
 
         private void frmWorkOrders_Load(object sender, EventArgs e)
         {
-            LoadWorkOrders();
+            backgroundWorker = new BackgroundWorker();
+            backgroundWorker.DoWork += (s, eventArgs) =>
+            {
+                this.Invoke(new Action(() =>
+{
+    LoadWorkOrders();
+}));
+            };
+            backgroundWorker.RunWorkerAsync();
         }
 
         private void Search(string search = "")
         {
-
-            UnitOfWork unitOfWork = new UnitOfWork();
-
-            this.WorkOrderBindingSource.DataSource = unitOfWork.WorkOrdersRepo.Paginate(m => m.OrderByDescending(x => x.Id).ThenBy(x => x.Id),
-                filter: x => (x.WorkOrderId.Contains(search) || x.PPEs.PropertyNo.StartsWith(search) || x.PPEs.Employees.FirstName.StartsWith(search) || x.PPEs.Offices.OfficeName.StartsWith(search)) && x.DocActions.Any(m => m.Status != "Completed"));
+            this.WorkOrderBindingSource.DataSource = new UnitOfWork().WorkOrdersRepo.Get(m => m.PPEId != null);
             LoadWorkOrderDetails(0);
+
         }
         public void LoadWorkOrders()
         {
@@ -57,9 +63,21 @@ namespace Win.WO
             this.MainActLookUpRepo.DataSource = unitOfWork.DropdownsRepo.Get(m => m.Category == "Projects");
             this.ActivityLookUpRepo.DataSource = unitOfWork.DropdownsRepo.Get(m => m.Category == "Activity");
             this.SubActLookUpRepo.DataSource = unitOfWork.DropdownsRepo.Get(m => m.Category == "SubActivity");
-
+            this.txtSearch.Properties.DataSource = new UnitOfWork().WorkOrdersRepo.Get(m => m.PPEId != null);
             WorkOrderGrid.RefreshData();
-            LoadWorkOrderDetails(0);
+            backgroundWorker.RunWorkerCompleted += (s, eventArgs) =>
+            {
+                backgroundWorker = new BackgroundWorker();
+                backgroundWorker.DoWork += (a, b) =>
+                {
+                    this.Invoke(new Action(() =>
+                    {
+                        LoadWorkOrderDetails(0);
+                    }));
+
+                };
+                backgroundWorker.RunWorkerAsync();
+            };
         }
 
         public void LoadWorkOrderDetails(int row)
@@ -85,8 +103,17 @@ namespace Win.WO
                 cboDeliveredBy.EditValue = item.DeliveredBy;
                 this.DocumentBindingSource.DataSource =
                     new UnitOfWork().DocumentsRepo.Get(m => m.RefId == item.Id && m.TableName == "WorkOrders");
-                LoadActions();
-                LoadTechEvalSheet();
+                backgroundWorker = new BackgroundWorker();
+                backgroundWorker.DoWork += (a, b) =>
+                {
+                    this.Invoke(new Action(() =>
+                    {
+                        LoadActions();
+                        LoadTechEvalSheet();
+                    }));
+
+                };
+                backgroundWorker.RunWorkerAsync();
 
             }
         }
@@ -112,11 +139,8 @@ namespace Win.WO
         {
             if (!User.UserInAction("New Work Order"))
                 return;
-            frmAddEditWorkOrder frm = new frmAddEditWorkOrder()
-            {
-                frmWorkOrders = this,
-                MethodType = MethodType.Add
-            };
+            frmAddEditWorkOrder frm = new frmAddEditWorkOrder(null, MethodType.Add);
+
             frm.ShowDialog();
         }
 
@@ -124,13 +148,13 @@ namespace Win.WO
         {
             if (!User.UserInAction("Edit Work Order"))
                 return;
-            frmAddEditWorkOrder frm = new frmAddEditWorkOrder()
+            if (WorkOrderGrid.GetFocusedRow() is WorkOrders item)
             {
-                frmWorkOrders = this,
-                WOId = this.WOId,
-                MethodType = MethodType.Edit
-            };
-            frm.ShowDialog();
+                frmAddEditWorkOrder frm = new frmAddEditWorkOrder(item, MethodType.Edit);
+                frm.ShowDialog();
+
+            }
+
         }
 
         private void btnAction_Click(object sender, EventArgs e)
@@ -232,7 +256,13 @@ namespace Win.WO
         {
             if (e.KeyCode == Keys.Enter)
             {
-                Search(searchControl1.Text);
+                if (txtSearch.GetSelectedDataRow() is WorkOrders item)
+                {
+                    UnitOfWork unitOfWork = new UnitOfWork();
+
+                    this.WorkOrderBindingSource.DataSource = unitOfWork.WorkOrdersRepo.Get(m => m.Id == item.Id);
+                    LoadWorkOrderDetails(0);
+                }
             }
         }
 
@@ -241,11 +271,9 @@ namespace Win.WO
             if (!User.UserInAction("Edit Work Order"))
                 return;
 
-            frmAddEditWorkOrder frm = new frmAddEditWorkOrder()
+            frmAddEditWorkOrder frm = new frmAddEditWorkOrder(null, MethodType.Add)
             {
-                frmWorkOrders = this,
-                WOId = Convert.ToInt32(((sender as GridView)?.GetFocusedRow() as WorkOrders)?.Id),
-                MethodType = MethodType.Edit
+
             };
             frm.ShowDialog();
         }
@@ -378,7 +406,11 @@ namespace Win.WO
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-
+            if (txtSearch.GetSelectedDataRow() is WorkOrders item)
+            {
+                this.WorkOrderBindingSource.DataSource = new UnitOfWork().WorkOrdersRepo.Get(m => m.Id == item.Id);
+                LoadWorkOrderDetails(0);
+            }
         }
     }
 }

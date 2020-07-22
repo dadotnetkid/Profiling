@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\..\..\Development Cache\.nuget\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\..\..\Development Cache\.nuget\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -32,7 +31,7 @@
     <SuiteName>Profiling</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.htm</WebPage>
-    <ApplicationRevision>90</ApplicationRevision>
+    <ApplicationRevision>150</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -62,21 +61,22 @@
     <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>041A3D675EF9B9B06CCD848FA98968819208B7A4</ManifestCertificateThumbprint>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ManifestKeyFile>Win_TemporaryKey.pfx</ManifestKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>38AA2E63F5B2B39E9699A382FB2AF6D79B328635</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Win_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Charts.v18.2.Core, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v18.2, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.DataAccess.v18.2, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Images.v18.2, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Office.v18.2.Core, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Pdf.v18.2.Core, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.PivotGrid.v18.2.Core, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -96,19 +96,25 @@
     <Reference Include="DevExpress.XtraPrinting.v18.2, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraReports.v18.2, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraReports.v18.2.Extensions, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraRichEdit.v18.2, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v18.2, Version=18.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Development Cache\.nuget\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\..\..\Development Cache\.nuget\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Development Cache\.nuget\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\..\..\Development Cache\.nuget\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Development Cache\.nuget\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Development Cache\.nuget\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Data.ConnectionUI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=f4ca07f51760da93, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Development Cache\.nuget\packages\DataConnectionDialog.1.2\lib\Microsoft.Data.ConnectionUI.dll</HintPath>
+      <HintPath>..\..\..\Development Cache\.nuget\packages\DataConnectionDialog.1.2\Lib\Microsoft.Data.ConnectionUI.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.ConnectionUI.Dialog, Version=0.0.0.0, Culture=neutral, PublicKeyToken=f4ca07f51760da93, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Development Cache\.nuget\packages\DataConnectionDialog.1.2\lib\Microsoft.Data.ConnectionUI.Dialog.dll</HintPath>
+      <HintPath>..\..\..\Development Cache\.nuget\packages\DataConnectionDialog.1.2\Lib\Microsoft.Data.ConnectionUI.Dialog.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.ConnectionDlg.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.SqlServer.ConnectionDlg.UI, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
@@ -151,6 +157,12 @@
     <Compile Include="Dlvry\frmSearchTecDetail.Designer.cs">
       <DependentUpon>frmSearchTecDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dlvry\UCDeliveries.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dlvry\UCDeliveries.Designer.cs">
+      <DependentUpon>UCDeliveries.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dlvry\UcDeliveriesGrid.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -168,6 +180,12 @@
     </Compile>
     <Compile Include="Dlvry\UcDelEquipmentProfiles.Designer.cs">
       <DependentUpon>UcDelEquipmentProfiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DocAct\frmActionList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DocAct\frmActionList.Designer.cs">
+      <DependentUpon>frmActionList.cs</DependentUpon>
     </Compile>
     <Compile Include="DocAct\FrmAddEditPrograms.cs">
       <SubType>Form</SubType>
@@ -199,6 +217,12 @@
     <Compile Include="Emp\frmEmployees.Designer.cs">
       <DependentUpon>frmEmployees.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmUpdateNotification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUpdateNotification.Designer.cs">
+      <DependentUpon>frmUpdateNotification.cs</DependentUpon>
+    </Compile>
     <Compile Include="MESAF\frmAddEditMES.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,7 +230,7 @@
       <DependentUpon>frmAddEditMES.cs</DependentUpon>
     </Compile>
     <Compile Include="MESAF\frmMES.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MESAF\frmMES.Designer.cs">
       <DependentUpon>frmMES.cs</DependentUpon>
@@ -228,6 +252,12 @@
     </Compile>
     <Compile Include="Ofc\ucAddEditOffices.Designer.cs">
       <DependentUpon>ucAddEditOffices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PGN\UCPGN.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PGN\UCPGN.Designer.cs">
+      <DependentUpon>UCPGN.cs</DependentUpon>
     </Compile>
     <Compile Include="PO\frmAddEditPurchaseOrder.cs">
       <SubType>Form</SubType>
@@ -272,7 +302,7 @@
       <DependentUpon>frmAddEditEquipmentProfiles.cs</DependentUpon>
     </Compile>
     <Compile Include="PPE\frmEquipmentProfiles.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="PPE\frmEquipmentProfiles.Designer.cs">
       <DependentUpon>frmEquipmentProfiles.cs</DependentUpon>
@@ -337,6 +367,12 @@
     <Compile Include="Rpt\rptEquipmentProfile.Designer.cs">
       <DependentUpon>rptEquipmentProfile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Rpt\rptItemquipmentWidrawalSlip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Rpt\rptItemquipmentWidrawalSlip.Designer.cs">
+      <DependentUpon>rptItemquipmentWidrawalSlip.cs</DependentUpon>
+    </Compile>
     <Compile Include="Rpt\rptTechnicalReport.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -374,7 +410,7 @@
       <DependentUpon>frmSearchTechSpecDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="TS\frmTechSpecs.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="TS\frmTechSpecs.Designer.cs">
       <DependentUpon>frmTechSpecs.cs</DependentUpon>
@@ -439,6 +475,12 @@
     <Compile Include="WO\frmWorkOrders.Designer.cs">
       <DependentUpon>frmWorkOrders.cs</DependentUpon>
     </Compile>
+    <Compile Include="WO\UCWorkOrders.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WO\UCWorkOrders.Designer.cs">
+      <DependentUpon>UCWorkOrders.cs</DependentUpon>
+    </Compile>
     <Compile Include="Xcanner\frmListOfScanner.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -485,6 +527,9 @@
     <EmbeddedResource Include="Dlvry\frmSearchTecDetail.resx">
       <DependentUpon>frmSearchTecDetail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dlvry\UCDeliveries.resx">
+      <DependentUpon>UCDeliveries.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dlvry\UcDeliveriesGrid.resx">
       <DependentUpon>UcDeliveriesGrid.cs</DependentUpon>
     </EmbeddedResource>
@@ -493,6 +538,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dlvry\UcDelEquipmentProfiles.resx">
       <DependentUpon>UcDelEquipmentProfiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocAct\frmActionList.resx">
+      <DependentUpon>frmActionList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DocAct\FrmAddEditPrograms.resx">
       <DependentUpon>FrmAddEditPrograms.cs</DependentUpon>
@@ -509,6 +557,9 @@
     <EmbeddedResource Include="Emp\frmEmployees.resx">
       <DependentUpon>frmEmployees.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmUpdateNotification.resx">
+      <DependentUpon>frmUpdateNotification.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MESAF\frmAddEditMES.resx">
       <DependentUpon>frmAddEditMES.cs</DependentUpon>
     </EmbeddedResource>
@@ -523,6 +574,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ofc\ucAddEditOffices.resx">
       <DependentUpon>ucAddEditOffices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PGN\UCPGN.resx">
+      <DependentUpon>UCPGN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PO\frmAddEditPurchaseOrder.resx">
       <DependentUpon>frmAddEditPurchaseOrder.cs</DependentUpon>
@@ -563,6 +617,7 @@
     <EmbeddedResource Include="frmSplashScreen.resx">
       <DependentUpon>frmSplashScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Rpt\frmAccomplishmentReport.resx">
       <DependentUpon>frmAccomplishmentReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -577,6 +632,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Rpt\rptEquipmentProfile.resx">
       <DependentUpon>rptEquipmentProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rpt\rptItemquipmentWidrawalSlip.resx">
+      <DependentUpon>rptItemquipmentWidrawalSlip.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Rpt\rptTechnicalReport.resx">
       <DependentUpon>rptTechnicalReport.cs</DependentUpon>
@@ -629,6 +687,9 @@
     <EmbeddedResource Include="WO\frmWorkOrders.resx">
       <DependentUpon>frmWorkOrders.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WO\UCWorkOrders.resx">
+      <DependentUpon>UCWorkOrders.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Xcanner\frmListOfScanner.resx">
       <DependentUpon>frmListOfScanner.cs</DependentUpon>
     </EmbeddedResource>
@@ -638,7 +699,6 @@
     <EmbeddedResource Include="Xcanner\frmScanner.resx">
       <DependentUpon>frmScanner.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -656,7 +716,10 @@
       <DependentUpon>UcScanners.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Models.Employees.datasource" />
     <None Include="Properties\DataSources\Models.Offices.datasource" />
+    <None Include="Properties\DataSources\Models.PPEs.datasource" />
+    <None Include="Properties\DataSources\Models.WorkOrders.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -679,10 +742,6 @@
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{e031ffdb-e8c9-44c2-9deb-f50e5bd78267}</Project>
       <Name>Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Profiling.BL\Profiling.BL.csproj">
-      <Project>{7F6DEA37-B46E-4D9C-B934-69B9C4123960}</Project>
-      <Name>Profiling.BL</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -809,6 +868,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <Content Include="PAUL.jpg" />
+    <Content Include="SBF.jpg" />
+    <Content Include="sig\ppma signature.png" />
+    <Content Include="sig\sbf signature.png" />
     <None Include="Resources\addfile_16x16.png" />
     <None Include="Resources\printer_16x16.png" />
     <None Include="Resources\apply_16x161.png" />
@@ -839,6 +902,11 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\..\..\Development Cache\.nuget\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\..\..\Development Cache\.nuget\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
-  <Import Project="..\..\..\Development Cache\.nuget\packages\EmptyLicensesLicx.2.0.0\build\EmptyLicensesLicx.targets" Condition="Exists('..\..\..\Development Cache\.nuget\packages\EmptyLicensesLicx.2.0.0\build\EmptyLicensesLicx.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\..\Development Cache\.nuget\packages\EmptyLicensesLicx.2.0.1\build\EmptyLicensesLicx.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\Development Cache\.nuget\packages\EmptyLicensesLicx.2.0.1\build\EmptyLicensesLicx.targets'))" />
+  </Target>
+  <Import Project="..\..\..\Development Cache\.nuget\packages\EmptyLicensesLicx.2.0.1\build\EmptyLicensesLicx.targets" Condition="Exists('..\..\..\Development Cache\.nuget\packages\EmptyLicensesLicx.2.0.1\build\EmptyLicensesLicx.targets')" />
 </Project>

@@ -32,6 +32,7 @@ namespace Models
         public Nullable<System.DateTime> DateCreated { get; set; }
         public Nullable<int> ParentItem { get; set; }
         public string EquipmentType { get; set; }
+        public Nullable<int> RowNumber { get; set; }
     
         public virtual EquipmentTypes EquipmentTypes { get; set; }
         public virtual PPEs PPEs { get; set; }
@@ -39,6 +40,5 @@ namespace Models
         public virtual PurchaseOrders PurchaseOrders { get; set; }
         public virtual TechSpecs TechSpecs { get; set; }
         public virtual TechSpecEquipmentProfiles TechSpecEquipmentProfiles { get; set; }
-        public virtual Deliveries Deliveries { get; set; }
     }
 }

@@ -74,8 +74,8 @@ namespace Win.DocAct
             this.dtDate.EditValue = DateTime.Now;
             LoadActionDetails();
             LoadDetails();
-            ActionTakenBindingSource.DataSource = new UnitOfWork().DocActionsRepo.Fetch().GroupBy(x => x.ActionTaken)
-                .Select(x => new { ActionTaken = x.Key }).ToList();
+            ActionTakenBindingSource.DataSource = new UnitOfWork().ActionListsRepo.Get();
+
         }
 
         void LoadActionDetails()
@@ -104,24 +104,21 @@ namespace Win.DocAct
 
         void update()
         {
-
-
-            this.DocActions.RefId = RefId;
-            this.DocActions.Status = cboStatus.EditValue?.ToString();
-            this.DocActions.DateCreated = DateTime.Now;
-            this.DocActions.ActionDate = dtDate.DateTime;
-            this.DocActions.ActionTaken = txtActionTaken.Text;
-            this.DocActions.CreatedBy = User.UserId;
-            this.DocActions.TableName = TableName;
-            this.DocActions.EndorsedTo = (cboUsers.GetSelectedDataRow() as Users)?.Id;
-            this.DocActions.ProgramId = cboPrograms.EditValue?.ToInt();
-            this.DocActions.MainActivityId = cboMain.EditValue.ToInt();
-            this.DocActions.SubActivityId = cboSub.EditValue?.ToInt();
-            this.DocActions.ActivityId = cboActivity.EditValue?.ToInt();
-            this.DocActions.Remarks = txtRemarks.Text;
-
             var unitOfWork = new UnitOfWork();
-            unitOfWork.DocActionsRepo.Update(DocActions);
+            var action = unitOfWork.DocActionsRepo.Find(x => x.Id == DocActions.Id);
+            //this.DocActions = unitOfWork.DocActionsRepo.Find(x => x.RefId == RefId);
+            action.Status = cboStatus.EditValue?.ToString();
+            action.DateCreated = DateTime.Now;
+            action.ActionDate = dtDate.DateTime;
+            action.ActionTaken = txtActionTaken.Text;
+            action.CreatedBy = User.UserId;
+            action.TableName = TableName;
+            action.EndorsedTo = (cboUsers.GetSelectedDataRow() as Users)?.Id;
+            action.ProgramId = cboPrograms.EditValue?.ToInt();
+            action.MainActivityId = cboMain.EditValue.ToInt();
+            action.SubActivityId = cboSub.EditValue?.ToInt();
+            action.Remarks = txtRemarks.Text;
+            action.ActivityId = cboActivity.EditValue?.ToInt();
             unitOfWork.Save();
 
 
@@ -209,6 +206,13 @@ namespace Win.DocAct
                 this.cboSub.Properties.DataSource =
                     unitOfWork.DropdownsRepo.Get(m => m.ParentId == dropdown.Id, m => m.OrderBy(x => x.Order));
             }
+        }
+
+        private void btnAddAction_Click(object sender, EventArgs e)
+        {
+            frmActionList frm = new frmActionList();
+            frm.ShowDialog();
+            ActionTakenBindingSource.DataSource = new UnitOfWork().ActionListsRepo.Get();
         }
     }
 }

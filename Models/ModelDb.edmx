@@ -5,6 +5,14 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ActionLists">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Action" Type="nvarchar(max)" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" />
+        </EntityType>
         <EntityType Name="Actions">
           <Key>
             <PropertyRef Name="Id" />
@@ -49,7 +57,7 @@
           <Property Name="ActionDate" Type="datetime2" Precision="7" />
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
           <Property Name="TableName" Type="nvarchar" MaxLength="128" />
-          <Property Name="Remarks" Type="nvarchar" MaxLength="128" />
+          <Property Name="Remarks" Type="nvarchar(max)" />
           <Property Name="EndorsedTo" Type="nvarchar" MaxLength="128" />
         </EntityType>
         <EntityType Name="Documents">
@@ -112,6 +120,7 @@
           <Property Name="Serial" Type="nvarchar" MaxLength="128" />
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
           <Property Name="DateCreated" Type="datetime" />
+          <Property Name="RowNumber" Type="int" />
         </EntityType>
         <EntityType Name="EquipmentTypes">
           <Key>
@@ -180,6 +189,23 @@
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="DateCreated" Type="datetime2" Precision="7" />
         </EntityType>
+        <EntityType Name="PGNs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ControlNo" Type="nvarchar" MaxLength="128" />
+          <Property Name="Date" Type="datetime2" Precision="7" />
+          <Property Name="OfficeId" Type="int" />
+          <Property Name="OfficeName" Type="nvarchar" MaxLength="128" />
+          <Property Name="EmployeeId" Type="int" />
+          <Property Name="EmployeeName" Type="nvarchar" MaxLength="128" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="128" />
+          <Property Name="RequestProblem" Type="nvarchar" MaxLength="128" />
+          <Property Name="ActionTaken" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="128" />
+        </EntityType>
         <EntityType Name="PPEs">
           <Key>
             <PropertyRef Name="Id" />
@@ -237,7 +263,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SupplierName" Type="nvarchar(max)" />
           <Property Name="Address" Type="nvarchar(max)" />
           <Property Name="ContactNumber" Type="nvarchar(max)" />
@@ -291,6 +317,7 @@
           <Property Name="Notes" Type="nvarchar(max)" />
           <Property Name="DateRequested" Type="datetime2" Precision="7" />
           <Property Name="TableName" Type="nvarchar" MaxLength="128" />
+          <Property Name="WorOrderId" Type="int" />
         </EntityType>
         <EntityType Name="Towns">
           <Key>
@@ -391,7 +418,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="PPEId" Type="int" />
           <Property Name="WorkOrderId" Type="nvarchar" MaxLength="128" />
           <Property Name="Box" Type="int" />
@@ -408,6 +435,10 @@
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
           <Property Name="DeliveredBy" Type="nvarchar(max)" />
           <Property Name="DeliveredDescription" Type="nvarchar(max)" />
+          <Property Name="OfficeNo" Type="int" />
+          <Property Name="EquipmentTypeNo" Type="int" />
+          <Property Name="EquipmentCount" Type="int" />
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="128" />
         </EntityType>
         <Association Name="FK_Deliveries_Offices">
           <End Role="Offices" Type="Self.Offices" Multiplicity="0..1" />
@@ -502,18 +533,6 @@
             </Principal>
             <Dependent Role="Employees">
               <PropertyRef Name="OfficeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EquipmentProfiles_Deliveries">
-          <End Role="Deliveries" Type="Self.Deliveries" Multiplicity="0..1" />
-          <End Role="EquipmentProfiles" Type="Self.EquipmentProfiles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Deliveries">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="EquipmentProfiles">
-              <PropertyRef Name="RefId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -613,6 +632,30 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="MES">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PGNs_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="PGNs" Type="Self.PGNs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PGNs">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PGNs_Offices">
+          <End Role="Offices" Type="Self.Offices" Multiplicity="0..1" />
+          <End Role="PGNs" Type="Self.PGNs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PGNs">
               <PropertyRef Name="OfficeId" />
             </Dependent>
           </ReferentialConstraint>
@@ -755,6 +798,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TechSpecs_WorkOrders">
+          <End Role="WorkOrders" Type="Self.WorkOrders" Multiplicity="0..1" />
+          <End Role="TechSpecs" Type="Self.TechSpecs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkOrders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TechSpecs">
+              <PropertyRef Name="WorOrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Towns_Towns">
           <End Role="Provinces" Type="Self.Provinces" Multiplicity="0..1" />
           <End Role="Towns" Type="Self.Towns" Multiplicity="*" />
@@ -876,6 +931,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="ActionLists" EntityType="Self.ActionLists" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Actions" EntityType="Self.Actions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Articles" EntityType="Self.Articles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Deliveries" EntityType="Self.Deliveries" Schema="dbo" store:Type="Tables" />
@@ -890,6 +946,7 @@
           <EntitySet Name="Logs" EntityType="Self.Logs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MES" EntityType="Self.MES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Offices" EntityType="Self.Offices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PGNs" EntityType="Self.PGNs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PPEs" EntityType="Self.PPEs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Provinces" EntityType="Self.Provinces" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PurchaseOrders" EntityType="Self.PurchaseOrders" Schema="dbo" store:Type="Tables" />
@@ -940,10 +997,6 @@
             <End Role="Offices" EntitySet="Offices" />
             <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
-          <AssociationSet Name="FK_EquipmentProfiles_Deliveries" Association="Self.FK_EquipmentProfiles_Deliveries">
-            <End Role="Deliveries" EntitySet="Deliveries" />
-            <End Role="EquipmentProfiles" EntitySet="EquipmentProfiles" />
-          </AssociationSet>
           <AssociationSet Name="FK_EquipmentProfiles_EquipmentTypes" Association="Self.FK_EquipmentProfiles_EquipmentTypes">
             <End Role="EquipmentTypes" EntitySet="EquipmentTypes" />
             <End Role="EquipmentProfiles" EntitySet="EquipmentProfiles" />
@@ -975,6 +1028,14 @@
           <AssociationSet Name="FK_MES_Offices" Association="Self.FK_MES_Offices">
             <End Role="Offices" EntitySet="Offices" />
             <End Role="MES" EntitySet="MES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PGNs_Employees" Association="Self.FK_PGNs_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="PGNs" EntitySet="PGNs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PGNs_Offices" Association="Self.FK_PGNs_Offices">
+            <End Role="Offices" EntitySet="Offices" />
+            <End Role="PGNs" EntitySet="PGNs" />
           </AssociationSet>
           <AssociationSet Name="FK_PPEs_Employees" Association="Self.FK_PPEs_Employees">
             <End Role="Employees" EntitySet="Employees" />
@@ -1018,6 +1079,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_TechSpecs_Users" Association="Self.FK_TechSpecs_Users">
             <End Role="Users" EntitySet="Users" />
+            <End Role="TechSpecs" EntitySet="TechSpecs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechSpecs_WorkOrders" Association="Self.FK_TechSpecs_WorkOrders">
+            <End Role="WorkOrders" EntitySet="WorkOrders" />
             <End Role="TechSpecs" EntitySet="TechSpecs" />
           </AssociationSet>
           <AssociationSet Name="FK_Towns_Towns" Association="Self.FK_Towns_Towns">
@@ -1108,15 +1173,6 @@
             <End Role="Employees" EntitySet="Employees" />
             <End Role="PPEs" EntitySet="PPEs" />
           </AssociationSet>
-          <EntitySet Name="WorkOrders" EntityType="Model.WorkOrders" />
-          <AssociationSet Name="FK_WorkOrders_PPEs" Association="Model.FK_WorkOrders_PPEs">
-            <End Role="PPEs" EntitySet="PPEs" />
-            <End Role="WorkOrders" EntitySet="WorkOrders" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WorkOrders_Employees" Association="Model.FK_WorkOrders_Employees">
-            <End Role="Employees" EntitySet="Employees" />
-            <End Role="WorkOrders" EntitySet="WorkOrders" />
-          </AssociationSet>
           <AssociationSet Name="FK_PPEs_EquipmentTypes" Association="Model.FK_PPEs_EquipmentTypes">
             <End Role="EquipmentTypes" EntitySet="EquipmentTypes" />
             <End Role="PPEs" EntitySet="PPEs" />
@@ -1125,10 +1181,6 @@
           <EntitySet Name="DocActions" EntityType="Model.DocActions" />
           <AssociationSet Name="FK_DocActions_PPEs" Association="Model.FK_DocActions_PPEs">
             <End Role="PPEs" EntitySet="PPEs" />
-            <End Role="DocActions" EntitySet="DocActions" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WOActions_WorkOrders" Association="Model.FK_WOActions_WorkOrders">
-            <End Role="WorkOrders" EntitySet="WorkOrders" />
             <End Role="DocActions" EntitySet="DocActions" />
           </AssociationSet>
           <EntitySet Name="EquipmentProfiles" EntityType="Model.EquipmentProfiles" />
@@ -1230,6 +1282,25 @@
             <End Role="Offices" EntitySet="Offices" />
             <End Role="MES" EntitySet="MES" />
           </AssociationSet>
+          <EntitySet Name="Dropdowns" EntityType="Model.Dropdowns" />
+          <EntitySet Name="Documents" EntityType="Model.Documents" />
+          <AssociationSet Name="FK_Documents_Users" Association="Model.FK_Documents_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Documents" EntitySet="Documents" />
+          </AssociationSet>
+          <EntitySet Name="WorkOrders" EntityType="Model.WorkOrders" />
+          <AssociationSet Name="FK_WOActions_WorkOrders" Association="Model.FK_WOActions_WorkOrders">
+            <End Role="WorkOrders" EntitySet="WorkOrders" />
+            <End Role="DocActions" EntitySet="DocActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkOrders_Employees" Association="Model.FK_WorkOrders_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="WorkOrders" EntitySet="WorkOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkOrders_PPEs" Association="Model.FK_WorkOrders_PPEs">
+            <End Role="PPEs" EntitySet="PPEs" />
+            <End Role="WorkOrders" EntitySet="WorkOrders" />
+          </AssociationSet>
           <AssociationSet Name="FK_WorkOrders_Users" Association="Model.FK_WorkOrders_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="WorkOrders" EntitySet="WorkOrders" />
@@ -1243,15 +1314,19 @@
             <End Role="Suppliers" EntitySet="Suppliers" />
             <End Role="Deliveries" EntitySet="Deliveries" />
           </AssociationSet>
-          <AssociationSet Name="FK_EquipmentProfiles_Deliveries" Association="Model.FK_EquipmentProfiles_Deliveries">
-            <End Role="Deliveries" EntitySet="Deliveries" />
-            <End Role="EquipmentProfiles" EntitySet="EquipmentProfiles" />
+          <EntitySet Name="ActionLists" EntityType="Model.ActionLists" />
+          <AssociationSet Name="FK_TechSpecs_WorkOrders" Association="Model.FK_TechSpecs_WorkOrders">
+            <End Role="WorkOrders" EntitySet="WorkOrders" />
+            <End Role="TechSpecs" EntitySet="TechSpecs" />
           </AssociationSet>
-          <EntitySet Name="Dropdowns" EntityType="Model.Dropdowns" />
-          <EntitySet Name="Documents" EntityType="Model.Documents" />
-          <AssociationSet Name="FK_Documents_Users" Association="Model.FK_Documents_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Documents" EntitySet="Documents" />
+          <EntitySet Name="PGNs" EntityType="Model.PGNs" />
+          <AssociationSet Name="FK_PGNs_Employees" Association="Model.FK_PGNs_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="PGNs" EntitySet="PGNs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PGNs_Offices" Association="Model.FK_PGNs_Offices">
+            <End Role="Offices" EntitySet="Offices" />
+            <End Role="PGNs" EntitySet="PGNs" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="EquipmentTypes">
@@ -1387,8 +1462,8 @@
           <NavigationProperty Name="TechSpecs" Relationship="Model.FK_TechSpecs_Users" FromRole="Users" ToRole="TechSpecs" />
           <NavigationProperty Name="CreatedBy" Relationship="Model.FK_DocActions_Users" FromRole="Users" ToRole="DocActions" />
           <NavigationProperty Name="EndorseTo" Relationship="Model.FK_DocActions_Users1" FromRole="Users" ToRole="DocActions" />
-          <NavigationProperty Name="CreatedByWorkOrders" Relationship="Model.FK_WorkOrders_Users" FromRole="Users" ToRole="WorkOrders" />
           <NavigationProperty Name="Documents" Relationship="Model.FK_Documents_Users" FromRole="Users" ToRole="Documents" />
+          <NavigationProperty Name="WorkOrders" Relationship="Model.FK_WorkOrders_Users" FromRole="Users" ToRole="WorkOrders" />
         </EntityType>
         <Association Name="FK_Logs_Users">
           <End Type="Model.Users" Role="Users" Multiplicity="0..1" />
@@ -1481,13 +1556,14 @@
           <Property Name="OfficeId" Type="Int32" />
           <Property Name="Position" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="PPEs" Relationship="Model.FK_PPEs_Employees" FromRole="Employees" ToRole="PPEs" />
-          <NavigationProperty Name="WorkOrders" Relationship="Model.FK_WorkOrders_Employees" FromRole="Employees" ToRole="WorkOrders" />
           <NavigationProperty Name="PurchaseOrders" Relationship="Model.FK_PurchaseOrders_Employees" FromRole="Employees" ToRole="PurchaseOrders" />
           <Property Name="OfcAcr" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TechSpecs" Relationship="Model.FK_TechSpecs_Employees" FromRole="Employees" ToRole="TechSpecs" />
           <NavigationProperty Name="Offices" Relationship="Model.FK_Employees_Offices" FromRole="Employees" ToRole="Offices" />
           <NavigationProperty Name="MES" Relationship="Model.FK_MES_Employees" FromRole="Employees" ToRole="MES" />
+          <NavigationProperty Name="WorkOrders" Relationship="Model.FK_WorkOrders_Employees" FromRole="Employees" ToRole="WorkOrders" />
+          <NavigationProperty Name="PGNs" Relationship="Model.FK_PGNs_Employees" FromRole="Employees" ToRole="PGNs" />
         </EntityType>
         <EntityType Name="PPEs">
           <Key>
@@ -1500,7 +1576,6 @@
           <NavigationProperty Name="Employees" Relationship="Model.FK_PPEs_Employees" FromRole="PPEs" ToRole="Employees" />
           <Property Name="EquipmentTypeId" Type="Int32" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="WorkOrders" Relationship="Model.FK_WorkOrders_PPEs" FromRole="PPEs" ToRole="WorkOrders" />
           <NavigationProperty Name="EquipmentTypes" Relationship="Model.FK_PPEs_EquipmentTypes" FromRole="PPEs" ToRole="EquipmentTypes" />
           <Property Name="PPEId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="DateDelivered" Type="DateTime" Precision="7" />
@@ -1515,6 +1590,7 @@
           <Property Name="DateCreated" Type="DateTime" Precision="7" />
           <Property Name="ArticleId" Type="Int32" />
           <NavigationProperty Name="Offices" Relationship="Model.FK_PPEs_Offices" FromRole="PPEs" ToRole="Offices" />
+          <NavigationProperty Name="WorkOrders" Relationship="Model.FK_WorkOrders_PPEs" FromRole="PPEs" ToRole="WorkOrders" />
         </EntityType>
         <Association Name="FK_PPEs_Employees">
           <End Type="Model.Employees" Role="Employees" Multiplicity="0..1" />
@@ -1525,56 +1601,6 @@
             </Principal>
             <Dependent Role="PPEs">
               <PropertyRef Name="EmployeeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="WorkOrders">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PPEId" Type="Int32" />
-          <Property Name="WorkOrderId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="RequestedDate" Type="DateTime" Precision="7" />
-          <Property Name="RequestedBy" Type="Int32" />
-          <Property Name="Position" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Problem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="AssignedTo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Findings" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Recommendation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="DateCreated" Type="DateTime" Precision="7" />
-          <NavigationProperty Name="PPEs" Relationship="Model.FK_WorkOrders_PPEs" FromRole="WorkOrders" ToRole="PPEs" />
-          <NavigationProperty Name="Employees" Relationship="Model.FK_WorkOrders_Employees" FromRole="WorkOrders" ToRole="Employees" />
-          <NavigationProperty Name="DocActions" Relationship="Model.FK_WOActions_WorkOrders" FromRole="WorkOrders" ToRole="DocActions" />
-          <Property Name="Box" Type="Int32" />
-          <Property Name="FolderNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="BoxNo" Type="Int32" />
-          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CreatedByUser" Relationship="Model.FK_WorkOrders_Users" FromRole="WorkOrders" ToRole="Users" />
-          <Property Name="DeliveredBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="DeliveredDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <Association Name="FK_WorkOrders_PPEs">
-          <End Type="Model.PPEs" Role="PPEs" Multiplicity="0..1" />
-          <End Type="Model.WorkOrders" Role="WorkOrders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PPEs">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="WorkOrders">
-              <PropertyRef Name="PPEId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WorkOrders_Employees">
-          <End Type="Model.Employees" Role="Employees" Multiplicity="0..1" />
-          <End Type="Model.WorkOrders" Role="WorkOrders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employees">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="WorkOrders">
-              <PropertyRef Name="RequestedBy" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1611,9 +1637,8 @@
           <Property Name="ActionDate" Type="DateTime" Precision="7" />
           <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="TableName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Remarks" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="PPEs" Relationship="Model.FK_DocActions_PPEs" FromRole="DocActions" ToRole="PPEs" />
-          <NavigationProperty Name="WorkOrders" Relationship="Model.FK_WOActions_WorkOrders" FromRole="DocActions" ToRole="WorkOrders" />
           <Property Name="EndorsedTo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="ProgramId" Type="Int32" />
           <Property Name="MainActivityId" Type="Int32" />
@@ -1622,24 +1647,13 @@
           <NavigationProperty Name="TechSpecs" Relationship="Model.FK_DocActions_TechSpecs" FromRole="DocActions" ToRole="TechSpecs" />
           <NavigationProperty Name="CreatedByUsers" Relationship="Model.FK_DocActions_Users" FromRole="DocActions" ToRole="Users" />
           <NavigationProperty Name="EndorsedToUsers" Relationship="Model.FK_DocActions_Users1" FromRole="DocActions" ToRole="Users" />
+          <NavigationProperty Name="WorkOrders" Relationship="Model.FK_WOActions_WorkOrders" FromRole="DocActions" ToRole="WorkOrders" />
         </EntityType>
         <Association Name="FK_DocActions_PPEs">
           <End Type="Model.PPEs" Role="PPEs" Multiplicity="0..1" />
           <End Type="Model.DocActions" Role="DocActions" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PPEs">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="DocActions">
-              <PropertyRef Name="RefId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WOActions_WorkOrders">
-          <End Type="Model.WorkOrders" Role="WorkOrders" Multiplicity="0..1" />
-          <End Type="Model.DocActions" Role="DocActions" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WorkOrders">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="DocActions">
@@ -1675,7 +1689,7 @@
           <Property Name="ParentItem" Type="Int32" />
           <NavigationProperty Name="TechSpecEquipmentProfiles" Relationship="Model.FK_TechSpecEquipmentProfiles_EquipmentProfiles" FromRole="EquipmentProfiles" ToRole="TechSpecEquipmentProfiles" />
           <Property Name="EquipmentType" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Deliveries" Relationship="Model.FK_EquipmentProfiles_Deliveries" FromRole="EquipmentProfiles" ToRole="Deliveries" />
+          <Property Name="RowNumber" Type="Int32" />
         </EntityType>
         <Association Name="FK_EquipmentProfiles_EquipmentTypes">
           <End Type="Model.EquipmentTypes" Role="EquipmentTypes" Multiplicity="0..1" />
@@ -1861,6 +1875,8 @@
           <NavigationProperty Name="TechSpecRequests" Relationship="Model.FK_TechSpecRequests_TechSpecs" FromRole="TechSpecs" ToRole="TechSpecRequests" />
           <NavigationProperty Name="DocActions" Relationship="Model.FK_DocActions_TechSpecs" FromRole="TechSpecs" ToRole="DocActions" />
           <Property Name="TableName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="WorOrderId" Type="Int32" />
+          <NavigationProperty Name="WorkOrders" Relationship="Model.FK_TechSpecs_WorkOrders" FromRole="TechSpecs" ToRole="WorkOrders" />
         </EntityType>
         <Association Name="FK_TechSpecs_Employees">
           <End Type="Model.Employees" Role="Employees" Multiplicity="0..1" />
@@ -1928,6 +1944,7 @@
           <Property Name="Position" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="MES" Relationship="Model.FK_MES_Offices" FromRole="Offices" ToRole="MES" />
           <NavigationProperty Name="Deliveries" Relationship="Model.FK_Deliveries_Offices" FromRole="Offices" ToRole="Deliveries" />
+          <NavigationProperty Name="PGNs" Relationship="Model.FK_PGNs_Offices" FromRole="Offices" ToRole="PGNs" />
         </EntityType>
         <Association Name="FK_Employees_Offices">
           <End Type="Model.Offices" Role="Offices" Multiplicity="0..1" />
@@ -2098,68 +2115,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_WorkOrders_Users">
-          <End Type="Model.Users" Role="Users" Multiplicity="0..1" />
-          <End Type="Model.WorkOrders" Role="WorkOrders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="WorkOrders">
-              <PropertyRef Name="CreatedBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Deliveries">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="DeliveryId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="SupplierId" Type="Int32" />
-          <Property Name="OfficeId" Type="Int32" />
-          <Property Name="DeliveredDate" Type="DateTime" Precision="7" />
-          <NavigationProperty Name="Offices" Relationship="Model.FK_Deliveries_Offices" FromRole="Deliveries" ToRole="Offices" />
-          <NavigationProperty Name="Suppliers" Relationship="Model.FK_Deliveries_Suppliers" FromRole="Deliveries" ToRole="Suppliers" />
-          <NavigationProperty Name="EquipmentProfiles" Relationship="Model.FK_EquipmentProfiles_Deliveries" FromRole="Deliveries" ToRole="EquipmentProfiles" />
-          <Property Name="Files" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <Association Name="FK_Deliveries_Offices">
-          <End Type="Model.Offices" Role="Offices" Multiplicity="0..1" />
-          <End Type="Model.Deliveries" Role="Deliveries" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Offices">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Deliveries">
-              <PropertyRef Name="OfficeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Deliveries_Suppliers">
-          <End Type="Model.Suppliers" Role="Suppliers" Multiplicity="0..1" />
-          <End Type="Model.Deliveries" Role="Deliveries" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Suppliers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Deliveries">
-              <PropertyRef Name="SupplierId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EquipmentProfiles_Deliveries">
-          <End Type="Model.Deliveries" Role="Deliveries" Multiplicity="0..1" />
-          <End Type="Model.EquipmentProfiles" Role="EquipmentProfiles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Deliveries">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="EquipmentProfiles">
-              <PropertyRef Name="RefId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Dropdowns">
           <Key>
             <PropertyRef Name="Id" />
@@ -2195,6 +2150,185 @@
             </Principal>
             <Dependent Role="Documents">
               <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="WorkOrders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="PPEId" Type="Int32" />
+          <Property Name="WorkOrderId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Box" Type="Int32" />
+          <Property Name="RequestedDate" Type="DateTime" Precision="7" />
+          <Property Name="RequestedBy" Type="Int32" />
+          <Property Name="Position" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Problem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AssignedTo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Findings" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Recommendation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="7" />
+          <Property Name="FolderNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="BoxNo" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveredBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveredDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OfficeNo" Type="Int32" />
+          <Property Name="EquipmentTypeNo" Type="Int32" />
+          <Property Name="SerialNumber" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DocActions" Relationship="Model.FK_WOActions_WorkOrders" FromRole="WorkOrders" ToRole="DocActions" />
+          <NavigationProperty Name="Employees" Relationship="Model.FK_WorkOrders_Employees" FromRole="WorkOrders" ToRole="Employees" />
+          <NavigationProperty Name="PPEs" Relationship="Model.FK_WorkOrders_PPEs" FromRole="WorkOrders" ToRole="PPEs" />
+          <NavigationProperty Name="Users" Relationship="Model.FK_WorkOrders_Users" FromRole="WorkOrders" ToRole="Users" />
+          <Property Name="EquipmentCount" Type="Int32" />
+          <NavigationProperty Name="TechSpecs" Relationship="Model.FK_TechSpecs_WorkOrders" FromRole="WorkOrders" ToRole="TechSpecs" />
+        </EntityType>
+        <Association Name="FK_WOActions_WorkOrders">
+          <End Type="Model.WorkOrders" Role="WorkOrders" Multiplicity="0..1" />
+          <End Type="Model.DocActions" Role="DocActions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkOrders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocActions">
+              <PropertyRef Name="RefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkOrders_Employees">
+          <End Type="Model.Employees" Role="Employees" Multiplicity="0..1" />
+          <End Type="Model.WorkOrders" Role="WorkOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkOrders">
+              <PropertyRef Name="RequestedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkOrders_PPEs">
+          <End Type="Model.PPEs" Role="PPEs" Multiplicity="0..1" />
+          <End Type="Model.WorkOrders" Role="WorkOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PPEs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkOrders">
+              <PropertyRef Name="PPEId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkOrders_Users">
+          <End Type="Model.Users" Role="Users" Multiplicity="0..1" />
+          <End Type="Model.WorkOrders" Role="WorkOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkOrders">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Deliveries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="DeliveryId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierId" Type="Int32" />
+          <Property Name="OfficeId" Type="Int32" />
+          <Property Name="DeliveredDate" Type="DateTime" Precision="7" />
+          <Property Name="Files" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Offices" Relationship="Model.FK_Deliveries_Offices" FromRole="Deliveries" ToRole="Offices" />
+          <NavigationProperty Name="Suppliers" Relationship="Model.FK_Deliveries_Suppliers" FromRole="Deliveries" ToRole="Suppliers" />
+        </EntityType>
+        <Association Name="FK_Deliveries_Offices">
+          <End Type="Model.Offices" Role="Offices" Multiplicity="0..1" />
+          <End Type="Model.Deliveries" Role="Deliveries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Deliveries">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deliveries_Suppliers">
+          <End Type="Model.Suppliers" Role="Suppliers" Multiplicity="0..1" />
+          <End Type="Model.Deliveries" Role="Deliveries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suppliers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Deliveries">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ActionLists">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Action" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="7" />
+        </EntityType>
+        <Association Name="FK_TechSpecs_WorkOrders">
+          <End Type="Model.WorkOrders" Role="WorkOrders" Multiplicity="0..1" />
+          <End Type="Model.TechSpecs" Role="TechSpecs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkOrders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TechSpecs">
+              <PropertyRef Name="WorOrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PGNs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ControlNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="7" />
+          <Property Name="OfficeId" Type="Int32" />
+          <Property Name="OfficeName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeId" Type="Int32" />
+          <Property Name="EmployeeName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Designation" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RequestProblem" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ActionTaken" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="Model.FK_PGNs_Employees" FromRole="PGNs" ToRole="Employees" />
+          <NavigationProperty Name="Offices" Relationship="Model.FK_PGNs_Offices" FromRole="PGNs" ToRole="Offices" />
+        </EntityType>
+        <Association Name="FK_PGNs_Employees">
+          <End Type="Model.Employees" Role="Employees" Multiplicity="0..1" />
+          <End Type="Model.PGNs" Role="PGNs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PGNs">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PGNs_Offices">
+          <End Type="Model.Offices" Role="Offices" Multiplicity="0..1" />
+          <End Type="Model.PGNs" Role="PGNs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PGNs">
+              <PropertyRef Name="OfficeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2388,29 +2522,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="WorkOrders">
-            <EntityTypeMapping TypeName="Model.WorkOrders">
-              <MappingFragment StoreEntitySet="WorkOrders">
-                <ScalarProperty Name="DeliveredDescription" ColumnName="DeliveredDescription" />
-                <ScalarProperty Name="DeliveredBy" ColumnName="DeliveredBy" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="BoxNo" ColumnName="BoxNo" />
-                <ScalarProperty Name="FolderNo" ColumnName="FolderNo" />
-                <ScalarProperty Name="Box" ColumnName="Box" />
-                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
-                <ScalarProperty Name="Recommendation" ColumnName="Recommendation" />
-                <ScalarProperty Name="Findings" ColumnName="Findings" />
-                <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
-                <ScalarProperty Name="Problem" ColumnName="Problem" />
-                <ScalarProperty Name="Position" ColumnName="Position" />
-                <ScalarProperty Name="RequestedBy" ColumnName="RequestedBy" />
-                <ScalarProperty Name="RequestedDate" ColumnName="RequestedDate" />
-                <ScalarProperty Name="WorkOrderId" ColumnName="WorkOrderId" />
-                <ScalarProperty Name="PPEId" ColumnName="PPEId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Statuses">
             <EntityTypeMapping TypeName="Model.Statuses">
               <MappingFragment StoreEntitySet="Statuses">
@@ -2444,6 +2555,7 @@
           <EntitySetMapping Name="EquipmentProfiles">
             <EntityTypeMapping TypeName="Model.EquipmentProfiles">
               <MappingFragment StoreEntitySet="EquipmentProfiles">
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
                 <ScalarProperty Name="EquipmentType" ColumnName="EquipmentType" />
                 <ScalarProperty Name="ParentItem" ColumnName="ParentItem" />
                 <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
@@ -2530,6 +2642,7 @@
           <EntitySetMapping Name="TechSpecs">
             <EntityTypeMapping TypeName="Model.TechSpecs">
               <MappingFragment StoreEntitySet="TechSpecs">
+                <ScalarProperty Name="WorOrderId" ColumnName="WorOrderId" />
                 <ScalarProperty Name="TableName" ColumnName="TableName" />
                 <ScalarProperty Name="DateRequested" ColumnName="DateRequested" />
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
@@ -2598,18 +2711,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Deliveries">
-            <EntityTypeMapping TypeName="Model.Deliveries">
-              <MappingFragment StoreEntitySet="Deliveries">
-                <ScalarProperty Name="Files" ColumnName="Files" />
-                <ScalarProperty Name="DeliveredDate" ColumnName="DeliveredDate" />
-                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
-                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
-                <ScalarProperty Name="DeliveryId" ColumnName="DeliveryId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Dropdowns">
             <EntityTypeMapping TypeName="Model.Dropdowns">
               <MappingFragment StoreEntitySet="Dropdowns">
@@ -2633,6 +2734,72 @@
                 <ScalarProperty Name="ExtName" ColumnName="ExtName" />
                 <ScalarProperty Name="FileId" ColumnName="FileId" />
                 <ScalarProperty Name="RootDirectory" ColumnName="RootDirectory" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkOrders">
+            <EntityTypeMapping TypeName="Model.WorkOrders">
+              <MappingFragment StoreEntitySet="WorkOrders">
+                <ScalarProperty Name="EquipmentCount" ColumnName="EquipmentCount" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="EquipmentTypeNo" ColumnName="EquipmentTypeNo" />
+                <ScalarProperty Name="OfficeNo" ColumnName="OfficeNo" />
+                <ScalarProperty Name="DeliveredDescription" ColumnName="DeliveredDescription" />
+                <ScalarProperty Name="DeliveredBy" ColumnName="DeliveredBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="BoxNo" ColumnName="BoxNo" />
+                <ScalarProperty Name="FolderNo" ColumnName="FolderNo" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Recommendation" ColumnName="Recommendation" />
+                <ScalarProperty Name="Findings" ColumnName="Findings" />
+                <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+                <ScalarProperty Name="Problem" ColumnName="Problem" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="RequestedBy" ColumnName="RequestedBy" />
+                <ScalarProperty Name="RequestedDate" ColumnName="RequestedDate" />
+                <ScalarProperty Name="Box" ColumnName="Box" />
+                <ScalarProperty Name="WorkOrderId" ColumnName="WorkOrderId" />
+                <ScalarProperty Name="PPEId" ColumnName="PPEId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deliveries">
+            <EntityTypeMapping TypeName="Model.Deliveries">
+              <MappingFragment StoreEntitySet="Deliveries">
+                <ScalarProperty Name="Files" ColumnName="Files" />
+                <ScalarProperty Name="DeliveredDate" ColumnName="DeliveredDate" />
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="DeliveryId" ColumnName="DeliveryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActionLists">
+            <EntityTypeMapping TypeName="Model.ActionLists">
+              <MappingFragment StoreEntitySet="ActionLists">
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PGNs">
+            <EntityTypeMapping TypeName="Model.PGNs">
+              <MappingFragment StoreEntitySet="PGNs">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ActionTaken" ColumnName="ActionTaken" />
+                <ScalarProperty Name="RequestProblem" ColumnName="RequestProblem" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ControlNo" ColumnName="ControlNo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

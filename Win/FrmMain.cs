@@ -13,10 +13,12 @@ using Win.Properties;
 using Helpers;
 using Microsoft.Data.ConnectionUI;
 using Win.Dlvry;
+using Win.DocAct;
 using Win.Dshbrd;
 using Win.PO;
 using Win.Sup;
 using Win.Emp;
+using Win.MESAF;
 using Win.Rpt;
 using Win.TS;
 using Win.Usr;
@@ -32,7 +34,8 @@ namespace Win
             InitializeComponent();
             this.Icon = Resources.favicon.ToIcon();
 
-
+            if (!backgroundWorker1.IsBusy)
+                backgroundWorker1.RunWorkerAsync();
         }
 
         private void btnEquipments_ItemClick(object sender, ItemClickEventArgs e)
@@ -112,10 +115,7 @@ namespace Win
 
         private void barButtonItem7_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (!User.UserInAction("Deliveries"))
-                return;
-            frmDeliveries frm = new frmDeliveries();
-            frm.ShowDialog();
+
         }
 
         private void barButtonItem8_ItemClick(object sender, ItemClickEventArgs e)
@@ -144,17 +144,18 @@ namespace Win
         {
             if (!User.UserInAction("Equipment Profiles"))
                 return;
-            frmEquipmentProfiles frm = new frmEquipmentProfiles();
-            frm.ShowDialog();
+            frmEquipmentProfiles frm = new frmEquipmentProfiles()
+            {
+                Dock = DockStyle.Fill
+            };
+            pnlDashoard.Controls.Clear();
+
+            pnlDashoard.Controls.Add(frm);
         }
 
         private void barButtonItem9_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (!User.UserInAction("Work Orders"))
-                return;
 
-            frmWorkOrders frm = new frmWorkOrders();
-            frm.ShowDialog();
         }
 
         private void backstageViewTabItem1_SelectedChanged(object sender, DevExpress.XtraBars.Ribbon.BackstageViewItemEventArgs e)
@@ -170,14 +171,25 @@ namespace Win
 
         private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
         {
-            frmTechSpecs frmTechSpecs = new frmTechSpecs();
-            frmTechSpecs.ShowDialog();
+            var frmTechSpecs = new frmTechSpecs()
+            {
+                Dock = DockStyle.Fill
+            };
+            pnlDashoard.Controls.Clear();
+            pnlDashoard.Controls.Add(frmTechSpecs);
+            // frmTechSpecs.ShowDialog();
         }
 
         private void barButtonItem12_ItemClick(object sender, ItemClickEventArgs e)
         {
-            MESAF.frmMES frm = new MESAF.frmMES();
-            frm.ShowDialog();
+            if (!User.UserInAction("MES"))
+                return;
+            pnlDashoard.Controls.Clear();
+            pnlDashoard.Controls.Add(new frmMES()
+            {
+                Dock = DockStyle.Fill
+            });
+            // frm.ShowDialog();
         }
 
         private void btnDocActionTreeList_ItemClick(object sender, ItemClickEventArgs e)
@@ -190,6 +202,67 @@ namespace Win
         {
             sts.frmStatus frm = new sts.frmStatus();
             frm.ShowDialog();
+        }
+
+        private void btnDeliveries_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (!User.UserInAction("Deliveries"))
+                return;
+            pnlDashoard.Controls.Clear();
+            pnlDashoard.Controls.Add(new UCDeliveries()
+            {
+                Dock = DockStyle.Fill
+            });
+        }
+
+        private void btnWO_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (!User.UserInAction("Work Orders"))
+                return;
+
+            pnlDashoard.Controls.Clear();
+            pnlDashoard.Controls.Add(new UCWorkOrders()
+            {
+                Dock = DockStyle.Fill
+            });
+        }
+
+        private void btnActions_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (!User.UserInAction("Work Orders"))
+                return;
+
+            frmActionList frm = new frmActionList();
+            frm.ShowDialog();
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            bool updateNow = true;
+            while (updateNow)
+            {
+                Thread.Sleep(1000);
+                if (UpdateHelpers.InstallUpdateSyncWithInfo())
+                {
+                    this.Invoke(new Action(() =>
+                    {
+                        updateNow = false;
+                        lblTime.Caption = @"OFMIS: Update available(the system is updating)";
+                        UpdateHelpers.applicationDeployment.UpdateCompleted += (se, ev) =>
+                        {
+                            new frmUpdateNotification().ShowDialog(this);
+                        };
+                        UpdateHelpers.applicationDeployment.UpdateProgressChanged += (se, ev) =>
+                        {
+                            lblTime.Caption = $@"OFMIS: Update available(the system is updating) {ev.ProgressPercentage}%";
+                        };
+                        UpdateHelpers.applicationDeployment.UpdateAsync();
+
+
+                    }));
+
+                }
+            }
         }
     }
 }

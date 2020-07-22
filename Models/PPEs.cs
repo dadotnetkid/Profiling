@@ -17,9 +17,9 @@ namespace Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PPEs()
         {
-            this.WorkOrders = new HashSet<WorkOrders>();
             this.DocActions = new HashSet<DocActions>();
             this.EquipmentProfiles = new HashSet<EquipmentProfiles>();
+            this.WorkOrders = new HashSet<WorkOrders>();
         }
     
         public int Id { get; set; }
@@ -40,13 +40,13 @@ namespace Models
         public Nullable<int> ArticleId { get; set; }
     
         public virtual Employees Employees { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WorkOrders> WorkOrders { get; set; }
         public virtual EquipmentTypes EquipmentTypes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DocActions> DocActions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EquipmentProfiles> EquipmentProfiles { get; set; }
         public virtual Offices Offices { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<WorkOrders> WorkOrders { get; set; }
     }
 }

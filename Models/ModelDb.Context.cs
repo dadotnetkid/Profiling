@@ -39,7 +39,6 @@ namespace Models
         public virtual DbSet<Inventory> Inventory { get; set; }
         public virtual DbSet<Employees> Employees { get; set; }
         public virtual DbSet<PPEs> PPEs { get; set; }
-        public virtual DbSet<WorkOrders> WorkOrders { get; set; }
         public virtual DbSet<Statuses> Statuses { get; set; }
         public virtual DbSet<DocActions> DocActions { get; set; }
         public virtual DbSet<EquipmentProfiles> EquipmentProfiles { get; set; }
@@ -53,8 +52,11 @@ namespace Models
         public virtual DbSet<TechSpecRequests> TechSpecRequests { get; set; }
         public virtual DbSet<TechSpecEquipmentProfiles> TechSpecEquipmentProfiles { get; set; }
         public virtual DbSet<MES> MES { get; set; }
-        public virtual DbSet<Deliveries> Deliveries { get; set; }
         public virtual DbSet<Dropdowns> Dropdowns { get; set; }
         public virtual DbSet<Documents> Documents { get; set; }
+        public virtual DbSet<WorkOrders> WorkOrders { get; set; }
+        public virtual DbSet<Deliveries> Deliveries { get; set; }
+        public virtual DbSet<ActionLists> ActionLists { get; set; }
+        public virtual DbSet<PGNs> PGNs { get; set; }
     }
 }

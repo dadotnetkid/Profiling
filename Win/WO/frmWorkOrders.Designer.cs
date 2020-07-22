@@ -62,7 +62,7 @@
             this.EquipmentTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.UnitTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.Grid = new DevExpress.XtraGrid.GridControl();
+            this.WorkOrderGridControl = new DevExpress.XtraGrid.GridControl();
             this.WorkOrderGrid = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.PPEDel = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -81,7 +81,11 @@
             this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
-            this.searchControl1 = new DevExpress.XtraEditors.SearchControl();
+            this.txtSearch = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colPPEId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFolderNo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOfficeName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.btnPrintTR = new DevExpress.XtraEditors.SimpleButton();
             this.btnPrint = new DevExpress.XtraEditors.SimpleButton();
@@ -130,7 +134,6 @@
             this.MainActivity = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MainActLookUpRepo = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.SubActivity = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.SubActLookUpRepo = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.DateCreated = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Status = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDel = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -138,6 +141,7 @@
             this.colRemarks = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCreatedBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ActivityLookUpRepo = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.SubActLookUpRepo = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.ProgramLookUpRepo = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.tabNavigationPage2 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
@@ -174,7 +178,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.UnitTypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WorkOrderGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WorkOrderGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OfficeLookUpRepo)).BeginInit();
@@ -184,7 +188,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchControl1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSearch.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
@@ -212,9 +217,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ActionGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEditRepo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainActLookUpRepo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SubActLookUpRepo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDelRepo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ActivityLookUpRepo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SubActLookUpRepo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProgramLookUpRepo)).BeginInit();
             this.tabNavigationPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -235,7 +240,7 @@
             // panelControl1
             // 
             this.panelControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panelControl1.Controls.Add(this.Grid);
+            this.panelControl1.Controls.Add(this.WorkOrderGridControl);
             this.panelControl1.Controls.Add(this.panelControl2);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
@@ -243,21 +248,21 @@
             this.panelControl1.Size = new System.Drawing.Size(389, 605);
             this.panelControl1.TabIndex = 2;
             // 
-            // Grid
+            // WorkOrderGridControl
             // 
-            this.Grid.DataSource = this.WorkOrderBindingSource;
-            this.Grid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Grid.Location = new System.Drawing.Point(2, 72);
-            this.Grid.MainView = this.WorkOrderGrid;
-            this.Grid.Name = "Grid";
-            this.Grid.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.WorkOrderGridControl.DataSource = this.WorkOrderBindingSource;
+            this.WorkOrderGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WorkOrderGridControl.Location = new System.Drawing.Point(2, 72);
+            this.WorkOrderGridControl.MainView = this.WorkOrderGrid;
+            this.WorkOrderGridControl.Name = "WorkOrderGridControl";
+            this.WorkOrderGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.OfficeLookUpRepo,
             this.repositoryItemDateEdit1,
             this.EmployeeLookUpRepo,
             this.repositoryItemButtonEdit2});
-            this.Grid.Size = new System.Drawing.Size(385, 531);
-            this.Grid.TabIndex = 2;
-            this.Grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.WorkOrderGridControl.Size = new System.Drawing.Size(385, 531);
+            this.WorkOrderGridControl.TabIndex = 2;
+            this.WorkOrderGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WorkOrderGrid});
             // 
             // WorkOrderGrid
@@ -270,7 +275,7 @@
             this.OfficeId,
             this.EmployeeId,
             this.colDateCreated});
-            this.WorkOrderGrid.GridControl = this.Grid;
+            this.WorkOrderGrid.GridControl = this.WorkOrderGridControl;
             this.WorkOrderGrid.Name = "WorkOrderGrid";
             this.WorkOrderGrid.NewItemRowText = "New PO";
             this.WorkOrderGrid.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditFormInplaceHideCurrentRow;
@@ -404,7 +409,7 @@
             this.panelControl2.Controls.Add(this.lookUpEdit1);
             this.panelControl2.Controls.Add(this.labelControl16);
             this.panelControl2.Controls.Add(this.labelControl15);
-            this.panelControl2.Controls.Add(this.searchControl1);
+            this.panelControl2.Controls.Add(this.txtSearch);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl2.Location = new System.Drawing.Point(2, 2);
             this.panelControl2.Name = "panelControl2";
@@ -449,6 +454,7 @@
             this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lookUpEdit1.Properties.DisplayMember = "Value";
+            this.lookUpEdit1.Properties.NullText = "";
             this.lookUpEdit1.Properties.ValueMember = "Value";
             this.lookUpEdit1.Size = new System.Drawing.Size(240, 24);
             this.lookUpEdit1.TabIndex = 2;
@@ -469,19 +475,60 @@
             this.labelControl15.TabIndex = 1;
             this.labelControl15.Text = "Search";
             // 
-            // searchControl1
+            // txtSearch
             // 
-            this.searchControl1.Location = new System.Drawing.Point(51, 6);
-            this.searchControl1.Name = "searchControl1";
-            this.searchControl1.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.searchControl1.Properties.Appearance.Options.UseFont = true;
-            this.searchControl1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Repository.ClearButton(),
-            new DevExpress.XtraEditors.Repository.SearchButton()});
-            this.searchControl1.Properties.EditValueChanged += new System.EventHandler(this.searchControl1_Properties_EditValueChanged);
-            this.searchControl1.Size = new System.Drawing.Size(240, 24);
-            this.searchControl1.TabIndex = 0;
-            this.searchControl1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchControl1_KeyDown);
+            this.txtSearch.Location = new System.Drawing.Point(51, 6);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtSearch.Properties.Appearance.Options.UseFont = true;
+            this.txtSearch.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search)});
+            this.txtSearch.Properties.DisplayMember = "PPEs.PPEId";
+            this.txtSearch.Properties.NullText = "";
+            this.txtSearch.Properties.NullValuePromptShowForEmptyValue = true;
+            this.txtSearch.Properties.PopupSizeable = false;
+            this.txtSearch.Properties.PopupView = this.searchLookUpEdit1View;
+            this.txtSearch.Properties.ValidateOnEnterKey = true;
+            this.txtSearch.Properties.ValueMember = "Id";
+            this.txtSearch.Size = new System.Drawing.Size(240, 24);
+            this.txtSearch.TabIndex = 0;
+            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchControl1_KeyDown);
+            // 
+            // searchLookUpEdit1View
+            // 
+            this.searchLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colPPEId,
+            this.colFolderNo,
+            this.colOfficeName});
+            this.searchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.searchLookUpEdit1View.Name = "searchLookUpEdit1View";
+            this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // colPPEId
+            // 
+            this.colPPEId.Caption = "Property No";
+            this.colPPEId.FieldName = "PPEs.PPEId";
+            this.colPPEId.Name = "colPPEId";
+            this.colPPEId.Visible = true;
+            this.colPPEId.VisibleIndex = 0;
+            // 
+            // colFolderNo
+            // 
+            this.colFolderNo.Caption = "FolderNo";
+            this.colFolderNo.FieldName = "FolderNo";
+            this.colFolderNo.Name = "colFolderNo";
+            this.colFolderNo.Visible = true;
+            this.colFolderNo.VisibleIndex = 1;
+            // 
+            // colOfficeName
+            // 
+            this.colOfficeName.Caption = "Office Name";
+            this.colOfficeName.FieldName = "Employees.Offices.OfficeName";
+            this.colOfficeName.Name = "colOfficeName";
+            this.colOfficeName.Visible = true;
+            this.colOfficeName.VisibleIndex = 2;
             // 
             // panelControl3
             // 
@@ -1088,22 +1135,11 @@
             // SubActivity
             // 
             this.SubActivity.Caption = "Sub Activity";
-            this.SubActivity.ColumnEdit = this.SubActLookUpRepo;
-            this.SubActivity.FieldName = "SubActivityId";
+            this.SubActivity.FieldName = "SubActivity.Value";
             this.SubActivity.Name = "SubActivity";
             this.SubActivity.Visible = true;
             this.SubActivity.VisibleIndex = 4;
             this.SubActivity.Width = 145;
-            // 
-            // SubActLookUpRepo
-            // 
-            this.SubActLookUpRepo.AutoHeight = false;
-            this.SubActLookUpRepo.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.SubActLookUpRepo.DisplayMember = "Value";
-            this.SubActLookUpRepo.Name = "SubActLookUpRepo";
-            this.SubActLookUpRepo.NullText = "";
-            this.SubActLookUpRepo.ValueMember = "Id";
             // 
             // DateCreated
             // 
@@ -1170,6 +1206,16 @@
             this.ActivityLookUpRepo.Name = "ActivityLookUpRepo";
             this.ActivityLookUpRepo.NullText = "";
             this.ActivityLookUpRepo.ValueMember = "Id";
+            // 
+            // SubActLookUpRepo
+            // 
+            this.SubActLookUpRepo.AutoHeight = false;
+            this.SubActLookUpRepo.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.SubActLookUpRepo.DisplayMember = "Value";
+            this.SubActLookUpRepo.Name = "SubActLookUpRepo";
+            this.SubActLookUpRepo.NullText = "";
+            this.SubActLookUpRepo.ValueMember = "Id";
             // 
             // ProgramLookUpRepo
             // 
@@ -1252,7 +1298,7 @@
             this.tabNavigationPage3.Caption = "Files";
             this.tabNavigationPage3.Controls.Add(this.gridControl3);
             this.tabNavigationPage3.Name = "tabNavigationPage3";
-            this.tabNavigationPage3.Size = new System.Drawing.Size(837, 181);
+            this.tabNavigationPage3.Size = new System.Drawing.Size(837, 193);
             this.tabNavigationPage3.Paint += new System.Windows.Forms.PaintEventHandler(this.tabNavigationPage3_Paint);
             // 
             // gridControl3
@@ -1265,7 +1311,7 @@
             this.gridControl3.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.btnFileDownload,
             this.btnFileView});
-            this.gridControl3.Size = new System.Drawing.Size(837, 181);
+            this.gridControl3.Size = new System.Drawing.Size(837, 193);
             this.gridControl3.TabIndex = 3;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.DocumentGrid});
@@ -1477,7 +1523,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.UnitTypeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Grid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WorkOrderGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WorkOrderGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OfficeLookUpRepo)).EndInit();
@@ -1488,7 +1534,8 @@
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchControl1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSearch.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
@@ -1520,9 +1567,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ActionGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEditRepo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainActLookUpRepo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SubActLookUpRepo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDelRepo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ActivityLookUpRepo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SubActLookUpRepo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProgramLookUpRepo)).EndInit();
             this.tabNavigationPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
@@ -1604,14 +1651,13 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraGrid.Columns.GridColumn btnEditAction;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit btnEditRepo;
-        private DevExpress.XtraEditors.SearchControl searchControl1;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn EvaluationSheetId;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit EvaluationLookUpRepo;
         private DevExpress.XtraGrid.Columns.GridColumn Value;
-        private DevExpress.XtraGrid.GridControl Grid;
+        private DevExpress.XtraGrid.GridControl WorkOrderGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView WorkOrderGrid;
         private DevExpress.XtraGrid.Columns.GridColumn Id;
         private DevExpress.XtraGrid.Columns.GridColumn PPEDel;
@@ -1657,5 +1703,10 @@
         private DevExpress.XtraEditors.LabelControl labelControl16;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SearchLookUpEdit txtSearch;
+        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEdit1View;
+        private DevExpress.XtraGrid.Columns.GridColumn colPPEId;
+        private DevExpress.XtraGrid.Columns.GridColumn colFolderNo;
+        private DevExpress.XtraGrid.Columns.GridColumn colOfficeName;
     }
 }

@@ -17,11 +17,30 @@ namespace Models
             // var ppe = new UnitOfWork().PPEsRepo.Find(m => m.Id == ppeId);
             if (ppe == null)
                 return "";
-            var count = ppe.WorkOrders.Count() + 1;
+            if (ppe.WorkOrders.Any())
+            {
+                return ppe.WorkOrders.OrderByDescending(x => x.Id).FirstOrDefault()?.FolderNo;
+            }
+            var count = 1000 + ppe.WorkOrders.Count() + 1;
+
             return ppe?.Employees?.Offices?.BoxNo + "-" + ppe?.EquipmentTypes?.Box + "-" + count.ToString("0000");
         }
 
-        public string Actions => string.Join(Environment.NewLine, this.DocActions.Where(x=>x.TableName=="WorkOrders").Select(x => x.ActionTaken));
+        public string GeneratedId(int? officeNo, int? typeNo, int wOId)
+        {
+            // var ppe = new UnitOfWork().PPEsRepo.Find(m => m.Id == ppeId);
+            UnitOfWork unitOfWork = new UnitOfWork();
+            var lastId = unitOfWork.WorkOrdersRepo.Fetch(m => m.OfficeNo == officeNo && m.EquipmentTypeNo == typeNo)
+                .OrderByDescending(x => x.EquipmentCount).FirstOrDefault();
+            if (lastId != null)
+            {
+                var id = $"{officeNo}-{typeNo}-{(lastId.EquipmentCount + 1)}";
+                return $"{id}";
+            }
+            return $"{officeNo}-{typeNo}-{1001}";
+        }
+
+        public string Actions => string.Join(Environment.NewLine, this.DocActions.Where(x => x.TableName == "WorkOrders").Select(x => x.ActionAndStatus));
         public string PrintedBy { get; set; }
     }
 }

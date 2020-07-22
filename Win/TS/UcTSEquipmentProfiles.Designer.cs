@@ -63,6 +63,7 @@
             this.UnitCost = new DevExpress.XtraGrid.Columns.GridColumn();
             this.decimalSpinEditRepo = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.Total = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.rteDescriptionRepo = new DevExpress.XtraEditors.Repository.RepositoryItemRichTextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.EquipmentProfileBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EquipmentGrid)).BeginInit();
@@ -70,6 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.decimalSpinEditRepo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rteDescriptionRepo)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl1
@@ -84,7 +86,8 @@
             this.repositoryItemButtonEdit1,
             this.repositoryItemSpinEdit1,
             this.decimalSpinEditRepo,
-            this.repositoryItemMemoEdit1});
+            this.repositoryItemMemoEdit1,
+            this.rteDescriptionRepo});
             this.gridControl1.Size = new System.Drawing.Size(510, 174);
             this.gridControl1.TabIndex = 22;
             this.gridControl1.UseEmbeddedNavigator = true;
@@ -195,7 +198,7 @@
             // Description
             // 
             this.Description.Caption = "Description";
-            this.Description.ColumnEdit = this.repositoryItemMemoEdit1;
+            this.Description.ColumnEdit = this.rteDescriptionRepo;
             this.Description.FieldName = "Description";
             this.Description.Name = "Description";
             this.Description.Visible = true;
@@ -259,6 +262,11 @@
             this.Total.VisibleIndex = 6;
             this.Total.Width = 143;
             // 
+            // rteDescriptionRepo
+            // 
+            this.rteDescriptionRepo.Name = "rteDescriptionRepo";
+            this.rteDescriptionRepo.ShowCaretInReadOnly = false;
+            // 
             // UcTSEquipmentProfiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -273,6 +281,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.decimalSpinEditRepo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rteDescriptionRepo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -297,5 +306,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn UnitCost;
         private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit decimalSpinEditRepo;
         private DevExpress.XtraGrid.Columns.GridColumn Total;
+        private DevExpress.XtraEditors.Repository.RepositoryItemRichTextEdit rteDescriptionRepo;
     }
 }

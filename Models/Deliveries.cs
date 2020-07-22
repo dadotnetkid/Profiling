@@ -14,12 +14,6 @@ namespace Models
     
     public partial class Deliveries
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Deliveries()
-        {
-            this.EquipmentProfiles = new HashSet<EquipmentProfiles>();
-        }
-    
         public int Id { get; set; }
         public string DeliveryId { get; set; }
         public Nullable<int> SupplierId { get; set; }
@@ -29,7 +23,5 @@ namespace Models
     
         public virtual Offices Offices { get; set; }
         public virtual Suppliers Suppliers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EquipmentProfiles> EquipmentProfiles { get; set; }
     }
 }

@@ -8,6 +8,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls.Rtf;
+using DevExpress.XtraRichEdit;
+
 using Models.Repository;
 using Models;
 
@@ -36,11 +39,12 @@ namespace Win.TS
             {
                 using (UnitOfWork unitOfWork = new UnitOfWork())
                 {
+                    RichEditControl rtfControl = new RichEditControl();
                     foreach (var i in selectedRows)
                     {
                         var techSpecRequest = gridTechSpecRequest.GetRow(i);
-
-
+          
+                        
                         if (techSpecRequest is TechSpecRequests item)
                         {
                             item.Id = unitOfWork.TechSpecRequestsRepo.Fetch().OrderByDescending(x => x.Id).Select(x => new { x.Id }).FirstOrDefault().Id + 1;
@@ -48,6 +52,7 @@ namespace Win.TS
                             foreach (var ep in unitOfWork.EquipmentProfilesRepo.Get(m =>
                                 m.ItemNumber == item.ItemNumber && m.RefId == item.TechSpecsId))
                             {
+                                
                                 ep.Id = item.Id = unitOfWork.EquipmentProfilesRepo.Fetch().OrderByDescending(x => x.Id).Select(x => new { x.Id }).FirstOrDefault().Id + 1;
                                 ep.RefId = techSpecsId;
                                 ep.TableName = "TechSpecs";
